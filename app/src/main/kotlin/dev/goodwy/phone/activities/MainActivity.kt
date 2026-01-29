@@ -749,7 +749,7 @@ class MainActivity : SimpleActivity() {
 //                    clearMissedCalls()
 //                }
 
-                if (config.openSearch) {
+                if (config.openSearch && config.showSearchBar) {
                     if (getCurrentFragment() is ContactsFragment) {
                         binding.mainMenu.requestFocusAndShowKeyboard()
                     }

@@ -74,13 +74,13 @@ class CallService : InCallService() {
     override fun onCallRemoved(call: Call) {
         super.onCallRemoved(call)
         call.unregisterCallback(callListener)
-//        callNotificationManager.cancelNotification()
+        callNotificationManager.cancelNotification()
         val wasPrimaryCall = call == CallManager.getPrimaryCall()
         CallManager.onCallRemoved(call)
         EventBus.getDefault().post(Events.RefreshCallLog)
         if (CallManager.getPhoneState() == NoCall) {
             CallManager.inCallService = null
-            callNotificationManager.cancelNotification()
+//            callNotificationManager.cancelNotification()
         } else {
             callNotificationManager.setupNotification()
             if (wasPrimaryCall) {

@@ -7,4 +7,4 @@ including popular messengers (Whatsapp, Telegram, Signal, Viber, and Threema). <
 
 [Google Play](https://play.google.com/store/apps/details?id=dev.goodwy.phone)<br><br>
 
-Based on [Simple Dialer](https://github.com/SimpleMobileTools/Simple-Dialer),[Right Dialer](https://github.com/Goodwy/Dialer),[Fossify Phone](https://github.com/FossifyOrg/Phone).
+Based on [Simple Dialer](https://github.com/SimpleMobileTools/Simple-Dialer), [Right Dialer](https://github.com/Goodwy/Dialer), [Fossify Phone](https://github.com/FossifyOrg/Phone).

@@ -34,12 +34,15 @@ class CallNotificationManager(private val context: Context) {
 
     private val notificationManager = context.notificationManager
     private val callContactAvatarHelper = CallContactAvatarHelper(context)
+    // Flag to prevent notification display after service closure
+    private var isServiceActive = false
 
     fun updateNotification() {
         setupNotification(false)
     }
 
     fun setupNotification(lowPriority: Boolean = false) {
+        isServiceActive = true
         try {
             if (isSPlus()) setupNotificationNew(lowPriority) else setupNotificationOld(lowPriority)
         } catch (e: Exception) {
@@ -177,8 +180,12 @@ class CallNotificationManager(private val context: Context) {
 
             val notification = builder.build()
             // it's rare but possible for the call state to change by now
-            if (CallManager.getState() == callState) {
+            // We verify that the call still exists in CallManager.
+            if (isServiceActive && CallManager.getPrimaryCall() != null && CallManager.getState() == callState) {
                 notificationManager.notify(CALL_NOTIFICATION_ID, notification)
+            } else {
+                // If the call is no longer there, we turn off the notification just in case
+                notificationManager.cancel(CALL_NOTIFICATION_ID)
             }
         }
     }
@@ -199,6 +206,7 @@ class CallNotificationManager(private val context: Context) {
     }
 
     fun cancelNotification() {
+        isServiceActive = false
         notificationManager.cancel(CALL_NOTIFICATION_ID)
     }
 
@@ -350,8 +358,12 @@ class CallNotificationManager(private val context: Context) {
 
                 val notification = builder.build()
                 // it's rare but possible for the call state to change by now
-                if (CallManager.getState() == callState) {
+                // We verify that the call still exists in CallManager.
+                if (isServiceActive && CallManager.getPrimaryCall() != null && CallManager.getState() == callState) {
                     notificationManager.notify(CALL_NOTIFICATION_ID, notification)
+                } else {
+                    // If the call is no longer there, we turn off the notification just in case
+                    notificationManager.cancel(CALL_NOTIFICATION_ID)
                 }
             }
         } catch (_: Exception) {
@@ -436,8 +448,12 @@ class CallNotificationManager(private val context: Context) {
 
             val notification = builder.build()
             // it's rare but possible for the call state to change by now
-            if (CallManager.getState() == callState) {
+            // We verify that the call still exists in CallManager.
+            if (isServiceActive && CallManager.getPrimaryCall() != null && CallManager.getState() == callState) {
                 notificationManager.notify(CALL_NOTIFICATION_ID, notification)
+            } else {
+                // If the call is no longer there, we turn off the notification just in case
+                notificationManager.cancel(CALL_NOTIFICATION_ID)
             }
         }
     }
