@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Прозирни екран позива</string>
+    <string name="call_back_g">Узврати позив</string>
+    <string name="call_back_person_g">Узврати позив за %s</string>
+    <string name="missed_call_g">Пропуштен позив</string>
+    <string name="missed_calls_g">Пропуштени позиви</string>
+    <string name="missed_call_notifications_g">Обавештења о пропуштеним позивима</string>
+    <string name="dialpad_preferences">Подешавања екрана за бирање</string>
+    <string name="call_start_end_vibration">Вибрирајте када започнете и завршите позив</string>
+    <string name="call_notes">Белешке о позивима</string>
+    <string name="back_pressed_end_call">Радња назад завршава позив</string>
+
+    <string name="keep_calls_in_popup_summary">Након што одговорите на позив, он остаје у обавештењима и не приказује се преко целог екрана. То се ради како би се избегло прекидање других апликација, као што је време играња игре.</string>
+    <string name="turn_on_speaker_in_popup">Аутоматски укључи звучник</string>
+    <string name="turn_on_speaker_in_popup_summary">Ако нису повезане слушалице, звучник ће се укључити.</string>
+    <string name="busy">Заузето</string>
+    <string name="block_calls">Блокирајте позиве</string>
+    <string name="edit_number_before_call">Измени број пре позива</string>
+    <string name="on_favorite_click">Када кликнете на омиљену ставку</string>
+    <string name="call_using_same_sim">Користите исту СИМ картицу на коју је упућен претходни (последњи) позив</string>
+    <string name="show_contact_thumbnails_g">Прикажи сличице контаката</string>
+    <string name="hide_dialpad_letters_g">Сакриј слова на тастатури</string>
+    <string name="show_caller_description_g">Прикажи додатне информације о позиваоцу</string>
+    <string name="nickname">Надимак</string>
+    <string name="company">Компанија</string>
+    <string name="call_anonymously">Позови анонимно (са префиксом #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <х4>Упозорење</х4>
+             Број ће бити позван са префиксом #31# <бр><бр>
+                 <х6"><и> #31#%s</и></х6>
+             Уверите се да ваш оператер подржава услугу скривања броја када користите префикс #31#. <бр>
+             Ваш провајдер сервиса може наплатити додатну накнаду за ову услугу.
+        ]]>
+    </string>
+
+    <string name="add_wait">Додај чекање (;)</string>
+    <string name="rejected">Одбијено</string>
+    <string name="dialpad_buttons_color">Боја дугмади нумеричке тастатуре</string>
+    <string name="audio_route_earpiece_g">Слушалица уређаја</string>
+    <string name="open_speed_dial_manage">Отворити управљање брзим бирањем?</string>
+
+    <!-- Timer -->
+    <string name="timer">Тајмер</string>
+    <string name="timers_notification_msg">Тајмери су покренути</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d тајмер је покренут</item>
+        <item quantity="few">%d тајмера су покренута</item>
+        <item quantity="other">%d тајмера је покренуто</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Зашто морам да откључам свој уређај да бих одговорио на долазни позив?</string>
+    <string name="faq_1_text_dialer_g">Оперативни систем блокира приступ апликацијама закључаном екрану. Морате дозволити апликацији да приступи закључаном екрану. На пример, у МИУИ-ју морате да дозволите приступ „Подешавања => Обавештења => Обавештења на закључаном екрану“ и омогућите дозволу „Прикажи искачуће прозоре када се ради у позадини“.</string>
+    <string name="faq_2_title_dialer_g">Како да копирам или налепим број на екрану бирача броја?</string>
+    <string name="faq_2_text_dialer_g">Дуго притисните дугме за позив да бисте налепили садржај међуспремника. Ако је број већ унет, дуги притисак на дугме за позив копира га у међуспремник.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Десни бирач приказује само контакте са којима је придружен телефонски број. Контакти без телефонског броја се не приказују у апликацији.</string>
+    <string name="slider_style">Стил клизача</string>
+    <string name="slider_style_summary">Клизач се користи само када је екран закључан.</string>
+    <string name="answer_style">Стил дугмета за одговор</string>
+    <string name="buttons">Дугмад</string>
+    <string name="answer_slider">Клизач</string>
+    <string name="answer_slider_outline">Оквирни клизач</string>
+    <string name="answer_slider_vertical">Вертикални клизач</string>
+    <string name="show_recent_calls">Прикажи и претражи скорашње позиве</string>
+    <string name="search_contacts_in_dialpad">Претрага контаката приликом бирања броја</string>
+    <string name="open_dialpad_when_call_from_another_app">Када покушавате да упутите позив из друге апликације, отворите тастатуру за бирање бројева</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Ово може да вас заштити од малвера који упућује позиве без вашег знања.</string>
+    <string name="number_of_recent_calls_displays">Приказан број недавних позива</string>
+    <string name="number_of_recent_calls_displays_summary">Z dôvodu zoskupovania môže byť počet zobrazených riadkov menší.</string>
+    <string name="group_calls">Груписање позива</string>
+    <string name="group_all_calls">Групишите све позиве, биће приказан само последњи позив</string>
+    <string name="call_button_style">Стил дугмета за позив</string>
+    <string name="answer_end_other_call">Одговорите и завршите тренутни позив</string>
+    <string name="quick_answers">Брзи одговори</string>
+    <string name="voicemail">Говорна пошта</string>
+    <string name="show_voicemail_icon">Прикажи икону говорне поште</string>
+    <string name="secondary_dialpad_language">Секундарни језик тастатуре</string>
+    <string name="sim_card_selection_dialog_style">Стил дијалога за избор СИМ картице</string>
+    <string name="clear_dialpad_when_start_call">Обришите бирани број када започнете позив</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d пропуштен позив</item>
+        <item quantity="few">%d пропуштена позива</item>
+        <item quantity="other">%d пропуштених позива</item>
+    </plurals>
+    <string name="missed_call_from">Пропуштен позив од %s</string>
+    <string name="keep_calls_in_popup">Оставите позиве у обавештењима</string>
+    <string name="on_contact_click">Када кликнете на контакт</string>
+    <string name="on_recent_click">Када кликнете на недавни позив</string>
+    <string name="add_pause">Додај паузу од 2 секунде (,)</string>
+    <string name="missed">Пропуштено</string>
+    <string name="incoming">Долазни</string>
+    <string name="outgoing">Одлазни</string>
+</resources>

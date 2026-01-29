@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/callerNotesHolder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="11dp"
+    android:layout_marginEnd="11dp"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/button_white_bg_10dp"
+    android:minHeight="48dp"
+    android:paddingTop="@dimen/contact_padding_top"
+    android:paddingBottom="@dimen/contact_padding_top"
+    android:paddingStart="@dimen/contact_padding_left"
+    android:paddingEnd="@dimen/contact_padding_left">
+
+    <com.goodwy.commons.views.MyTextView
+        android:id="@+id/callerNotesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/callerNotesIcon"
+        android:gravity="start"
+        android:text="@string/call_notes"
+        android:textSize="@dimen/normal_text_size" />
+
+    <ImageView
+        android:id="@+id/callerNotesIcon"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:alpha="0.8"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/ic_note" />
+
+    <com.goodwy.commons.views.MyTextView
+        android:id="@+id/callerNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:layout_below="@+id/callerNotesTitle"
+        android:textSize="@dimen/bigger_text_size"
+        tools:text="A short note about the caller. " />
+</RelativeLayout>

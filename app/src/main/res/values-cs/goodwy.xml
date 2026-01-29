@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Průhledná obrazovka hovoru</string>
+    <string name="call_back_g">Zavolat</string>
+    <string name="call_back_person_g">Zavolejte zpět %s</string>
+    <string name="missed_call_g">Zmeškaný hovor</string>
+    <string name="missed_calls_g">Zmeškané hovory</string>
+    <string name="missed_call_notifications_g">Oznámení o zmeškaných hovorech</string>
+    <string name="dialpad_preferences">Nastavení obrazovky vytáčení</string>
+    <string name="call_start_end_vibration">Vibrace při zahájení a ukončení hovoru</string>
+
+    <string name="show_contact_thumbnails_g">Zobrazení miniatur kontaktů</string>
+    <string name="hide_dialpad_letters_g">Skrytí písmen číselníku</string>
+    <string name="show_caller_description_g">Zobrazit další informace o volajícím</string>
+    <string name="nickname">Přezdívka</string>
+    <string name="company">Společnost</string>
+    <string name="call_anonymously">Volejte anonymně (s předčíslím #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Upozornění</h4>
+             Číslo bude voláno s předvolbou #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Ujistěte se, že váš operátor podporuje službu skrývání čísel při použití předvolby #31#. <br>
+             Váš poskytovatel služeb může za tuto službu účtovat dodatečný poplatek.
+        ]]>
+    </string>
+
+    <string name="add_wait">Přidat čekání (;)</string>
+    <string name="rejected">Zamítnuto</string>
+    <string name="dialpad_buttons_color">Barva tlačítek číselníku</string>
+    <string name="audio_route_earpiece_g">Sluchátko zařízení</string>
+    <string name="open_speed_dial_manage">Otevřít správu rychlého vytáčení?</string>
+
+    <!-- Timer -->
+    <string name="timer">Časovač</string>
+    <string name="timers_notification_msg">Časovače běží</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d časovač běží</item>
+        <item quantity="few">%d časovače běží</item>
+        <item quantity="many">%d časovačů běží</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Proč musím odemknout zařízení, abych mohl přijmout příchozí hovor?</string>
+    <string name="faq_1_text_dialer_g">Operační systém blokuje aplikacím přístup k obrazovce uzamčení. Aplikaci musíte povolit přístup k zamykací obrazovce. Například v MIUI musíte povolit přístup k Nastavení => Oznámení => Oznámení na zamykací obrazovce.</string>
+    <string name="faq_2_title_dialer_g">Jak zkopíruji nebo vložím číslo na obrazovku vytáčení?</string>
+    <string name="faq_2_text_dialer_g">Dlouhým stisknutím tlačítka volání vložte obsah schránky. Pokud je číslo již zadáno, dlouhým stisknutím tlačítka volání jej zkopírujete do schránky.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Pravé vytáčení zobrazuje pouze kontakty, ke kterým je přiřazeno telefonní číslo. Kontakty bez telefonního čísla se v aplikaci nezobrazují.</string>
+    <string name="slider_style">Styl posuvníku</string>
+    <string name="slider_style_summary">Posuvník se používá pouze tehdy, když je obrazovka uzamčena.</string>
+    <string name="answer_style">Styl tlačítka odpovědi</string>
+    <string name="buttons">Tlačítka</string>
+    <string name="answer_slider">Posuvník</string>
+    <string name="answer_slider_outline">Posuvník obrysu</string>
+    <string name="answer_slider_vertical">Vertikální posuvník</string>
+
+    <string name="show_recent_calls">Zobrazit a vyhledat poslední hovory</string>
+    <string name="search_contacts_in_dialpad">Vyhledávání kontaktů při vytáčení čísla</string>
+    <string name="open_dialpad_when_call_from_another_app">Při pokusu o volání z jiné aplikace otevřete číselník</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">To vás může ochránit před malwarem, který volá bez vašeho vědomí.</string>
+    <string name="number_of_recent_calls_displays">Zobrazený počet posledních hovorů</string>
+    <string name="number_of_recent_calls_displays_summary">Kvůli seskupení může být počet zobrazených řádků menší.</string>
+    <string name="group_calls">Seskupování hovorů</string>
+    <string name="group_all_calls">Seskupte všechny hovory, zobrazí se pouze poslední hovor</string>
+    <string name="call_button_style">Styl tlačítka zvonku</string>
+    <string name="call_notes">Poznámky k hovoru</string>
+    <string name="back_pressed_end_call">Akce Back ukončí hovor</string>
+    <string name="keep_calls_in_popup_summary">Po přijetí hovoru zůstane hovor v oznámeních a nezobrazí se na celé obrazovce. Důvodem je, aby se zabránilo přerušení jiných aplikací, například při hraní hry.</string>
+    <string name="turn_on_speaker_in_popup">Automatické zapnutí reproduktoru</string>
+    <string name="turn_on_speaker_in_popup_summary">Pokud nejsou připojena žádná sluchátka, reproduktor se zapne.</string>
+    <string name="busy">Zaneprázdněný</string>
+    <string name="block_calls">Blokovat hovory</string>
+    <string name="edit_number_before_call">Upravit číslo před voláním</string>
+    <string name="on_favorite_click">Když kliknete na oblíbenou položku</string>
+    <string name="call_using_same_sim">Použijte stejnou SIM kartu, na kterou byl uskutečněn předchozí (poslední) hovor</string>
+    <string name="answer_end_other_call">Přijměte a ukončete aktuální hovor</string>
+    <string name="quick_answers">Rychlé odpovědi</string>
+    <string name="voicemail">Hlasová schránka</string>
+    <string name="show_voicemail_icon">Zobrazit ikonu hlasové schránky</string>
+    <string name="secondary_dialpad_language">Jazyk sekundární číselníku</string>
+    <string name="sim_card_selection_dialog_style">Styl dialogu pro výběr SIM karty</string>
+    <string name="clear_dialpad_when_start_call">Vymažte vytáčené číslo při zahájení hovoru</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d zmeškaný hovor</item>
+        <item quantity="few">%d zmeškané hovory</item>
+        <item quantity="many">%d zmeškaných hovorů</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Nechte hovory v oznámeních</string>
+    <string name="on_contact_click">Když kliknete na kontakt</string>
+    <string name="on_recent_click">Když kliknete na nedávný hovor</string>
+    <string name="add_pause">Přidat 2sekundovou pauzu (,)</string>
+    <string name="missed">Zmeškané</string>
+    <string name="incoming">Přicházející</string>
+    <string name="outgoing">Odchozí</string>
+</resources>

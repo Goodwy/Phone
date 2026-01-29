@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">מסך שיחה שקוף</string>
+    <string name="call_back_g">טלפן</string>
+    <string name="call_back_person_g">התקשר בחזרה %s</string>
+    <string name="missed_call_g">שיחה שלא נענתה</string>
+    <string name="missed_calls_g">שיחות שלא נענו</string>
+    <string name="missed_call_notifications_g">התראות על שיחות שלא נענו</string>
+    <string name="dialpad_preferences">הגדרות מסך חיוג</string>
+    <string name="call_start_end_vibration">רטט כאשר השיחה מתחילה ומסתיימת</string>
+
+    <string name="show_contact_thumbnails_g">הצגת תמונות ממוזערות של אנשי קשר</string>
+    <string name="hide_dialpad_letters_g">הסתרת אותיות פנקס חיוג</string>
+    <string name="show_caller_description_g">הצג מידע נוסף על המתקשר</string>
+    <string name="nickname">כינוי</string>
+    <string name="company">חברה</string>
+    <string name="call_anonymously">התקשר באופן אנונימי (עם קידומת #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>אזהרה</h4>
+             המספר ייקרא עם הקידומת #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             ודא שהמפעיל שלך תומך בשירות הסתרת המספרים בעת שימוש בקידומת #31#. <br>
+             ספק השירות שלך עשוי לגבות תשלום נוסף עבור שירות זה.
+        ]]>
+    </string>
+
+    <string name="add_wait">הוסף המתנה (;)</string>
+    <string name="rejected">נִדחֶה</string>
+    <string name="dialpad_buttons_color">צבע לחצני לוח החיוג</string>
+    <string name="audio_route_earpiece_g">האפרכסת של המכשיר</string>
+    <string name="open_speed_dial_manage">לפתוח את החיוג המהיר לנהל?</string>
+
+    <!-- Timer -->
+    <string name="timer">טיימר</string>
+    <string name="timers_notification_msg">טיימר פועל</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d טיימר פועל</item>
+        <item quantity="two">%d טיימרים פועלים</item>
+        <item quantity="other">%d טיימרים פועלים</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">מדוע אני צריך לבטל את נעילת המכשיר שלי כדי לענות לשיחה נכנסת?</string>
+    <string name="faq_1_text_dialer_g">מערכת ההפעלה חוסמת גישה של אפליקציות למסך הנעילה. עליך לאפשר לאפליקציה לגשת למסך הנעילה. לדוגמה, ב-MIUI, עליך לאפשר גישה להגדרות => התראות => התראות במסך הנעילה.</string>
+    <string name="faq_2_title_dialer_g">כיצד אוכל להעתיק או להדביק מספר במסך החייגן?</string>
+    <string name="faq_2_text_dialer_g">לחץ לחיצה ארוכה על לחצן ההתקשרות כדי להדביק את תוכן הלוח. אם המספר כבר הוזן, לחיצה ארוכה על לחצן ההתקשרות תעתיק אותו ללוח.</string>
+
+    <!-- סגנון תשובה -->
+    <string name="faq_3_text_g">חייגן ימני מציג רק אנשי קשר שיש להם מספר טלפון המשויך אליהם. אנשי קשר ללא מספר טלפון אינם מוצגים באפליקציה.</string>
+    <string name="slider_style">סגנון מחוון</string>
+    <string name="slider_style_summary">המחוון משמש רק כאשר המסך נעול.</string>
+    <string name="answer_style">סגנון כפתור תשובה</string>
+    <string name="buttons">כפתורים</string>
+    <string name="answer_slider">מחוון</string>
+    <string name="answer_slider_outline">מחוון מתאר</string>
+    <string name="answer_slider_vertical">מחוון אנכי</string>
+
+    <string name="show_recent_calls">הצגה וחיפוש של שיחות אחרונות</string>
+    <string name="search_contacts_in_dialpad">חיפוש אנשי קשר בעת חיוג למספר</string>
+    <string name="open_dialpad_when_call_from_another_app">בעת ניסיון לבצע שיחה מאפליקציה אחרת, פתח את לוח החיוג</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">זה יכול להגן עליך מפני תוכנות זדוניות שמבצעות שיחות ללא ידיעתך.</string>
+    <string name="number_of_recent_calls_displays">הוצג מספר השיחות האחרונות</string>
+    <string name="number_of_recent_calls_displays_summary">עקב קיבוץ, מספר השורות המוצגות עשוי להיות קטן יותר.</string>
+    <string name="group_calls">קיבוץ שיחות</string>
+    <string name="group_all_calls">קבץ את כל השיחות, רק השיחה האחרונה תוצג</string>
+    <string name="call_button_style">סגנון לחצן פעמון</string>
+    <string name="call_notes">Notizen für Anrufe</string>
+    <string name="back_pressed_end_call">פעולת החזרה מסיימת את השיחה</string>
+    <string name="keep_calls_in_popup_summary">לאחר שתענה לשיחה, היא נשארת בהתראות שלך ולא תופיע במסך מלא. זה נעשה כדי למנוע הפרעה לאפליקציות אחרות, כמו למשל בזמן משחק.</string>
+    <string name="turn_on_speaker_in_popup">הפעלת הרמקול באופן אוטומטי</string>
+    <string name="turn_on_speaker_in_popup_summary">אם לא מחוברות אוזניות, הרמקול יופעל.</string>
+    <string name="busy">עָסוּק</string>
+    <string name="block_calls">חסום שיחות</string>
+    <string name="edit_number_before_call">עריכת מספר לפני השיחה</string>
+    <string name="on_favorite_click">כשאתה לוחץ על פריט מועדף</string>
+    <string name="call_using_same_sim">השתמש באותו כרטיס SIM שאליו בוצעה השיחה הקודמת (האחרונה)</string>
+    <string name="answer_end_other_call">מענה לשיחה הנוכחית וסיום שלה</string>
+    <string name="quick_answers">תשובות מהירות</string>
+    <string name="voicemail">תא קולי</string>
+    <string name="show_voicemail_icon">סמל \'הצג דואר קולי\'</string>
+    <string name="secondary_dialpad_language">שפת לוח חיוג משנית</string>
+    <string name="sim_card_selection_dialog_style">סגנון תיבת הדו-שיח לבחירת SIM</string>
+    <string name="clear_dialpad_when_start_call">נקה מספר בחיוג בעת התחלת שיחה</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">שיחה אחת שלא נענתה</item>
+        <item quantity="two">שיחות שלא נענו %d</item>
+        <item quantity="other">שיחות שלא נענו %d</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">השאר שיחות בהתראות</string>
+    <string name="on_contact_click">כשאתה לוחץ על איש קשר</string>
+    <string name="on_recent_click">כשאתה לוחץ על שיחה אחרונה</string>
+    <string name="add_pause">הוסף הפסקה של 2 שניות (,)</string>
+    <string name="missed">החמצה</string>
+    <string name="incoming">נִכנָס</string>
+    <string name="outgoing">יוֹצֵא</string>
+</resources>

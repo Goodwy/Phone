@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Pantalla de trucada transparent</string>
+    <string name="call_back_g">Cridar</string>
+    <string name="call_back_person_g">Torna a trucar %s</string>
+    <string name="missed_call_g">Trucada perduda</string>
+    <string name="missed_calls_g">Trucades perdudes</string>
+    <string name="missed_call_notifications_g">Notificacions de trucades perdudes</string>
+    <string name="dialpad_preferences">Configuració de la pantalla de marcatge</string>
+    <string name="call_start_end_vibration">Vibrar quan s\'inicia i finalitza la trucada</string>
+
+    <string name="show_contact_thumbnails_g">Mostra les miniatures de contacte</string>
+    <string name="hide_dialpad_letters_g">Amaga les lletres del teclat</string>
+    <string name="show_caller_description_g">Mostra informació addicional de la persona que truca</string>
+    <string name="nickname">Sobrenom</string>
+    <string name="company">Companyia</string>
+    <string name="call_anonymously">Truca de forma anònima (amb el prefix #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Avís</h4>
+             El número es trucarà amb el prefix #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Assegureu-vos que el vostre operador admet el servei d'amagat de números quan feu servir el prefix #31#. <br>
+             El vostre proveïdor de serveis pot cobrar una tarifa addicional per aquest servei.
+        ]]>
+    </string>
+
+    <string name="add_wait">Afegeix espera (;)</string>
+    <string name="rejected">Rebutjat</string>
+    <string name="dialpad_buttons_color">Color dels botons del teclat de marcatge</string>
+    <string name="audio_route_earpiece_g">Auricular del dispositiu</string>
+    <string name="open_speed_dial_manage">Obriu la gestió del marcatge ràpid?</string>
+
+    <!-- Timer -->
+    <string name="timer">Temporitzador</string>
+    <string name="timers_notification_msg">Els temporitzadors estan en marxa</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d temporitzador en marxa</item>
+        <item quantity="many">%d temporitzadors en marxa</item>
+        <item quantity="other">%d temporitzadors en marxa</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Per què he de desbloquejar el meu dispositiu per respondre una trucada entrant?</string>
+    <string name="faq_1_text_dialer_g">El sistema operatiu bloqueja l\'accés de les aplicacions a la pantalla de bloqueig. Heu de permetre que l\'aplicació accedeixi a la pantalla de bloqueig. Per exemple, a MIUI, heu de permetre l\'accés a Configuració => Notificacions => Notificacions a la pantalla de bloqueig.</string>
+    <string name="faq_2_title_dialer_g">Com puc copiar o enganxar un número a la pantalla del marcador?</string>
+    <string name="faq_2_text_dialer_g">Premeu llargament el botó de trucada per enganxar el contingut del porta-retalls. Si el número ja està introduït, una pressió llarga sobre el botó de trucada el copiarà al porta-retalls.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">El marcador dret només mostra els contactes que tenen un número de telèfon associat. Els contactes sense número de telèfon no es mostren a l\'aplicació.</string>
+    <string name="slider_style">Estil de control lliscant</string>
+    <string name="slider_style_summary">El control lliscant només s\'utilitza quan la pantalla està bloquejada.</string>
+    <string name="answer_style">Estil del botó de resposta</string>
+    <string name="buttons">Botons</string>
+    <string name="answer_slider">Lliscant</string>
+    <string name="answer_slider_outline">Control lliscant d\'esquema</string>
+    <string name="answer_slider_vertical">Lliscant vertical</string>
+
+    <string name="show_recent_calls">Mostra i cerca les trucades recents</string>
+    <string name="search_contacts_in_dialpad">Cerca contactes en marcar un número</string>
+    <string name="open_dialpad_when_call_from_another_app">Quan intenteu fer una trucada des d\'una altra aplicació, obriu el teclat de marcatge</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Això us pot protegir del programari maliciós que fa trucades sense el vostre coneixement.</string>
+    <string name="number_of_recent_calls_displays">Es mostra el nombre de trucades recents</string>
+    <string name="number_of_recent_calls_displays_summary">A causa de l\'agrupació, el nombre de files que es mostren pot ser menor.</string>
+    <string name="group_calls">Agrupació de trucades</string>
+    <string name="group_all_calls">Agrupa totes les trucades, només es mostrarà la darrera trucada</string>
+    <string name="call_button_style">Estil de campana</string>
+    <string name="call_notes">Notes de la trucada</string>
+    <string name="back_pressed_end_call">L\'acció de retrocés finalitza la trucada</string>
+    <string name="keep_calls_in_popup_summary">Després de respondre una trucada, aquesta roman a les notificacions i no apareix a pantalla completa. Això es fa per evitar interrompre altres aplicacions, com ara mentre jugues.</string>
+    <string name="turn_on_speaker_in_popup">Activa l\'altaveu automàticament</string>
+    <string name="turn_on_speaker_in_popup_summary">Si no hi ha auriculars connectats, l\'altaveu s\'activarà.</string>
+    <string name="busy">Ocupat</string>
+    <string name="block_calls">Bloquejar trucades</string>
+    <string name="edit_number_before_call">Edita el número abans de trucar</string>
+    <string name="on_favorite_click">Quan feu clic a un preferit</string>
+    <string name="call_using_same_sim">Utilitzeu la mateixa targeta SIM a la qual es va fer la trucada anterior (última)</string>
+    <string name="answer_end_other_call">Respondre i finalitzar la trucada actual</string>
+    <string name="quick_answers">Respostes ràpides</string>
+    <string name="voicemail">Bústia de veu</string>
+    <string name="show_voicemail_icon">Mostra la icona de la bústia de veu</string>
+    <string name="secondary_dialpad_language">Llenguatge del teclat de marcatge secundari</string>
+    <string name="sim_card_selection_dialog_style">Estil de diàleg de selecció de SIM</string>
+    <string name="clear_dialpad_when_start_call">Esborra el número marcat en iniciar una trucada</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d trucada perduda</item>
+        <item quantity="many">%d trucades perdudes</item>
+        <item quantity="other">%d trucades perdudes</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Deixa les trucades a les notificacions</string>
+    <string name="on_contact_click">Quan feu clic en un contacte</string>
+    <string name="on_recent_click">Quan feu clic en una trucada recent</string>
+    <string name="add_pause">Afegeix una pausa de 2 segons (,)</string>
+    <string name="missed">Perdut</string>
+    <string name="incoming">Entrant</string>
+    <string name="outgoing">Sortint</string>
+</resources>

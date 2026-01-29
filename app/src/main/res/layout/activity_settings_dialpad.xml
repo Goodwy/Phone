@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialpad_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.goodwy.commons.views.MyAppBarLayout
+        android:id="@+id/dialpad_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/dialpad_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/dialpad_preferences"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+    </com.goodwy.commons.views.MyAppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dialpad_nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/activity_padding_left_right"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/dialpad_settings_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <com.goodwy.commons.views.PurchaseThankYouItem
+                android:id="@+id/dialpadPurchaseThankYouHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/styleHolder"
+                style="@style/SettingsSectionHolder"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:visibility="gone"
+                app:cardCornerRadius="@dimen/activity_margin"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:id="@+id/settings_dialpad_style_holder"
+                    style="@style/SettingsHolderStyle">
+
+                    <com.goodwy.commons.views.MyTextView
+                        android:id="@+id/settings_dialpad_style_label"
+                        style="@style/SettingsTextLabelStyle"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="68dp"
+                        android:text="@string/theme"/>
+
+                    <com.goodwy.commons.views.MyTextView
+                        android:id="@+id/settings_dialpad_style"
+                        style="@style/SettingsTextValueStyle"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/settings_margin"
+                        tools:text="@string/ios_g"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/settingsGeneralLabel"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_marginTop="12dp"
+                android:text="@string/general"
+                tools:textColor="@color/primary"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dialpadSettingsCardHolder"
+                style="@style/SettingsSectionHolder"
+                app:cardCornerRadius="@dimen/activity_margin"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/dialpadSettingsWrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/settingsSimCardColor1Holder"
+                        style="@style/SettingsHolderStyle"
+                        android:padding="@dimen/smaller_margin">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsSimCardColor1Label"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settingsSimCardColor1Icon"
+                            android:text="@string/button_primary"/>
+
+                        <ImageView
+                            android:id="@+id/settingsSimCardColor1Icon"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:padding="@dimen/smaller_margin"
+                            android:background="@drawable/pulsing_background"
+                            android:foreground="@drawable/ripple_all_corners_56dp"
+                            android:contentDescription="@string/contact_color_list"
+                            android:src="@drawable/ic_phone_vector"
+                            tools:backgroundTint="@color/ic_dialer"
+                            tools:tint="@color/white"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsSimCardColor2Holder"
+                        style="@style/SettingsHolderStyle"
+                        android:padding="@dimen/smaller_margin">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsSimCardColor2Label"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settingsSimCardColor2Icon"
+                            android:text="@string/button_secondary"/>
+
+                        <ImageView
+                            android:id="@+id/settingsSimCardColor2Icon"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:padding="@dimen/smaller_margin"
+                            android:background="@drawable/pulsing_background"
+                            android:foreground="@drawable/ripple_all_corners_56dp"
+                            android:contentDescription="@string/contact_color_list"
+                            android:src="@drawable/ic_phone_two_vector"
+                            tools:backgroundTint="@color/color_primary"
+                            tools:tint="@color/white"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsPrimarySimCardHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:paddingTop="@dimen/medium_margin">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsPrimarySimCardLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settingsPrimarySimCard"
+                            android:text="@string/primary_sim_card"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsPrimarySimCard"
+                            style="@style/SettingsTextValueStyle"
+                            android:maxWidth="@dimen/settings_value_width_long"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            tools:text="@string/one"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsDialpadButtonColorHolder"
+                        style="@style/SettingsHolderStyle">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadButtonColorLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/settingsDialpadButtonColor"
+                            android:layout_marginEnd="@dimen/activity_margin"
+                            android:text="@string/dialpad_buttons_color"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadButtonColorDefault"
+                            style="@style/SettingsTextValueStyle"
+                            android:maxWidth="@dimen/settings_value_width_long"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:text="@string/default_color"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <ImageView
+                            android:id="@+id/settingsDialpadButtonColor"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:clickable="false"
+                            android:contentDescription="@null"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsHideDialpadLettersHolder"
+                        style="@style/SettingsHolderSwitchStyle">
+
+                        <com.goodwy.commons.views.MyMaterialSwitch
+                            android:id="@+id/settingsHideDialpadLetters"
+                            style="@style/SettingsSwitchStyle"
+                            android:text="@string/hide_dialpad_letters_g"
+                            app:switchPadding="@dimen/bigger_margin"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsShowVoicemailIconHolder"
+                        style="@style/SettingsHolderSwitchStyle">
+
+                        <com.goodwy.commons.views.MyMaterialSwitch
+                            android:id="@+id/settingsShowVoicemailIcon"
+                            style="@style/SettingsSwitchStyle"
+                            android:text="@string/show_voicemail_icon"
+                            app:switchPadding="@dimen/bigger_margin"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsDialpadSecondaryLanguageHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:paddingTop="@dimen/medium_margin">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadSecondaryLanguageLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settingsDialpadSecondaryLanguage"
+                            android:text="@string/secondary_dialpad_language"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadSecondaryLanguage"
+                            style="@style/SettingsTextValueStyle"
+                            android:maxWidth="@dimen/settings_value_width_long"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            tools:text="@string/none"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsDialpadSecondaryTypefaceHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:paddingTop="@dimen/medium_margin">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadSecondaryTypefaceLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settingsDialpadSecondaryTypeface"
+                            android:text="@string/typeface"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadSecondaryTypeface"
+                            style="@style/SettingsTextValueStyle"
+                            android:maxWidth="@dimen/settings_value_width_long"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            tools:text="@string/typeface_normal"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsDialpadHashtagLongClickHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:paddingTop="@dimen/medium_margin">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadHashtagLongClickLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settingsDialpadHashtagLongClick"
+                            android:text="@string/long_click_g"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settingsDialpadHashtagLongClick"
+                            style="@style/SettingsTextValueStyle"
+                            android:maxWidth="@dimen/settings_value_width_long"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            tools:text="@string/dialpad_preferences"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settingsClearDialpadHolder"
+                        style="@style/SettingsHolderSwitchStyle">
+
+                        <com.goodwy.commons.views.MyMaterialSwitch
+                            android:id="@+id/settingsClearDialpad"
+                            style="@style/SettingsSwitchStyle"
+                            android:text="@string/clear_dialpad_when_start_call"
+                            app:switchPadding="@dimen/bigger_margin"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settings_dialpad_vibration_holder"
+                        style="@style/SettingsHolderSwitchStyle">
+
+                        <com.goodwy.commons.views.MyMaterialSwitch
+                            android:id="@+id/settings_dialpad_vibration"
+                            style="@style/SettingsSwitchStyle"
+                            android:text="@string/dialpad_vibrations"
+                            app:switchPadding="@dimen/bigger_margin"/>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/settingsDialpadBeepsWrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/smaller_margin"
+                        android:layout_marginBottom="@dimen/smaller_margin"
+                        android:layout_marginHorizontal="@dimen/smaller_margin"
+                        android:orientation="vertical"
+                        android:background="@drawable/button_background_11dp"
+                        tools:backgroundTint="@color/activated_item_foreground">
+
+                        <RelativeLayout
+                            android:id="@+id/settingsDialpadBeepsHolder"
+                            style="@style/SettingsHolderSwitchStyle"
+                            android:background="@drawable/ripple_all_corners_11dp"
+                            android:paddingStart="@dimen/smaller_margin"
+                            android:paddingEnd="@dimen/smaller_margin">
+
+                            <com.goodwy.commons.views.MyMaterialSwitch
+                                android:id="@+id/settingsDialpadBeeps"
+                                style="@style/SettingsSwitchStyle"
+                                android:text="@string/dialpad_beeps"
+                                app:switchPadding="@dimen/bigger_margin"/>
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/toneVolumeWrapper"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/medium_margin"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:id="@+id/toneVolumeHolder"
+                                style="@style/SettingsHolderStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/smaller_margin"
+                                android:paddingEnd="@dimen/smaller_margin">
+
+                                <com.goodwy.commons.views.MyTextView
+                                    android:id="@+id/toneVolumeLabel"
+                                    style="@style/SettingsTextLabelStyle"
+                                    android:layout_alignTop="@+id/toneVolumeButtons"
+                                    android:layout_alignBottom="@+id/toneVolumeButtons"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="false"
+                                    android:layout_toStartOf="@+id/toneVolumeValue"
+                                    android:layout_marginEnd="@dimen/normal_margin"
+                                    android:layout_marginTop="-6dp"
+                                    android:layout_marginBottom="-6dp"
+                                    android:text="@string/volume_g"
+                                    android:maxLines="2"
+                                    android:ellipsize="end"
+                                    android:gravity="center_vertical"/>
+
+                                <com.goodwy.commons.views.MyTextView
+                                    android:id="@+id/toneVolumeValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="32dp"
+                                    android:layout_alignTop="@+id/toneVolumeButtons"
+                                    android:layout_alignBottom="@+id/toneVolumeButtons"
+                                    android:layout_toStartOf="@+id/toneVolumeButtons"
+                                    android:layout_marginHorizontal="@dimen/small_margin"
+                                    android:textSize="@dimen/bigger_text_size"
+                                    android:alpha="0.6"
+                                    android:paddingHorizontal="@dimen/medium_margin"
+                                    android:gravity="center"
+                                    android:background="@drawable/ripple_all_corners_8dp"
+                                    tools:text="80%"/>
+
+                                <LinearLayout
+                                    android:id="@+id/toneVolumeButtons"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="32dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="@dimen/medium_margin"
+                                    android:background="@drawable/button_rounded_8dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/toneVolumeMinus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:alpha="0.9"
+                                        android:contentDescription="@string/minus"
+                                        android:paddingVertical="@dimen/medium_margin"
+                                        android:paddingHorizontal="@dimen/ten_dpi"
+                                        android:background="@drawable/ripple_left_corners_8dp"
+                                        app:srcCompat="@drawable/ic_minus_vector"/>
+
+                                    <ImageView
+                                        android:id="@+id/toneVolumeDivider"
+                                        android:layout_width="1px"
+                                        android:layout_height="match_parent"
+                                        android:alpha="0.4"
+                                        android:layout_marginVertical="@dimen/smaller_margin"
+                                        android:background="@color/white"
+                                        android:contentDescription="@null" />
+
+                                    <ImageView
+                                        android:id="@+id/toneVolumePlus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:alpha="0.9"
+                                        android:contentDescription="@string/plus"
+                                        android:paddingVertical="@dimen/medium_margin"
+                                        android:paddingHorizontal="@dimen/ten_dpi"
+                                        android:background="@drawable/ripple_right_corners_8dp"
+                                        app:srcCompat="@drawable/ic_plus_vector"/>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <com.goodwy.commons.views.MySeekBar
+                                android:id="@+id/toneVolumeSeekBar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:max="100"
+                                android:layout_marginHorizontal="@dimen/normal_margin"
+                                android:paddingTop="@dimen/small_margin"
+                                android:paddingBottom="@dimen/smaller_margin"
+                                android:paddingStart="@dimen/ten_dpi"
+                                android:paddingEnd="@dimen/ten_dpi"
+                                android:progress="80"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/settingsDialpadSizeLabel"
+                style="@style/SettingsSectionLabelStyle"
+                android:text="@string/dialpad"
+                tools:textColor="@color/primary"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dialpadSizeCardHolder"
+                style="@style/SettingsSectionHolder"
+                android:layout_marginBottom="@dimen/secondary_fab_bottom_margin"
+                app:cardCornerRadius="@dimen/activity_margin"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/dialpadSizeWrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/medium_margin"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/dialpadScaleHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/zero"
+                        android:paddingBottom="@dimen/zero">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/dialpadScaleLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignTop="@+id/dialpadScaleButtons"
+                            android:layout_alignBottom="@+id/dialpadScaleButtons"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="false"
+                            android:layout_toStartOf="@+id/dialpadScaleValue"
+                            android:layout_marginEnd="@dimen/normal_margin"
+                            android:layout_marginTop="-6dp"
+                            android:layout_marginBottom="-6dp"
+                            android:text="@string/scale"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/dialpadScaleValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignTop="@+id/dialpadScaleButtons"
+                            android:layout_alignBottom="@+id/dialpadScaleButtons"
+                            android:layout_toStartOf="@+id/dialpadScaleButtons"
+                            android:layout_marginHorizontal="@dimen/small_margin"
+                            android:textSize="@dimen/bigger_text_size"
+                            android:alpha="0.6"
+                            android:paddingHorizontal="@dimen/medium_margin"
+                            android:gravity="center"
+                            android:background="@drawable/ripple_all_corners_8dp"
+                            tools:text="85%"/>
+
+                        <LinearLayout
+                            android:id="@+id/dialpadScaleButtons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:layout_marginTop="@dimen/normal_margin"
+                            android:layout_marginBottom="@dimen/medium_margin"
+                            android:background="@drawable/button_rounded_8dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/dialpadScaleMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/minus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_left_corners_8dp"
+                                app:srcCompat="@drawable/ic_minus_vector"/>
+
+                            <ImageView
+                                android:id="@+id/dialpadScaleDivider"
+                                android:layout_width="1px"
+                                android:layout_height="match_parent"
+                                android:alpha="0.4"
+                                android:layout_marginVertical="@dimen/smaller_margin"
+                                android:background="@color/white"
+                                android:contentDescription="@null" />
+
+                            <ImageView
+                                android:id="@+id/dialpadScalePlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/plus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_right_corners_8dp"
+                                app:srcCompat="@drawable/ic_plus_vector"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <com.goodwy.commons.views.MySeekBar
+                        android:id="@+id/dialpadScale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:max="100"
+                        android:layout_marginHorizontal="@dimen/normal_margin"
+                        android:paddingTop="@dimen/small_margin"
+                        android:paddingBottom="@dimen/smaller_margin"
+                        android:paddingStart="@dimen/ten_dpi"
+                        android:paddingEnd="@dimen/ten_dpi"
+                        android:progress="85"/>
+
+                    <RelativeLayout
+                        android:id="@+id/dialpadSizeHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/zero"
+                        android:paddingBottom="@dimen/zero">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/dialpadSizeLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignTop="@+id/dialpadSizeButtons"
+                            android:layout_alignBottom="@+id/dialpadSizeButtons"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="false"
+                            android:layout_toStartOf="@+id/dialpadSizeValue"
+                            android:layout_marginEnd="@dimen/normal_margin"
+                            android:layout_marginTop="-6dp"
+                            android:layout_marginBottom="-6dp"
+                            android:text="@string/height"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/dialpadSizeValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignTop="@+id/dialpadSizeButtons"
+                            android:layout_alignBottom="@+id/dialpadSizeButtons"
+                            android:layout_toStartOf="@+id/dialpadSizeButtons"
+                            android:layout_marginHorizontal="@dimen/small_margin"
+                            android:textSize="@dimen/bigger_text_size"
+                            android:alpha="0.6"
+                            android:paddingHorizontal="@dimen/medium_margin"
+                            android:gravity="center"
+                            android:background="@drawable/ripple_all_corners_8dp"
+                            tools:text="100%"/>
+
+                        <LinearLayout
+                            android:id="@+id/dialpadSizeButtons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:layout_marginTop="@dimen/normal_margin"
+                            android:layout_marginBottom="@dimen/medium_margin"
+                            android:background="@drawable/button_rounded_8dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/dialpadSizeMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/minus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_left_corners_8dp"
+                                app:srcCompat="@drawable/ic_minus_vector"/>
+
+                            <ImageView
+                                android:id="@+id/dialpadSizeDivider"
+                                android:layout_width="1px"
+                                android:layout_height="match_parent"
+                                android:alpha="0.4"
+                                android:layout_marginVertical="@dimen/smaller_margin"
+                                android:background="@color/white"
+                                android:contentDescription="@null" />
+
+                            <ImageView
+                                android:id="@+id/dialpadSizePlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/plus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_right_corners_8dp"
+                                app:srcCompat="@drawable/ic_plus_vector"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <com.goodwy.commons.views.MySeekBar
+                        android:id="@+id/dialpadSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:max="150"
+                        android:layout_marginHorizontal="@dimen/normal_margin"
+                        android:paddingTop="@dimen/small_margin"
+                        android:paddingBottom="@dimen/smaller_margin"
+                        android:paddingStart="@dimen/ten_dpi"
+                        android:paddingEnd="@dimen/ten_dpi"
+                        android:progress="75"/>
+
+                    <RelativeLayout
+                        android:id="@+id/buttonSizeHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/zero"
+                        android:paddingBottom="@dimen/zero"
+                        android:visibility="gone">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/buttonSizeLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignTop="@+id/buttonSizeButtons"
+                            android:layout_alignBottom="@+id/buttonSizeButtons"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="false"
+                            android:layout_toStartOf="@+id/buttonSizeValue"
+                            android:layout_marginEnd="@dimen/normal_margin"
+                            android:layout_marginTop="-6dp"
+                            android:layout_marginBottom="-6dp"
+                            android:text="@string/button_primary"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/buttonSizeValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignTop="@+id/buttonSizeButtons"
+                            android:layout_alignBottom="@+id/buttonSizeButtons"
+                            android:layout_toStartOf="@+id/buttonSizeButtons"
+                            android:layout_marginHorizontal="@dimen/small_margin"
+                            android:textSize="@dimen/bigger_text_size"
+                            android:alpha="0.6"
+                            android:paddingHorizontal="@dimen/medium_margin"
+                            android:gravity="center"
+                            android:background="@drawable/ripple_all_corners_8dp"
+                            tools:text="100%"/>
+
+                        <LinearLayout
+                            android:id="@+id/buttonSizeButtons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:layout_marginTop="@dimen/normal_margin"
+                            android:layout_marginBottom="@dimen/medium_margin"
+                            android:background="@drawable/button_rounded_8dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/buttonSizeMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/minus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_left_corners_8dp"
+                                app:srcCompat="@drawable/ic_minus_vector"/>
+
+                            <ImageView
+                                android:id="@+id/buttonSizeDivider"
+                                android:layout_width="1px"
+                                android:layout_height="match_parent"
+                                android:alpha="0.4"
+                                android:layout_marginVertical="@dimen/smaller_margin"
+                                android:background="@color/white"
+                                android:contentDescription="@null" />
+
+                            <ImageView
+                                android:id="@+id/buttonSizePlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/plus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_right_corners_8dp"
+                                app:srcCompat="@drawable/ic_plus_vector"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <com.goodwy.commons.views.MySeekBar
+                        android:id="@+id/buttonSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:max="150"
+                        android:layout_marginHorizontal="@dimen/normal_margin"
+                        android:paddingTop="@dimen/small_margin"
+                        android:paddingBottom="@dimen/smaller_margin"
+                        android:paddingStart="@dimen/ten_dpi"
+                        android:paddingEnd="@dimen/ten_dpi"
+                        android:progress="100"
+                        android:visibility="gone"/>
+
+                    <RelativeLayout
+                        android:id="@+id/buttonSecondSizeHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/zero"
+                        android:paddingBottom="@dimen/zero"
+                        android:visibility="gone">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/buttonSecondSizeLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignTop="@+id/buttonSecondSizeButtons"
+                            android:layout_alignBottom="@+id/buttonSecondSizeButtons"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="false"
+                            android:layout_toStartOf="@+id/buttonSecondSizeValue"
+                            android:layout_marginEnd="@dimen/normal_margin"
+                            android:layout_marginTop="-6dp"
+                            android:layout_marginBottom="-6dp"
+                            android:text="@string/button_secondary"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/buttonSecondSizeValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignTop="@+id/buttonSecondSizeButtons"
+                            android:layout_alignBottom="@+id/buttonSecondSizeButtons"
+                            android:layout_toStartOf="@+id/buttonSecondSizeButtons"
+                            android:layout_marginHorizontal="@dimen/small_margin"
+                            android:textSize="@dimen/bigger_text_size"
+                            android:alpha="0.6"
+                            android:paddingHorizontal="@dimen/medium_margin"
+                            android:gravity="center"
+                            android:background="@drawable/ripple_all_corners_8dp"
+                            tools:text="100%"/>
+
+                        <LinearLayout
+                            android:id="@+id/buttonSecondSizeButtons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:layout_marginTop="@dimen/normal_margin"
+                            android:layout_marginBottom="@dimen/medium_margin"
+                            android:background="@drawable/button_rounded_8dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/buttonSecondSizeMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/minus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_left_corners_8dp"
+                                app:srcCompat="@drawable/ic_minus_vector"/>
+
+                            <ImageView
+                                android:id="@+id/buttonSecondSizeDivider"
+                                android:layout_width="1px"
+                                android:layout_height="match_parent"
+                                android:alpha="0.4"
+                                android:layout_marginVertical="@dimen/smaller_margin"
+                                android:background="@color/white"
+                                android:contentDescription="@null" />
+
+                            <ImageView
+                                android:id="@+id/buttonSecondSizePlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/plus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_right_corners_8dp"
+                                app:srcCompat="@drawable/ic_plus_vector"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <com.goodwy.commons.views.MySeekBar
+                        android:id="@+id/buttonSecondSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:max="150"
+                        android:layout_marginHorizontal="@dimen/normal_margin"
+                        android:paddingTop="@dimen/small_margin"
+                        android:paddingBottom="@dimen/smaller_margin"
+                        android:paddingStart="@dimen/ten_dpi"
+                        android:paddingEnd="@dimen/ten_dpi"
+                        android:progress="75"
+                        android:visibility="gone"/>
+
+                    <RelativeLayout
+                        android:id="@+id/dialpadBottomMarginHolder"
+                        style="@style/SettingsHolderStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/zero"
+                        android:paddingBottom="@dimen/zero">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/dialpadBottomMarginLabel"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignTop="@+id/dialpadBottomMarginButtons"
+                            android:layout_alignBottom="@+id/dialpadBottomMarginButtons"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="false"
+                            android:layout_toStartOf="@+id/dialpadBottomMarginValue"
+                            android:layout_marginEnd="@dimen/normal_margin"
+                            android:layout_marginTop="-6dp"
+                            android:layout_marginBottom="-6dp"
+                            android:text="@string/bottom_indent"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/dialpadBottomMarginValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignTop="@+id/dialpadBottomMarginButtons"
+                            android:layout_alignBottom="@+id/dialpadBottomMarginButtons"
+                            android:layout_toStartOf="@+id/dialpadBottomMarginButtons"
+                            android:layout_marginHorizontal="@dimen/small_margin"
+                            android:textSize="@dimen/bigger_text_size"
+                            android:alpha="0.6"
+                            android:paddingHorizontal="@dimen/medium_margin"
+                            android:gravity="center"
+                            android:background="@drawable/ripple_all_corners_8dp"
+                            tools:text="100%"/>
+
+                        <LinearLayout
+                            android:id="@+id/dialpadBottomMarginButtons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            android:layout_marginTop="@dimen/normal_margin"
+                            android:layout_marginBottom="@dimen/medium_margin"
+                            android:background="@drawable/button_rounded_8dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/dialpadBottomMarginMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/minus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_left_corners_8dp"
+                                app:srcCompat="@drawable/ic_minus_vector"/>
+
+                            <ImageView
+                                android:id="@+id/dialpadBottomMarginDivider"
+                                android:layout_width="1px"
+                                android:layout_height="match_parent"
+                                android:alpha="0.4"
+                                android:layout_marginVertical="@dimen/smaller_margin"
+                                android:background="@color/white"
+                                android:contentDescription="@null" />
+
+                            <ImageView
+                                android:id="@+id/dialpadBottomMarginPlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.9"
+                                android:contentDescription="@string/plus"
+                                android:paddingVertical="@dimen/medium_margin"
+                                android:paddingHorizontal="@dimen/ten_dpi"
+                                android:background="@drawable/ripple_right_corners_8dp"
+                                app:srcCompat="@drawable/ic_plus_vector"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <com.goodwy.commons.views.MySeekBar
+                        android:id="@+id/dialpadBottomMarginPref"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:max="200"
+                        android:layout_marginHorizontal="@dimen/normal_margin"
+                        android:layout_marginBottom="@dimen/small_margin"
+                        android:paddingTop="@dimen/small_margin"
+                        android:paddingBottom="@dimen/smaller_margin"
+                        android:paddingStart="@dimen/ten_dpi"
+                        android:paddingEnd="@dimen/ten_dpi"
+                        android:progress="75"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/dialpadWrapper"
+        layout="@layout/dialpad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="bottom"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

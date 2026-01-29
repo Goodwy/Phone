@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">หน้าจอการโทรแบบโปร่งใส</string>
+    <string name="call_back_g">เรียก</string>
+    <string name="call_back_person_g">โทรกลับ %s</string>
+    <string name="missed_call_g">สายที่ไม่ได้รับ</string>
+    <string name="missed_calls_g">สายที่ไม่ได้รับ</string>
+    <string name="missed_call_notifications_g">การแจ้งเตือนสายที่ไม่ได้รับ</string>
+    <string name="dialpad_preferences">การตั้งค่าหน้าจอโทรออก</string>
+    <string name="call_start_end_vibration">สั่นเมื่อสายเริ่มต้นและสิ้นสุด</string>
+
+    <string name="show_contact_thumbnails_g">แสดงรูปขนาดย่อของที่ติดต่อ</string>
+    <string name="hide_dialpad_letters_g">ซ่อนตัวอักษรแป้นกดหมายเลข</string>
+    <string name="show_caller_description_g">แสดงข้อมูลผู้โทรเพิ่มเติม</string>
+    <string name="nickname">ชื่อเล่น</string>
+    <string name="company">บริษัท</string>
+    <string name="call_anonymously">โทรโดยไม่ระบุชื่อ (พร้อมคํานําหน้า #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>คำเตือน</h4>
+             หมายเลขจะถูกเรียกโดยนำหน้า #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             ตรวจสอบให้แน่ใจว่าผู้ให้บริการของคุณรองรับบริการซ่อนหมายเลขเมื่อใช้คำนำหน้า #31# <br>
+             ผู้ให้บริการของคุณอาจเรียกเก็บค่าธรรมเนียมเพิ่มเติมสำหรับบริการนี้
+        ]]>
+    </string>
+
+    <string name="add_wait">เพิ่มการรอ (;)</string>
+    <string name="rejected">ถูกปฏิเสธ</string>
+    <string name="dialpad_buttons_color">สีของปุ่มแป้นกดหมายเลข</string>
+    <string name="audio_route_earpiece_g">หูฟังของอุปกรณ์</string>
+    <string name="open_speed_dial_manage">เปิดจัดการการโทรด่วน?</string>
+
+    <!-- Timer -->
+    <string name="timer">ตัวจับเวลา</string>
+    <string name="timers_notification_msg">ตัวจับเวลากำลังทำงาน</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="other">ตัวจับเวลา %d ตัวกำลังทำงานอยู่</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">เหตุใดฉันจึงต้องปลดล็อกอุปกรณ์เพื่อรับสายเรียกเข้า</string>
+    <string name="faq_1_text_dialer_g">ระบบปฏิบัติการบล็อกไม่ให้แอปเข้าถึงหน้าจอล็อก คุณต้องอนุญาตให้แอปเข้าถึงหน้าจอล็อก ตัวอย่างเช่น ใน MIUI คุณต้องอนุญาตให้เข้าถึงการตั้งค่า => การแจ้งเตือน => การแจ้งเตือนบนหน้าจอล็อก</string>
+    <string name="faq_2_title_dialer_g">ฉันจะคัดลอกหรือวางหมายเลขบนหน้าจอโทรออกได้อย่างไร</string>
+    <string name="faq_2_text_dialer_g">กดปุ่มโทรค้างไว้เพื่อวางเนื้อหาของคลิปบอร์ด หากป้อนหมายเลขแล้ว ให้กดปุ่มโทรค้างไว้เพื่อคัดลอกไปยังคลิปบอร์ด</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer จะแสดงเฉพาะรายชื่อติดต่อที่มีหมายเลขโทรศัพท์ที่เชื่อมโยงกับรายชื่อนั้นเท่านั้น รายชื่อติดต่อที่ไม่มีหมายเลขโทรศัพท์จะไม่แสดงในแอป</string>
+    <string name="slider_style">สไตล์สไลเดอร์</string>
+    <string name="slider_style_summary">แถบเลื่อนจะใช้งานได้เฉพาะเมื่อหน้าจอล็อกอยู่เท่านั้น</string>
+    <string name="answer_style">รูปแบบปุ่มรับสาย</string>
+    <string name="buttons">ปุ่ม</string>
+    <string name="answer_slider">แถบเลื่อน</string>
+    <string name="answer_slider_outline">แถบเลื่อนเค้าร่าง</string>
+    <string name="answer_slider_vertical">แถบเลื่อนแนวตั้ง</string>
+
+    <string name="show_recent_calls">แสดงและค้นหาบันทึกการโทรล่าสุด</string>
+    <string name="search_contacts_in_dialpad">ค้นหาข้อมูลผู้ติดต่อขณะโทรออก</string>
+    <string name="open_dialpad_when_call_from_another_app">เมื่อพยายามโทรออกจากแอปพลิเคชันอื่น ให้เปิดแป้นกดหมายเลข</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">นี่สามารถปกป้องคุณจากมัลแวร์ที่โทรออกโดยที่คุณไม่รู้ตัว</string>
+    <string name="number_of_recent_calls_displays">แสดงจำนวนการโทรล่าสุด</string>
+    <string name="number_of_recent_calls_displays_summary">Gruplamadan dolayı görüntülenen satır sayısı daha az olabilir.</string>
+    <string name="group_calls">การจัดกลุ่มการโทร</string>
+    <string name="group_all_calls">จัดกลุ่มการโทรทั้งหมด โดยจะแสดงเฉพาะการโทรครั้งสุดท้ายเท่านั้น</string>
+    <string name="call_button_style">รูปแบบปุ่มกระดิ่ง</string>
+    <string name="call_notes">บันทึกการโทร</string>
+    <string name="back_pressed_end_call">การดําเนินการย้อนกลับจะสิ้นสุดการโทร</string>
+    <string name="keep_calls_in_popup_summary">หลังจากรับสายแล้ว สายนั้นจะยังคงอยู่ในแถบแจ้งเตือนและจะไม่แสดงแบบเต็มหน้าจอ เพื่อป้องกันไม่ให้รบกวนแอปพลิเคชันอื่น ๆ เช่น ขณะเล่นเกม</string>
+    <string name="turn_on_speaker_in_popup">เปิดลำโพงอัตโนมัติ</string>
+    <string name="turn_on_speaker_in_popup_summary">หากไม่ได้เชื่อมต่อหูฟัง ลำโพงจะเปิดใช้งาน</string>
+    <string name="busy">ยุ่ง</string>
+    <string name="block_calls">บล็อกการโทร</string>
+    <string name="edit_number_before_call">แก้ไขหมายเลขก่อนโทร</string>
+    <string name="on_favorite_click">เมื่อคุณคลิกบนรายการโปรด</string>
+    <string name="call_using_same_sim">ใช้ซิมการ์ดเดียวกับที่โทรไปก่อนหน้า (ครั้งสุดท้าย)</string>
+    <string name="answer_end_other_call">รับสายและวางสายปัจจุบัน</string>
+    <string name="quick_answers">คําตอบด่วน</string>
+    <string name="voicemail">ข้อความเสียง</string>
+    <string name="show_voicemail_icon">แสดงไอคอนข้อความเสียง</string>
+    <string name="secondary_dialpad_language">ภาษาของแป้นกดหมายเลขรอง</string>
+    <string name="sim_card_selection_dialog_style">รูปแบบไดอะล็อกการเลือกซิม</string>
+    <string name="clear_dialpad_when_start_call">ล้างหมายเลขที่โทรออกเมื่อเริ่มการโทร</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="other">%d สายที่ไม่ได้รับ</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">ฝากสายไว้ในการแจ้งเตือน</string>
+    <string name="on_contact_click">เมื่อคุณคลิกที่ผู้ติดต่อ</string>
+    <string name="on_recent_click">เมื่อคุณคลิกบนการโทรล่าสุด</string>
+    <string name="add_pause">เพิ่มการหยุดชั่วคราว 2 วินาที (,)</string>
+    <string name="missed">พลาด</string>
+    <string name="incoming">ขาเข้า</string>
+    <string name="outgoing">ขาออก</string>
+</resources>

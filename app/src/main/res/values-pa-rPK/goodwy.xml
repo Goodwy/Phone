@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">شفاف کال اسکرین</string>
+    <string name="call_back_g">واپس کال کریں۔</string>
+    <string name="call_back_person_g">%s کو واپس کال کریں۔</string>
+    <string name="missed_call_g">مسڈ کال</string>
+    <string name="missed_calls_g">مسڈ کالز</string>
+    <string name="missed_call_notifications_g">مسڈ کال کی اطلاعات</string>
+    <string name="dialpad_preferences">اسکرین کی ترتیبات ڈائل کریں۔</string>
+    <string name="call_start_end_vibration">آپ کی کال شروع اور ختم ہونے پر وائبریٹ کریں۔</string>
+
+    <string name="show_contact_thumbnails_g">رابطے کے تھمب نیلز دکھائیں۔</string>
+    <string name="hide_dialpad_letters_g">ڈائل پیڈ کے خطوط چھپائیں۔</string>
+    <string name="show_caller_description_g">اضافی کالر کی معلومات دکھائیں۔</string>
+    <string name="nickname">عرفی نام</string>
+    <string name="company">کمپنی</string>
+    <string name="call_anonymously">گمنام طور پر کال کریں (سابقہ نمبر 31# کے ساتھ)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>انتباہ</h4>
+             نمبر کو سابقہ نمبر 31# کے ساتھ کال کیا جائے گا۔ <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             اس بات کو یقینی بنائیں کہ آپ کا آپریٹر #31# سابقہ استعمال کرتے وقت نمبر چھپانے کی خدمت کو سپورٹ کرتا ہے۔ <br>
+             آپ کا خدمت فراہم کنندہ اس خدمت کے لیے اضافی فیس وصول کر سکتا ہے۔
+        ]]>
+    </string>
+
+    <string name="add_wait">انتظار شامل کریں (؛)</string>
+    <string name="rejected">مسترد</string>
+    <string name="dialpad_buttons_color">ڈائل پیڈ بٹنوں کا رنگ</string>
+    <string name="audio_route_earpiece_g">آلہ کا ایئر پیس</string>
+    <string name="open_speed_dial_manage">سپیڈ ڈائل کا انتظام کھولیں؟</string>
+
+    <!-- Timer -->
+    <string name="timer">سماں والا</string>
+    <string name="timers_notification_msg">سماں والے چالو کیتے جا رہے اے</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">؜‫%d‬؜ سماں والا چالو کیتا جا رہا اے</item>
+        <item quantity="other">؜‫%d‬؜ سماں والے چالو کیتے جا رہے اے</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">آنے والی کال کا جواب دینے کے لیے مجھے اپنے آلے کو غیر مقفل کرنے کی ضرورت کیوں ہے؟</string>
+    <string name="faq_1_text_dialer_g">آپریٹنگ سسٹم ایپس کو لاک اسکرین تک رسائی سے روک رہا ہے۔ آپ کو ایپ کو لاک اسکرین تک رسائی کی اجازت دینے کی ضرورت ہے۔ مثال کے طور پر، MIUI میں، آپ کو ترتیبات => اطلاعات => لاک اسکرین پر اطلاعات تک رسائی کی اجازت دینی ہوگی۔</string>
+    <string name="faq_2_title_dialer_g">میں ڈائلر اسکرین پر نمبر کو کاپی یا پیسٹ کیسے کروں؟</string>
+    <string name="faq_2_text_dialer_g">کلپ بورڈ کے مواد کو پیسٹ کرنے کے لیے کال بٹن کو دیر تک دبائیں۔ اگر نمبر پہلے ہی درج ہے، تو کال بٹن پر دیر تک دبانے سے اسے کلپ بورڈ پر کاپی ہو جاتا ہے۔</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">دائیں ڈائلر صرف ان رابطوں کو دکھاتا ہے جن کے ساتھ فون نمبر منسلک ہوتا ہے۔ فون نمبر کے بغیر رابطے ایپ میں ظاہر نہیں ہوتے ہیں۔</string>
+    <string name="slider_style">سلائیڈر انداز</string>
+    <string name="slider_style_summary">سلائیڈر صرف اس وقت استعمال ہوتا ہے جب اسکرین مقفل ہو۔</string>
+    <string name="answer_style">جواب بٹن کا انداز</string>
+    <string name="buttons">بٹن</string>
+    <string name="answer_slider">سلائیڈر</string>
+    <string name="answer_slider_outline">آؤٹ لائن سلائیڈر</string>
+    <string name="answer_slider_vertical">عمودی سلائیڈر</string>
+
+    <string name="show_recent_calls">حالیہ کالز دکھائیں اور تلاش کریں۔</string>
+    <string name="search_contacts_in_dialpad">نمبر ڈائل کرتے وقت رابطے تلاش کریں۔</string>
+    <string name="open_dialpad_when_call_from_another_app">دوسری ایپلیکیشن سے کال کرنے کی کوشش کرتے وقت، ڈائل پیڈ کھولیں۔</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">یہ آپ کو میلویئر سے بچا سکتا ہے جو آپ کے علم کے بغیر کال کرتا ہے۔</string>
+    <string name="number_of_recent_calls_displays">حالیہ کالوں کی تعداد دکھائی گئی۔</string>
+    <string name="number_of_recent_calls_displays_summary">Din cauza grupării, numărul de rânduri afișate poate fi mai mic.</string>
+    <string name="group_calls">کال گروپنگ</string>
+    <string name="group_all_calls">تمام کالوں کو گروپ کریں، صرف آخری کال دکھائی جائے گی۔</string>
+    <string name="call_button_style">کال بٹن کا انداز</string>
+    <string name="call_notes">کال نوٹ</string>
+    <string name="back_pressed_end_call">بیک ایکشن کال ختم کردا اے</string>
+    <string name="keep_calls_in_popup_summary">کال کا جواب دینے کے بعد، یہ آپ کی اطلاعات میں رہتا ہے اور پوری اسکرین پر ظاہر نہیں ہوتا ہے۔ یہ دوسری ایپس میں مداخلت سے بچنے کے لیے کیا جاتا ہے، جیسے کہ گیم کھیلتے وقت۔</string>
+    <string name="turn_on_speaker_in_popup">اسپیکر کو خود بخود آن کریں۔</string>
+    <string name="turn_on_speaker_in_popup_summary">اگر کوئی ہیڈسیٹ منسلک نہیں ہے، تو اسپیکر آن ہو جائے گا۔</string>
+    <string name="busy">مصروف</string>
+    <string name="block_calls">کالیں بلاک کریں۔</string>
+    <string name="edit_number_before_call">کال کرنے سے پہلے نمبر میں ترمیم کریں۔</string>
+    <string name="on_favorite_click">جب آپ کسی پسندیدہ پر کلک کریں۔</string>
+    <string name="call_using_same_sim">اوہی سم کارڈ ورتو جس تے پچھلی (آخری) کال کیتی گئی سی</string>
+    <string name="answer_end_other_call">موجودہ کال کا جواب دیں اور ختم کریں۔</string>
+    <string name="quick_answers">فوری جوابات</string>
+    <string name="voicemail">وائس میل</string>
+    <string name="show_voicemail_icon">وائس میل دا آئکن وکھاؤ</string>
+    <string name="secondary_dialpad_language">سیکنڈری ڈائل پیڈ بولی</string>
+    <string name="sim_card_selection_dialog_style">سم کارڈ سلیکشن ڈائیلاگ سٹائل</string>
+    <string name="clear_dialpad_when_start_call">کال شروع کردے ویلے ڈائل کیتا ہویا نمبر صاف کرو</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d مسڈ کال</item>
+        <item quantity="other">%d مسڈ کالز</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">کالز کو اطلاعات میں چھوڑیں۔</string>
+    <string name="on_contact_click">جب آپ کسی رابطے پر کلک کرتے ہیں۔</string>
+    <string name="on_recent_click">جب آپ حالیہ کال پر کلک کرتے ہیں۔</string>
+    <string name="add_pause">2 سیکنڈ کا وقفہ شامل کریں (،)</string>
+    <string name="missed">چھوٹ گیا۔</string>
+    <string name="incoming">آنے والا</string>
+    <string name="outgoing">باہر جانے والا</string>
+</resources>

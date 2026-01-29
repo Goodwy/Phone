@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AppCompatResource">
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_star_outline_vector"
+        android:title="@string/add_to_favorites"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/edit"
+        android:icon="@drawable/ic_edit_vector"
+        android:title="@string/edit"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete_outline"
+        android:title="@string/clear_call_history"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share_vector"
+        android:title="@string/share"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/open_with"
+        android:showAsAction="never"
+        android:title="@string/open_with"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/call_anonymously"
+        android:title="@string/call_anonymously"
+        app:showAsAction="never" />
+</menu>

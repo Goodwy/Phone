@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Прозрачен екран за обаждания</string>
+    <string name="call_back_g">Обаждам се</string>
+    <string name="call_back_person_g">Обадете се обратно на %s</string>
+    <string name="missed_call_g">Пропуснато обаждане</string>
+    <string name="missed_calls_g">Пропуснати обаждания</string>
+    <string name="missed_call_notifications_g">Известия за пропуснати повиквания</string>
+    <string name="dialpad_preferences">Настройки на екрана за набиране</string>
+    <string name="call_start_end_vibration">Вибриране при започване и приключване на повикване</string>
+
+    <string name="show_contact_thumbnails_g">Показване на миниатюри за контакт</string>
+    <string name="hide_dialpad_letters_g">Скриване на буквите на диалпада</string>
+    <string name="show_caller_description_g">Показване на допълнителна информация за обаждащия се</string>
+    <string name="nickname">Прякор</string>
+    <string name="company">Фирма</string>
+    <string name="call_anonymously">Обаждане анонимно (с префикс #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Предупреждение</h4>
+             Номерът ще бъде извикан с префикс #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Уверете се, че вашият оператор поддържа услугата за скриване на номера, когато използвате префикс #31#. <br>
+             Вашият доставчик на услуги може да наложи допълнителна такса за тази услуга.
+        ]]>
+    </string>
+
+    <string name="add_wait">Добавяне на чакане (;)</string>
+    <string name="rejected">Отхвърлено</string>
+    <string name="dialpad_buttons_color">Цвят на бутоните на цифровата клавиатура</string>
+    <string name="audio_route_earpiece_g">Слушалката на устройството</string>
+    <string name="open_speed_dial_manage">Отваряне на управлението на бързото набиране?</string>
+
+    <!-- Timer -->
+    <string name="timer">Таймер</string>
+    <string name="timers_notification_msg">Таймерите са включени</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d таймер е включен</item>
+        <item quantity="other">%d таймери са включени</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Защо трябва да отключа устройството си, за да отговоря на входящо повикване?</string>
+    <string name="faq_1_text_dialer_g">Операционната система блокира достъпа на приложения до заключения екран. Трябва да разрешите на приложението да има достъп до заключения екран. Например в MIUI трябва да разрешите достъпа до \"Настройки => Известия => Известия на заключен екран\" и да разрешите \"Показване на изскачащи прозорци при работа във фонов режим\".</string>
+    <string name="faq_2_title_dialer_g">Как да копирам или поставя номер на екрана за набиране?</string>
+    <string name="faq_2_text_dialer_g">Натиснете продължително бутона за повикване, за да поставите съдържанието на клипборда. Ако номерът вече е въведен, продължително натискане на бутона за повикване го копира в клипборда.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer показва само контакти, които имат свързан с тях телефонен номер. Контакти без телефонен номер не се показват в приложението.</string>
+    <string name="slider_style">Стил на плъзгача</string>
+    <string name="slider_style_summary">Плъзгачът се използва само когато екранът е заключен.</string>
+    <string name="answer_style">Стил на бутона за отговор</string>
+    <string name="buttons">Бутони</string>
+    <string name="answer_slider">Плъзгач</string>
+    <string name="answer_slider_outline">Плъзгач за контур</string>
+    <string name="answer_slider_vertical">Вертикален плъзгач</string>
+
+    <string name="show_recent_calls">Показване и търсене на скорошни повиквания</string>
+    <string name="search_contacts_in_dialpad">Търсене на контакти при набиране на номер</string>
+    <string name="open_dialpad_when_call_from_another_app">Когато се опитвате да осъществите повикване от друго приложение, отворете клавиатурата за набиране</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Това може да ви предпази от зловреден софтуер, който извършва обаждания без ваше знание.</string>
+    <string name="number_of_recent_calls_displays">Показан брой скорошни обаждания</string>
+    <string name="number_of_recent_calls_displays_summary">Поради групирането, броят на показаните редове може да е по-малък.</string>
+    <string name="group_calls">Групиране на обаждания</string>
+    <string name="group_all_calls">Групирайте всички повиквания, ще се покаже само последното повикване</string>
+    <string name="call_button_style">Стил на звънец</string>
+    <string name="call_notes">Бележки за обаждания</string>
+    <string name="back_pressed_end_call">Действието \"Назад\" прекратява повикването</string>
+    <string name="keep_calls_in_popup_summary">След като отговорите на повикване, то остава в известията ви и не се показва на цял екран. Това се прави, за да се избегне прекъсването на други приложения, например докато играете игра.</string>
+    <string name="turn_on_speaker_in_popup">Автоматично включване на високоговорителя</string>
+    <string name="turn_on_speaker_in_popup_summary">Ако няма свързани слушалки, високоговорителят ще се включи.</string>
+    <string name="busy">зает</string>
+    <string name="block_calls">Блокиране на повиквания</string>
+    <string name="edit_number_before_call">Редактиране на номера преди обаждане</string>
+    <string name="on_favorite_click">Когато кликнете върху любим</string>
+    <string name="call_using_same_sim">Използвайте същата SIM карта, към която е направено предишното (последно) обаждане</string>
+    <string name="answer_end_other_call">Отговорете и прекратете текущото повикване</string>
+    <string name="quick_answers">Бързи отговори</string>
+    <string name="voicemail">Гласова поща</string>
+    <string name="show_voicemail_icon">Показване на иконата за гласова поща</string>
+    <string name="secondary_dialpad_language">Вторичен език на клавиатурата за набиране</string>
+    <string name="sim_card_selection_dialog_style">Стил на диалоговия прозорец за избор на SIM карта</string>
+    <string name="clear_dialpad_when_start_call">Изчистване на набрания номер при започване на разговор</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d пропуснато обаждане</item>
+        <item quantity="other">%d пропуснати обаждания</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Оставете обажданията в известията</string>
+    <string name="on_contact_click">Когато кликнете върху контакт</string>
+    <string name="on_recent_click">Когато кликнете върху скорошно обаждане</string>
+    <string name="add_pause">Добавяне на 2-секундна пауза (,)</string>
+    <string name="missed">Пропуснато</string>
+    <string name="incoming">Входящи</string>
+    <string name="outgoing">Изходящ</string>
+</resources>

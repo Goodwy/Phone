@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Transparent samtalsskärm</string>
+    <string name="call_back_g">Kalla</string>
+    <string name="call_back_person_g">Ring tillbaka %s</string>
+    <string name="missed_call_g">Missat samtal</string>
+    <string name="missed_calls_g">Missade samtal</string>
+    <string name="missed_call_notifications_g">Aviseringar om missade samtal</string>
+    <string name="dialpad_preferences">Uppringningsskärminställningar</string>
+    <string name="call_start_end_vibration">Vibrera när samtalet börjar och slutar</string>
+
+    <string name="show_contact_thumbnails_g">Visa kontaktminiatyrer</string>
+    <string name="hide_dialpad_letters_g">Dölj knappsatsbokstäver</string>
+    <string name="show_caller_description_g">Visa ytterligare information om den som ringer</string>
+    <string name="nickname">Smeknamn</string>
+    <string name="company">Företag</string>
+    <string name="call_anonymously">Ring anonymt (med prefix #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Varning</h4>
+            Numret kommer att ringas upp med prefixet #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Kontrollera att din operatör stöder tjänsten för dolda nummer när du använder prefixet #31#. <br>
+            Din tjänsteleverantör kan ta ut en extra avgift för denna tjänst.
+        ]]>
+    </string>
+
+    <string name="add_wait">Lägg till väntan (;)</string>
+    <string name="rejected">Avvisad</string>
+    <string name="dialpad_buttons_color">Färg på knapparna på knappsatsen</string>
+    <string name="audio_route_earpiece_g">Enhetens hörsnäcka</string>
+    <string name="open_speed_dial_manage">Öppna kortnummerhanteringen?</string>
+
+    <!-- Timer -->
+    <string name="timer">Timer</string>
+    <string name="timers_notification_msg">Timers är igång</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d timer är igång</item>
+        <item quantity="other">%d timers är igång</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Varför måste jag låsa upp min enhet för att svara på ett inkommande samtal?</string>
+    <string name="faq_1_text_dialer_g">Operativsystemet blockerar appar från att komma åt låsskärmen. Du måste tillåta appen att komma åt låsskärmen. Till exempel, i MIUI måste du tillåta åtkomst till Inställningar => Aviseringar => Aviseringar på låsskärmen.</string>
+    <string name="faq_2_title_dialer_g">Hur kopierar eller klistrar jag in ett nummer på uppringningsskärmen?</string>
+    <string name="faq_2_text_dialer_g">Långt tryck på samtalsknappen för att klistra in innehållet i urklipp. Om numret redan är inmatat kopierar ett långt tryck på samtalsknappen det till urklippet.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Höger uppringare visar bara kontakter som har ett telefonnummer kopplat till dem. Kontakter utan telefonnummer visas inte i appen.</string>
+    <string name="slider_style">Slider-stil</string>
+    <string name="slider_style_summary">Skjutreglaget används bara när skärmen är låst.</string>
+    <string name="answer_style">Svarsknappstil</string>
+    <string name="buttons">Knappar</string>
+    <string name="answer_slider">Slider</string>
+    <string name="answer_slider_outline">Konturreglage</string>
+    <string name="answer_slider_vertical">Vertikal skjutreglage</string>
+
+    <string name="show_recent_calls">Visa och sök efter senaste samtal</string>
+    <string name="search_contacts_in_dialpad">Sök kontakter när du ringer ett nummer</string>
+    <string name="open_dialpad_when_call_from_another_app">Öppna knappsatsen när du försöker ringa ett samtal från ett annat program</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Detta kan skydda dig från skadlig programvara som ringer utan din vetskap.</string>
+    <string name="number_of_recent_calls_displays">Antalet senaste samtal visas</string>
+    <string name="number_of_recent_calls_displays_summary">தொகுத்தல் காரணமாக, காட்டப்படும் வரிசைகளின் எண்ணிக்கை குறைவாக இருக்கலாம்.</string>
+    <string name="group_calls">Samtalsgruppering</string>
+    <string name="group_all_calls">Gruppera alla samtal, endast det senaste samtalet visas</string>
+    <string name="call_button_style">Klockknapp stil</string>
+    <string name="call_notes">Anteckningar om samtal</string>
+    <string name="back_pressed_end_call">Bakåtåtgärd avslutar samtalet</string>
+    <string name="keep_calls_in_popup_summary">När du svarar på ett samtal finns det kvar i dina aviseringar och visas inte i helskärm. Detta görs för att undvika att störa andra appar, till exempel när du spelar ett spel.</string>
+    <string name="turn_on_speaker_in_popup">Slå på högtalaren automatiskt</string>
+    <string name="turn_on_speaker_in_popup_summary">Om inget headset är anslutet kommer högtalaren att vara påslagen.</string>
+    <string name="busy">Upptagen</string>
+    <string name="block_calls">Blockera samtal</string>
+    <string name="edit_number_before_call">Redigera nummer före samtal</string>
+    <string name="on_favorite_click">När du klickar på en favorit</string>
+    <string name="call_using_same_sim">Använd samma SIM-kort som det föregående (sista) samtalet gjordes till</string>
+    <string name="answer_end_other_call">Besvara och avsluta det aktuella samtalet</string>
+    <string name="quick_answers">Snabba svar</string>
+    <string name="voicemail">Röstbrevlåda</string>
+    <string name="show_voicemail_icon">Visa ikon för röstbrevlåda</string>
+    <string name="secondary_dialpad_language">Sekundärt språk för knappsatsen</string>
+    <string name="sim_card_selection_dialog_style">SIM Välj dialogstil</string>
+    <string name="clear_dialpad_when_start_call">Rensa uppringt nummer när du startar ett samtal</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d missat samtal</item>
+        <item quantity="other">%d missade samtal</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Lämna samtal i aviseringar</string>
+    <string name="on_contact_click">När du klickar på en kontakt</string>
+    <string name="on_recent_click">När du klickar på ett nyligen samtal</string>
+    <string name="add_pause">Lägg till 2 sekunders paus (,)</string>
+    <string name="missed">Missade</string>
+    <string name="incoming">Inkommande</string>
+    <string name="outgoing">Utgående</string>
+</resources>

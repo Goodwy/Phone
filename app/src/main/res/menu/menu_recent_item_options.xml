@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/cab_call"
+        android:title="@string/call" />
+    <item
+        android:id="@+id/cab_call_sim_1"
+        android:title="@string/call_from_sim_1" />
+    <item
+        android:id="@+id/cab_call_sim_2"
+        android:title="@string/call_from_sim_2" />
+    <item
+        android:id="@+id/cab_call_anonymously"
+        android:title="@string/call_anonymously" />
+    <item
+        android:id="@+id/cab_send_sms"
+        android:title="@string/send_sms" />
+    <item
+        android:id="@+id/cab_copy_number"
+        android:title="@string/copy_number_to_clipboard" />
+    <item
+        android:id="@+id/cab_edit_number_before_call"
+        android:title="@string/edit_number_before_call" />
+    <item
+        android:id="@+id/web_search"
+        android:title="@string/search_the_web" />
+    <item
+        android:id="@+id/cab_view_details"
+        android:title="@string/view_contact_details" />
+    <item
+        android:id="@+id/cab_add_number"
+        android:title="@string/add_number_to_contact" />
+    <item
+        android:id="@+id/cab_show_call_details"
+        android:title="@string/show_call_details" />
+    <item
+        android:id="@+id/cab_remove_default_sim"
+        android:title="@string/unset_default_sim" />
+    <item
+        android:id="@+id/cab_block_number"
+        android:title="@string/block_number" />
+    <item
+        android:id="@+id/cab_unblock_number"
+        android:title="@string/unblock_number" />
+    <item
+        android:id="@+id/cab_remove"
+        android:title="@string/delete" />
+</menu>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Läpinäkyvä puhelunäyttö</string>
+    <string name="call_back_g">Soita takaisin</string>
+    <string name="call_back_person_g">Soita takaisin %s</string>
+    <string name="missed_call_g">Vastaamaton puhelu</string>
+    <string name="missed_calls_g">Vastaamattomat puhelut</string>
+    <string name="missed_call_notifications_g">Vastaamattomien puhelujen ilmoitukset</string>
+    <string name="dialpad_preferences">Valitse näytön asetukset</string>
+    <string name="call_start_end_vibration">Värinä, kun puhelu alkaa ja päättyy</string>
+
+    <string name="show_contact_thumbnails_g">Yhteystietojen pikkukuvien näyttäminen</string>
+    <string name="hide_dialpad_letters_g">Piilota dialpad-kirjaimet</string>
+    <string name="show_caller_description_g">Näytä soittajan lisätiedot</string>
+    <string name="nickname">Lempinimi</string>
+    <string name="company">Yritys</string>
+    <string name="call_anonymously">Soita nimettömänä (etuliitteellä #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Varoitus</h4>
+             Numeroon soitetaan etuliitteellä #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Varmista, että operaattorisi tukee numeron piilotuspalvelua, kun käytät etuliitettä #31#. <br>
+             Palveluntarjoajasi saattaa veloittaa tästä palvelusta lisämaksun.
+        ]]>
+    </string>
+
+    <string name="add_wait">Lisää odotus (;)</string>
+    <string name="rejected">Hylätty</string>
+    <string name="dialpad_buttons_color">Valintapaneelin painikkeiden väri</string>
+    <string name="audio_route_earpiece_g">Laitteen kuuloke</string>
+    <string name="open_speed_dial_manage">Avaa pikavalinnan hallinta?</string>
+
+    <!-- Timer -->
+    <string name="timer">Ajastin</string>
+    <string name="timers_notification_msg">Ajastuksia on käynnissä</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d ajastus on käynnissä</item>
+        <item quantity="other">%d ajastusta on käynnissä</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Miksi minun on avattava laitteeni lukitus vastatakseni saapuvaan puheluun? </string>.
+    <string name="faq_1_text_dialer_g">Käyttöjärjestelmä estää sovelluksia pääsemästä lukitusnäyttöön. Sinun on sallittava sovelluksen pääsy lukitusnäyttöön. Esimerkiksi MIUI:ssa sinun on sallittava pääsy lukitusnäytön Asetukset => Ilmoitukset => Ilmoitukset.</string>.
+    <string name="faq_2_title_dialer_g">Miten kopioida tai liittää numero valintanäytössä? </string>
+    <string name="faq_2_text_dialer_g">Soittonäppäimen pitkä painallus liittää leikepöydän sisällön. Jos numero on jo syötetty, soittopainikkeen pitkä painallus kopioi sen leikepöydälle.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Oikea valinta näyttää vain yhteystiedot, joihin on liitetty puhelinnumero. Yhteystiedot, joissa ei ole puhelinnumeroa, eivät näy sovelluksessa.</string>
+    <string name="slider_style">Liukusäätimen tyyli</string>
+    <string name="slider_style_summary">Liukusäädintä käytetään vain, kun näyttö on lukittu.</string>
+    <string name="answer_style">Vastauspainikkeen tyyli</string>
+    <string name="buttons">Painikkeet</string>
+    <string name="answer_slider">Slider</string>
+    <string name="answer_slider_outline">Liukusäädin ääriviivalla</string>
+    <string name="answer_slider_vertical">Pystysuora liukusäädin</string>
+
+    <string name="show_recent_calls">Näytä ja hae viimeisimmät puhelut</string>
+    <string name="search_contacts_in_dialpad">Hae yhteystietoja numeroa valittaessa</string>
+    <string name="open_dialpad_when_call_from_another_app">Kun yrität soittaa puhelua toisesta sovelluksesta, avaa valintanäppäimet</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Tämä voi suojata sinua haittaohjelmilta, jotka soittavat tietämättäsi.</string>
+    <string name="number_of_recent_calls_displays">Näytetään viimeaikaisten puheluiden määrä</string>
+    <string name="number_of_recent_calls_displays_summary">Ryhmittelyn vuoksi näytettävien rivien määrä voi olla pienempi.</string>
+    <string name="group_calls">Puhelujen ryhmittely</string>
+    <string name="group_all_calls">Ryhmittele kaikki puhelut, vain viimeinen puhelu näytetään</string>
+    <string name="call_button_style">Kellopainikkeen tyyli</string>
+    <string name="call_notes">Puhelun muistiinpanot</string>
+    <string name="back_pressed_end_call">Back-toiminto lopettaa puhelun</string>
+    <string name="keep_calls_in_popup_summary">Kun vastaat puheluun, se pysyy ilmoituksissasi eikä näy koko näytön kokoisena. Tämä tehdään, jotta vältytään keskeyttämästä muita sovelluksia, kuten pelin pelaamista.</string>
+    <string name="turn_on_speaker_in_popup">Käynnistä kaiutin automaattisesti</string>
+    <string name="turn_on_speaker_in_popup_summary">Jos kuulokkeita ei ole kytketty, kaiutin kytkeytyy päälle.</string>
+    <string name="busy">Kiireinen</string>
+    <string name="block_calls">Estä puhelut</string>
+    <string name="edit_number_before_call">Muokkaa numeroa ennen soittoa</string>
+    <string name="on_favorite_click">Kun napsautat suosikkia</string>
+    <string name="call_using_same_sim">Käytä samaa SIM-korttia, johon edellinen (viimeinen) puhelu soitettiin</string>
+    <string name="answer_end_other_call">Nykyiseen puheluun vastaaminen ja sen lopettaminen</string>
+    <string name="quick_answers">Nopeat vastaukset</string>
+    <string name="voicemail">Vastaaja</string>
+    <string name="show_voicemail_icon">Näytä vastaajakuvake</string>
+    <string name="secondary_dialpad_language">Toissijainen valintapaneelin kieli</string>
+    <string name="sim_card_selection_dialog_style">SIM-kortin valintavalintaikkunan tyyli</string>
+    <string name="clear_dialpad_when_start_call">Poista valittu numero, kun aloitat puhelun</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d vastaamaton puhelu</item>
+        <item quantity="other">%d vastaamatonta puhelua</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Jätä puhelut ilmoituksiin</string>
+    <string name="on_contact_click">Kun napsautat yhteystietoa</string>
+    <string name="on_recent_click">Kun napsautat viimeisintä puhelua</string>
+    <string name="add_pause">Lisää 2 sekunnin tauko (,)</string>
+    <string name="missed">Jäi väliin</string>
+    <string name="incoming">Saapuvat</string>
+    <string name="outgoing">Lähtevä</string>
+</resources>

@@ -1,0 +1,193 @@
+<resources>
+    <string name="package_name">dev.goodwy.phone</string>
+    <string name="app_name">AlRight Phone</string>
+
+    <!-- Release notes --><!-- TODO changelog -->
+    <string name="release_810">
+        The dialer is now integrated into the main screen\n
+        Call filtering added\n
+        Dialer settings added (scale, button color)\n
+        Added ‘Swipe width’ option\n
+        Added ‘Show search bar’ option\n
+        Changed swipe behavior, removed inertia\n
+        Added the ability to send debug information for certain errors\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_803">
+        Added ‘Search for contacts when dialing a number’ option\n
+        Fixed vertical slider for answering calls\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_800">
+        Compatibility updates for Android 15 &amp; 16\n
+        Changed the logic of styles\n
+        Changed behavior of missed notifications\n
+        Changed colors of context action modes\n
+        Added actions to call notification\n
+        The ‘Keep calls in notifications’ option has been changed. Now, if the headset is not connected, the speaker will be turned on\n
+        Fixed a limitation on the number of recent calls\n
+        Fixed flash notification\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_702">
+        Fixed the call screen background\n
+        Fixed the colors for recent calls\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_700">
+        Changed color schemes and theme behavior\n
+        Added an auto dark/light theme\n
+        Optimized call history loading\n
+        Added voice input for search\n
+        Added bottom padding setting for dialpad\n
+        Added ‘Shows contact\'s nicknames (when available) instead of their first names’ option\n
+        Added ‘Block Calls’ setting and quick settings tile\n
+        Added ‘Blocking type’ option\n
+        The operation of blocking unknown numbers has been changed\n
+        Added the ability to disable one of the swipes\n
+        Added dialpad tone in TalkBack mode\n
+        The dialpad searches in contacts, and if it doesn\'t find anything, it searches in recent calls\n
+        A new call type has been added - Blocked Call\n
+        Added date format YYYY.MM.DD\n
+        Persian calendar added\n
+        Dialpad search has been fixed\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_630">
+        Added ‘Keep calls in notifications’ option\n
+        Added call status ‘Busy’\n
+        Improved translation\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_621">
+        Added Arabic as a second language option for the T9 search functionality\n
+        Added option to use an accent color\n
+        Bug fixes
+    </string>
+    <string name="release_620">
+        Changed behavior of the search bar\n
+        Fixed input of secret codes\n
+        Bug fixes
+    </string>
+    <string name="release_616">
+        Accelerated and optimized the call detail screen\n
+        Fixed avatar display for companies\n
+        Improved performance, bug fixes
+    </string>
+    <string name="release_614">
+        Added name caching in call logs\n
+        Improved performance, bug fixes
+    </string>
+    <string name="release_612">
+        Added ‘Show the number blocking button’ option\n
+        Fixed locked screen on incoming call\n
+        Bug fixes
+    </string>
+    <string name="release_611">
+        Fixed missed call notification errors
+    </string>
+    <string name="release_610">
+        Added ‘Pressing back ends the call’ option\n
+        Fixed input of secret codes\n
+        Bug fixes
+    </string>
+    <string name="release_607">
+        Fixed and sped up the call screen
+    </string>
+    <string name="release_606">
+        Bug fixes
+    </string>
+    <string name="release_604">
+        Accelerated the call screen\n
+        Added ‘Search the web’ menu item\n
+        Added the ability to restart a reminder to call you back\n
+        Bug fixes
+    </string>
+    <string name="release_603">
+        Changed theme logic\n
+        Added ‘App icon color’ option\n
+        Add dynamic shortcuts for starred contacts\n
+        Added support for missed call notifications\n
+        Added display of information about missed calls on the app icon\n
+        Adapted for small screen devices\n
+        Added ‘Dialer font’ option\n
+        Added call notes\n
+        Improved scrolling performance and interface\n
+        Improved performance, bug fixes
+    </string>
+    <string name="release_530">
+        Increased the number of cached recent calls\n
+        Added ‘SIM card selection dialogue style’ option\n
+        Added ‘End search when changing tab’ option\n
+        Added ‘Change the colour of the top bar when scrolling’ option\n
+        Fixed bugs
+    </string>
+    <string name="release_529">
+        Changed swipe behaviour and added animation\n
+        Reduced the contact icon when viewing call details\n
+        Fixed again incorrect display of SIM card number in some cases\n
+        Fixed button layout on the call details screen\n
+        Fixed bugs
+    </string>
+    <string name="release_528">
+        Fixed display of time in call details\n
+        Fixed incorrect display of SIM card number in some cases\n
+        Fixed bugs
+    </string>
+    <string name="release_527">
+        Added option to select an additional language on the keyboard\n
+        Changed haptic feedback behavior when swiping\n
+        Fixed incorrect call end error\n
+        Fixed incorrect display of SIM card number in some cases\n
+        Fixed bugs
+    </string>
+    <string name="release_526">
+        Added ability to change quick answers to a call\n
+        Added option to speed dial to select voicemail\n
+        Changed the depth of swipes\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_525">
+        Added an indicator for using high-resolution audio when making a call\n
+        Added VoLTE display in call details\n
+        Increased contact icon when viewing call details\n
+        Improved detailing of standard contact icons\n
+        Fixed incorrect display of SIM card number in some cases\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_522">
+        Improved interaction with TalkBack\n
+        Added customization of button position during a call\n
+        Added ability to display recent calls on the dialpad screen\n
+        Added ability to customize avatars size\n
+        Added support for emoji in contact name\n
+        Added option to group recent calls\n
+        Added option to set maximum number of recent calls to be displayed\n
+        Added ability to block outgoing calls from other applications\n
+        The proximity sensor is activated on an incoming call only after the call is answered\n
+        Fixed errors when receiving a second call and when managing calls\n
+        Fixed many bugs
+    </string>
+    <string name="release_511">
+        Improved SIM card selection dialog\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_510">
+        Added swipe gestures (call, message, block, delete)\n
+        Tone volume setting added\n
+        Bug fixes
+    </string>
+    <string name="release_501">
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_500">
+        Improved interface\n
+        Fixed bugs, improved stability
+    </string>
+    <string name="release_492">
+        Added sorting options\n
+        Changed speed dialing, you can now add numbers from outside your contacts\n
+        Added the ability to put pause and wait signs (, and ;) to the dialpad\n
+        Fixed bugs, improved stability
+    </string>
+</resources>

@@ -1,0 +1,266 @@
+package dev.goodwy.phone.fragments
+
+import android.content.Context
+import android.content.res.Configuration
+import android.util.AttributeSet
+import com.goodwy.commons.adapters.MyRecyclerViewAdapter
+import com.goodwy.commons.extensions.*
+import com.goodwy.commons.helpers.*
+import com.goodwy.commons.models.contacts.Contact
+import dev.goodwy.phone.BuildConfig
+import dev.goodwy.phone.R
+import dev.goodwy.phone.activities.MainActivity
+import dev.goodwy.phone.activities.SimpleActivity
+import dev.goodwy.phone.adapters.ContactsAdapter
+import dev.goodwy.phone.databinding.FragmentContactsBinding
+import dev.goodwy.phone.databinding.FragmentLettersLayoutBinding
+import dev.goodwy.phone.extensions.config
+import dev.goodwy.phone.extensions.launchCreateNewContactIntent
+import dev.goodwy.phone.extensions.launchSendSMSIntentRecommendation
+import dev.goodwy.phone.extensions.setupWithContacts
+import dev.goodwy.phone.extensions.startCallWithConfirmationCheck
+import dev.goodwy.phone.extensions.startContactDetailsIntentRecommendation
+import dev.goodwy.phone.extensions.startContactEdit
+import dev.goodwy.phone.helpers.SWIPE_ACTION_CALL
+import dev.goodwy.phone.helpers.SWIPE_ACTION_EDIT
+import dev.goodwy.phone.helpers.SWIPE_ACTION_MESSAGE
+import dev.goodwy.phone.helpers.SWIPE_ACTION_OPEN
+import dev.goodwy.phone.interfaces.RefreshItemsListener
+import dev.goodwy.phone.models.RecentCall
+
+class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
+    RefreshItemsListener {
+    private lateinit var binding: FragmentLettersLayoutBinding
+    private var allContacts = ArrayList<Contact>()
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        binding = FragmentLettersLayoutBinding.bind(FragmentContactsBinding.bind(this).contactsFragment)
+        innerBinding = LettersInnerBinding(binding)
+    }
+
+    override fun setupFragment() {
+        val useSurfaceColor = context.isDynamicTheme() && !context.isSystemInDarkMode()
+        val backgroundColor = if (useSurfaceColor) context.getSurfaceColor() else context.getProperBackgroundColor()
+        binding.root.setBackgroundColor(backgroundColor)
+        //binding.contactsFragment.setBackgroundColor(context.getProperBackgroundColor())
+
+        val placeholderResId = if (context.hasPermission(PERMISSION_READ_CONTACTS)) {
+            R.string.no_contacts_found
+        } else {
+            R.string.could_not_access_contacts
+        }
+
+        binding.fragmentPlaceholder.text = context.getString(placeholderResId)
+
+        val placeholderActionResId = if (context.hasPermission(PERMISSION_READ_CONTACTS)) {
+            R.string.create_new_contact
+        } else {
+            R.string.request_access
+        }
+
+        binding.fragmentPlaceholder2.apply {
+            text = context.getString(placeholderActionResId)
+            underlineText()
+            setOnClickListener {
+                if (context.hasPermission(PERMISSION_READ_CONTACTS)) {
+                    activity?.launchCreateNewContactIntent()
+                } else {
+                    requestReadContactsPermission()
+                }
+            }
+        }
+    }
+
+    override fun setupColors(textColor: Int, primaryColor: Int, accentColor: Int) {
+        binding.apply {
+            (fragmentList.adapter as? MyRecyclerViewAdapter)?.apply {
+                updateTextColor(textColor)
+                updatePrimaryColor()
+                updateBackgroundColor(context.getProperBackgroundColor())
+            }
+            fragmentPlaceholder.setTextColor(textColor)
+            fragmentPlaceholder2.setTextColor(accentColor)
+
+            letterFastscroller.textColor = textColor.getColorStateList()
+            letterFastscroller.pressedTextColor = accentColor
+            letterFastscrollerThumb.setupWithFastScroller(letterFastscroller)
+            letterFastscrollerThumb.textColor = accentColor.getContrastColor()
+            letterFastscrollerThumb.thumbColor = accentColor.getColorStateList()
+        }
+    }
+
+    override fun refreshItems(invalidate: Boolean, needUpdate: Boolean, callback: (() -> Unit)?) {
+        val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+        ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
+            allContacts = contacts
+
+            if (SMT_PRIVATE !in context.baseConfig.ignoredContactSources) {
+                val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
+                if (privateContacts.isNotEmpty()) {
+                    allContacts.addAll(privateContacts)
+                    allContacts.sort()
+                }
+            }
+            (activity as MainActivity).cacheContacts()
+
+            activity?.runOnUiThread {
+                gotContacts(contacts)
+                callback?.invoke()
+            }
+        }
+    }
+
+    private fun gotContacts(contacts: ArrayList<Contact>) {
+        setupLetterFastScroller(contacts)
+        if (contacts.isEmpty()) {
+            binding.apply {
+                fragmentPlaceholder.beVisible()
+                fragmentPlaceholder2.beVisible()
+                fragmentList.beGone()
+            }
+        } else {
+            binding.apply {
+                fragmentPlaceholder.beGone()
+                fragmentPlaceholder2.beGone()
+                fragmentList.beVisible()
+
+//                fragmentList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                        super.onScrollStateChanged(recyclerView, newState)
+//                        activity?.hideKeyboard()
+//                    }
+//                })
+                fragmentList.setOnTouchListener { _, _ ->
+                    activity?.hideKeyboard()
+                    false
+                }
+            }
+
+            if (binding.fragmentList.adapter == null) {
+                ContactsAdapter(
+                    activity = activity as SimpleActivity,
+                    contacts = contacts,
+                    recyclerView = binding.fragmentList,
+                    refreshItemsListener = this,
+                    showIcon = context.config.onContactClick != SWIPE_ACTION_OPEN,
+                    showNumber = context.baseConfig.showPhoneNumbers,
+                    itemClick = {
+                        itemClickAction(context.config.onContactClick, it as Contact)
+                    },
+                    profileIconClick = {
+                        activity?.startContactDetailsIntentRecommendation(it as Contact)
+                    }
+                ).apply {
+                    binding.fragmentList.adapter = this
+                }
+
+                if (context.areSystemAnimationsEnabled) {
+                    binding.fragmentList.scheduleLayoutAnimation()
+                }
+            } else {
+                (binding.fragmentList.adapter as ContactsAdapter).updateItems(contacts)
+            }
+
+            try {
+                //Decrease the font size based on the number of letters in the letter scroller
+                val allNotEmpty = contacts.filter { it.getNameToDisplay().isNotEmpty() }
+                val all = allNotEmpty.map { it.getNameToDisplay().substring(0, 1) }
+                val unique: Set<String> = HashSet(all)
+                val sizeUnique = unique.size
+                if (isHighScreenSize()) {
+                    if (sizeUnique > 48) binding.letterFastscroller.textAppearanceRes = R.style.LetterFastscrollerStyleTooTiny
+                    else if (sizeUnique > 37) binding.letterFastscroller.textAppearanceRes = R.style.LetterFastscrollerStyleTiny
+                    else binding.letterFastscroller.textAppearanceRes = R.style.LetterFastscrollerStyleSmall
+                } else {
+                    if (sizeUnique > 36) binding.letterFastscroller.textAppearanceRes = R.style.LetterFastscrollerStyleTooTiny
+                    else if (sizeUnique > 30) binding.letterFastscroller.textAppearanceRes = R.style.LetterFastscrollerStyleTiny
+                    else binding.letterFastscroller.textAppearanceRes = R.style.LetterFastscrollerStyleSmall
+                }
+            } catch (_: Exception) { }
+        }
+    }
+
+    private fun isHighScreenSize(): Boolean {
+        return when (resources.configuration.screenLayout
+            and Configuration.SCREENLAYOUT_LONG_MASK) {
+            Configuration.SCREENLAYOUT_LONG_NO -> false
+            else -> true
+        }
+    }
+
+    private fun setupLetterFastScroller(contacts: ArrayList<Contact>) {
+        binding.letterFastscroller.setupWithContacts(binding.fragmentList, contacts)
+    }
+
+    override fun onSearchClosed() {
+        binding.fragmentPlaceholder.beVisibleIf(allContacts.isEmpty())
+        (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(allContacts)
+        setupLetterFastScroller(allContacts)
+    }
+
+    override fun onSearchQueryChanged(text: String, isDialpad: Boolean) {
+        val fixedText = text.trim().replace("\\s+".toRegex(), " ")
+        val shouldNormalize = fixedText.normalizeString() == fixedText
+        val filtered = allContacts.filter { contact ->
+            getProperText(contact.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.nickname, shouldNormalize).contains(fixedText, true) ||
+                (fixedText.toLongOrNull() != null && contact.doesContainPhoneNumber(fixedText, true)) ||
+                contact.emails.any { it.value.contains(fixedText, true) } ||
+                contact.relations.any { it.name.contains(fixedText, true) } ||
+                contact.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
+                contact.IMs.any { it.value.contains(fixedText, true) } ||
+                getProperText(contact.notes, shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.organization.company, shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
+                contact.websites.any { it.contains(fixedText, true) }
+        } as ArrayList
+
+        filtered.sortBy {
+            val nameToDisplay = it.getNameToDisplay()
+            !getProperText(nameToDisplay, shouldNormalize).startsWith(fixedText, true) && !nameToDisplay.contains(fixedText, true)
+        }
+
+        binding.fragmentPlaceholder.beVisibleIf(filtered.isEmpty())
+        (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(filtered, fixedText)
+        setupLetterFastScroller(filtered)
+    }
+
+    private fun requestReadContactsPermission() {
+        activity?.handlePermission(PERMISSION_READ_CONTACTS) {
+            if (it) {
+                binding.fragmentPlaceholder.text = context.getString(R.string.no_contacts_found)
+                binding.fragmentPlaceholder2.text = context.getString(R.string.create_new_contact)
+                ContactsHelper(context).getContacts { contacts ->
+                    activity?.runOnUiThread {
+                        gotContacts(contacts)
+                    }
+                }
+            }
+        }
+    }
+
+    override fun myRecyclerView() = binding.fragmentList
+
+    private fun itemClickAction(action: Int, contact: Contact) {
+        when (action) {
+            SWIPE_ACTION_MESSAGE -> actionSMS(contact)
+            SWIPE_ACTION_CALL -> actionCall(contact)
+            SWIPE_ACTION_OPEN -> actionOpen(contact)
+            SWIPE_ACTION_EDIT -> activity?.startContactEdit(contact)
+            else -> {}
+        }
+    }
+
+    private fun actionCall(contact: Contact) {
+        activity?.startCallWithConfirmationCheck(contact)
+    }
+
+    private fun actionSMS(contact: Contact) {
+        activity?.initiateCall(contact) { activity?.launchSendSMSIntentRecommendation(it) }
+    }
+
+    private fun actionOpen(contact: Contact) {
+        activity?.startContactDetailsIntentRecommendation(contact)
+    }
+}

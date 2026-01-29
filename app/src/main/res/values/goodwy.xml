@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Transparent Call Screen</string>
+    <string name="call_back_g">Call back</string>
+    <string name="call_back_person_g">Call back %s</string>
+    <string name="missed_call_g">Missed call</string>
+    <string name="missed_calls_g">Missed calls</string>
+    <string name="missed_call_notifications_g">Missed call notifications</string>
+    <string name="call_start_end_vibration">Vibrate when your call starts and ends</string>
+    <string name="show_recent_calls">Show and search for recent calls</string>
+    <string name="search_contacts_in_dialpad">Search for contacts when dialing a number</string>
+    <string name="open_dialpad_when_call_from_another_app">Open the dialpad when you try to make a call from another app</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">This can protect you from malware making calls without your knowledge</string>
+    <string name="number_of_recent_calls_displays">Number of Recent Calls displays</string>
+    <string name="number_of_recent_calls_displays_summary">Depending on the grouping, the number of rows displayed may be less.</string>
+    <string name="group_calls">Group calls</string>
+    <string name="group_all_calls">Group all calls, only the last call will be shown</string>
+    <string name="call_button_style">Call button style</string>
+    <string name="call_notes">Call notes</string>
+    <string name="back_pressed_end_call">Back action ends the call</string>
+    <string name="keep_calls_in_popup">Keep calls in notifications</string>
+    <string name="keep_calls_in_popup_summary">After answering a call, it remains in notifications and is not displayed on the entire screen. This is done so as not to interrupt the operation of other applications, for example, during a game.</string>
+    <string name="turn_on_speaker_in_popup">Turn on speaker automatically</string>
+    <string name="turn_on_speaker_in_popup_summary">If no headset is connected, the speaker will be turned on.</string>
+    <string name="busy">Busy</string>
+    <string name="block_calls">Block calls</string>
+    <string name="edit_number_before_call">Edit number before call</string>
+    <string name="on_contact_click">On a contact click</string>
+    <string name="on_recent_click">On a recent call click</string>
+    <string name="on_favorite_click">On a favorite click</string>
+
+    <string name="call_using_same_sim">Prefer same SIM on which previous (last) call was made</string>
+    <string name="answer_end_other_call">Answer &amp; end other call</string>
+    <string name="quick_answers">Quick answers</string>
+    <string name="voicemail">Voicemail</string>
+    <string name="show_voicemail_icon">Show voicemail icon</string>
+    <string name="secondary_dialpad_language">Secondary dialpad language</string>
+    <string name="sim_card_selection_dialog_style">SIM card selection dialogue style</string>
+    <string name="clear_dialpad_when_start_call">Clear dialpad when starting a call</string>
+    <string name="dialpad_preferences">Dialpad settings</string>
+    <string name="show_contact_thumbnails_g">Show contact thumbnails</string>
+    <string name="hide_dialpad_letters_g">Hide dialpad letters</string>
+    <string name="show_caller_description_g">Show additional caller information</string>
+    <string name="nickname">Nickname</string>
+    <string name="company">Company</string>
+    <string name="call_anonymously">Call anonymously (with prefix #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Warning</h4>
+            The number will be called with the prefix #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Make sure your operator supports the number hiding service when using the #31# prefix. <br>
+            Your service provider may charge an additional fee for this service.
+        ]]>
+    </string>
+    <string name="add_pause">Add 2-sec pause (,)</string>
+    <string name="add_wait">Add wait (;)</string>
+    <string name="missed">Missed</string>
+    <string name="incoming">Incoming</string>
+    <string name="outgoing">Outgoing</string>
+    <string name="rejected">Rejected</string>
+    <string name="dialpad_buttons_color">Dialpad buttons color</string>
+
+    <string name="audio_route_earpiece_g">Device\'s earpiece</string>
+    <string name="open_speed_dial_manage">Open the speed dial manager?</string>
+
+    <!-- Timer -->
+    <string name="timer">Timer</string>
+    <string name="timers_notification_msg">Timers are running</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d timer is running</item>
+        <item quantity="other">%d timers are running</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Why do I have to unlock my device to answer an incoming call?</string>
+    <string name="faq_1_text_dialer_g">Your operating system is blocking app access to the lock screen. You need to allow the app to access the lock screen. For example, in MIUI you need to enable access in "Settings => Notifications => Lock screen notifications" and enable the "Open new windows while running in the background" permission.</string>
+    <string name="faq_2_title_dialer_g">How do I copy or paste a number on the dialing screen?</string>
+    <string name="faq_2_text_dialer_g">A long press on the call button will paste the clipboard contents. If you have already entered a number, long pressing the call button will copy the number to the clipboard.</string>
+    <string name="faq_3_text_g">Right Dialer only displays contacts that have a phone number associated with them. Contacts without a phone number are not shown in the app.</string>
+
+    <!-- Answer style -->
+    <string name="slider_style">Slider style</string>
+    <string name="slider_style_summary">The slider is only used when the screen is locked</string>
+    <string name="answer_style">Answer style</string>
+    <string name="buttons">Buttons</string>
+    <string name="answer_slider">Slider</string>
+    <string name="answer_slider_outline">Outline slider</string>
+    <string name="answer_slider_vertical">Vertical slider</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">Missed call</item>
+        <item quantity="few">%d missed calls</item>
+        <item quantity="other">%d missed calls</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+</resources>

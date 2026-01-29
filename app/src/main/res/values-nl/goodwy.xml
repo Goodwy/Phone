@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Transparant oproepscherm</string>
+    <string name="call_back_g">Terugbellen</string>
+    <string name="call_back_person_g">Terugbellen %s</string>
+    <string name="missed_call_g">Gemiste oproep</string>
+    <string name="missed_calls_g">Gemiste oproepen</string>
+    <string name="missed_call_notifications_g">Meldingen voor gemiste oproepen</string>
+    <string name="dialpad_preferences">Instellingen voor het kiesscherm</string>
+    <string name="call_start_end_vibration">Trillen wanneer uw gesprek begint en eindigt</string>
+
+    <string name="show_contact_thumbnails_g">Miniaturen van contactpersonen weergeven</string>
+    <string name="hide_dialpad_letters_g">Kiesblokletters verbergen</string>
+    <string name="show_caller_description_g">Aanvullende bellerinformatie weergeven</string>
+    <string name="nickname">Bijnaam</string>
+    <string name="company">Bedrijf</string>
+    <string name="call_anonymously">Anoniem bellen (met kengetal #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Waarschuwing</h4>
+            Het nummer wordt gebeld met het voorvoegsel #31#. <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Zorg ervoor dat uw operator de nummerverbergingsdienst ondersteunt als u het voorvoegsel #31# gebruikt. <br>
+            Je serviceprovider kan extra kosten in rekening brengen voor deze service.
+        ]]>
+    </string>
+
+    <string name="add_wait">Voeg een wachtteken (;) toe.</string>
+    <string name="rejected">Afgewezen</string>
+    <string name="dialpad_buttons_color">Kleur van de toetsen op het numerieke toetsenbord</string>
+    <string name="audio_route_earpiece_g">Het oortelefoontje van het apparaat</string>
+    <string name="open_speed_dial_manage">Open de snelkiesknop beheren?</string>
+
+    <!-- Timer -->
+    <string name="timer">Timer</string>
+    <string name="timers_notification_msg">Timers lopen</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d timer loopt</item>
+        <item quantity="other">%d timers lopen</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Waarom moet ik mijn apparaat ontgrendelen om een inkomende oproep te beantwoorden?</string>
+    <string name="faq_1_text_dialer_g">Het besturingssysteem blokkeert de toegang van apps tot het vergrendelingsscherm. U moet de app toegang geven tot het vergrendelingsscherm. In MIUI moet u bijvoorbeeld toegang toestaan tot Instellingen => Meldingen => Meldingen op het vergrendelingsscherm.</string>
+    <string name="faq_2_title_dialer_g">Hoe kopieer of plak ik een nummer op het kiezerscherm?</string>
+    <string name="faq_2_text_dialer_g">Druk lang op de belknop om de inhoud van het klembord te plakken. Als het nummer al is ingevoerd, kopieert u het nummer door lang op de belknop te drukken naar het klembord.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Rechterkiezer toont alleen contacten met een telefoonnummer. Contacten zonder telefoonnummer worden niet weergegeven in de app.</string>
+    <string name="slider_style">Schuifregelaarstijl</string>
+    <string name="slider_style_summary">De schuifregelaar wordt alleen gebruikt wanneer het scherm vergrendeld is.</string>
+    <string name="answer_style">Antwoordknopstijl</string>
+    <string name="buttons">Bedingstoestsen</string>
+    <string name="answer_slider">Schuiven</string>
+    <string name="answer_slider_outline">Schuiven voor overzicht</string>
+    <string name="answer_slider_vertical">Verticale schuifregelaar</string>
+
+    <string name="show_recent_calls">Recente oproepen weergeven en doorzoeken</string>
+    <string name="search_contacts_in_dialpad">Zoek contacten wanneer u een nummer belt.</string>
+    <string name="open_dialpad_when_call_from_another_app">Wanneer u probeert te bellen vanuit een andere toepassing, opent u het toetsenblok</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Hiermee wordt u beschermd tegen malware die zonder uw medeweten telefoongesprekken voert.</string>
+    <string name="number_of_recent_calls_displays">Weergegeven aantal recente oproepen</string>
+    <string name="number_of_recent_calls_displays_summary">Vanwege groepering kan het aantal weergegeven rijen kleiner zijn.</string>
+    <string name="group_calls">Oproepgroepering</string>
+    <string name="group_all_calls">Groepeer alle oproepen, alleen de laatste oproep wordt weergegeven</string>
+    <string name="call_button_style">De Stijl van de belknop</string>
+    <string name="call_notes">Notities bij het gesprek</string>
+    <string name="back_pressed_end_call">Actie Terug beëindigt het gesprek</string>
+    <string name="keep_calls_in_popup_summary">Nadat je een inkomend gesprek hebt beantwoord, blijft het in je meldingen staan ​​en wordt het niet op volledig scherm weergegeven. Dit is om te voorkomen dat andere apps, zoals tijdens het spelen van een spel, worden onderbroken.</string>
+    <string name="turn_on_speaker_in_popup">Luidspreker automatisch inschakelen</string>
+    <string name="turn_on_speaker_in_popup_summary">Als er geen headset is aangesloten, wordt de luidspreker ingeschakeld.</string>
+    <string name="busy">Druk bezig</string>
+    <string name="block_calls">Gesprekken blokkeren</string>
+    <string name="edit_number_before_call">Bewerk het nummer voordat u belt</string>
+    <string name="on_favorite_click">Wanneer u op een favoriet klikt</string>
+    <string name="call_using_same_sim">Gebruik dezelfde simkaart als waarop de vorige (laatste) oproep is gedaan</string>
+    <string name="answer_end_other_call">Beantwoord en beëindig het huidige gesprek</string>
+    <string name="quick_answers">Snelle antwoorden</string>
+    <string name="voicemail">Voicemail</string>
+    <string name="show_voicemail_icon">Voicemailpictogram weergeven</string>
+    <string name="secondary_dialpad_language">Taal van het secundaire toetsenblok</string>
+    <string name="sim_card_selection_dialog_style">Stijl van het dialoogvenster voor SIM-selectie</string>
+    <string name="clear_dialpad_when_start_call">Wis het gekozen nummer bij het starten van een gesprek</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d gemiste oproep</item>
+        <item quantity="other">%d gemiste oproepen</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Gesprekken in meldingen achterlaten</string>
+    <string name="on_contact_click">Wanneer u op een contactpersoon klikt</string>
+    <string name="on_recent_click">Wanneer u op een recent gesprek klikt</string>
+    <string name="add_pause">Voeg een pauze van 2 seconden toe (,)</string>
+    <string name="missed">Gemist</string>
+    <string name="incoming">Inkomend</string>
+    <string name="outgoing">Uitgaand</string>
+</resources>

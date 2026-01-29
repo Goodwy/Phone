@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Şeffaf Arama Ekranı</string>
+    <string name="call_back_g">Çağırmak</string>
+    <string name="call_back_person_g">Geri ara %s</string>
+    <string name="missed_call_g">Cevapsız çağrı</string>
+    <string name="missed_calls_g">Cevapsız aramalar</string>
+    <string name="missed_call_notifications_g">Cevapsız arama bildirimleri</string>
+    <string name="dialpad_preferences">Arama Ekranı Ayarları</string>
+    <string name="call_start_end_vibration">Aramanız başladığında ve bittiğinde titredin</string>
+
+    <string name="show_contact_thumbnails_g">Kişi küçük resimlerini göster</string>
+    <string name="hide_dialpad_letters_g">Tuş takımı harflerini gizleme</string>
+    <string name="show_caller_description_g">Ek arayan bilgilerini göster</string>
+    <string name="nickname">Lakap</string>
+    <string name="company">Şirket</string>
+    <string name="call_anonymously">Anonim olarak arayın (#31# ön ekiyle)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Uyarı</h4>
+            Numara #31# ön eki ile aranacaktır <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            #31# önekini kullanırken operatörünüzün numara gizleme hizmetini desteklediğinden emin olun. <br>
+            Hizmet sağlayıcınız bu hizmet için ek bir ücret talep edebilir.
+        ]]>
+    </string>
+
+    <string name="add_wait">Bekleme ekle (;)</string>
+    <string name="rejected">Reddedilmiş</string>
+    <string name="dialpad_buttons_color">Tuş takımı düğmelerinin rengi</string>
+    <string name="audio_route_earpiece_g">Cihazın kulaklığı</string>
+    <string name="open_speed_dial_manage">Hızlı arama yönetimini mi açın?</string>
+
+    <!-- Timer -->
+    <string name="timer">Zamanlayıcı</string>
+    <string name="timers_notification_msg">Zamanlayıcılar çalışıyor</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d zamanlayıcı çalışıyor</item>
+        <item quantity="other">%d zamanlayıcı çalışıyor</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Neden gelen bir aramayı cevaplamak için cihazımın kilidini açmam gerekiyor?</string>.
+    <string name="faq_1_text_dialer_g">İşletim sistemi, uygulamaların kilit ekranına erişmesini engeller. Uygulamanın kilit ekranına erişmesine izin vermeniz gerekir. Örneğin, MIUI\'de kilit ekranında Ayarlar => Bildirimler => Bildirimler\'e erişime izin vermeniz gerekir.</string>
+    <string name="faq_2_title_dialer_g">Çeviri ekranında bir numara nasıl kopyalanır veya yapıştırılır?</string>
+    <string name="faq_2_text_dialer_g">Arama düğmesine uzun basıldığında panonun içeriği yapıştırılır. Numara zaten girilmişse, arama düğmesine uzun basıldığında numara panoya kopyalanır.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Sağ Çevirici yalnızca telefon numarasıyla ilişkilendirilmiş kişileri görüntüler. Telefon numarası olmayan kişiler uygulamada görüntülenmez.</string>
+    <string name="slider_style">Kaydırıcı stili</string>
+    <string name="slider_style_summary">Kaydırıcı yalnızca ekran kilitliyken kullanılır.</string>
+    <string name="answer_style">Cevap düğmesi stili</string>
+    <string name="buttons">Düğmeler</string>
+    <string name="answer_slider">Slider</string>
+    <string name="answer_slider_outline">Anahatlı kaydırıcı</string>
+    <string name="answer_slider_vertical">Dikey kaydırıcı</string>
+
+    <string name="show_recent_calls">Son aramaları göster ve ara</string>
+    <string name="search_contacts_in_dialpad">Numara çevirirken kişileri ara</string>
+    <string name="open_dialpad_when_call_from_another_app">Başka bir uygulamadan arama yapmaya çalıştığınızda, arama tuşlarını açın</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Bu, bilginiz olmadan arama yapan kötü amaçlı yazılımlardan sizi koruyabilir.</string>
+    <string name="number_of_recent_calls_displays">Son aramaların görüntülenen sayısı</string>
+    <string name="number_of_recent_calls_displays_summary">З урахуванням групування кількість рядків, що відображається, може бути меншою.</string>
+    <string name="group_calls">Çağrı gruplaması</string>
+    <string name="group_all_calls">Tüm aramaları gruplandırın, yalnızca son arama gösterilecektir</string>
+    <string name="call_button_style">Zil Düğmesi Stili</string>
+    <string name="call_notes">Çağrı notları</string>
+    <string name="back_pressed_end_call">Geri eylemi çağrıyı sonlandırır</string>
+    <string name="keep_calls_in_popup_summary">Bir aramayı cevapladıktan sonra, arama bildirimlerinizde kalır ve tam ekran olarak görünmez. Bu, oyun oynarken olduğu gibi diğer uygulamaların çalışmasını kesintiye uğratmamak için yapılır.</string>
+    <string name="turn_on_speaker_in_popup">Hoparlörü otomatik olarak aç</string>
+    <string name="turn_on_speaker_in_popup_summary">Kulaklık bağlı değilse, hoparlör açılacaktır.</string>
+    <string name="busy">Meşgul</string>
+    <string name="block_calls">Çağrıları engelle</string>
+    <string name="edit_number_before_call">Aramadan önce numarayı düzenle</string>
+    <string name="on_favorite_click">Favori bir öğeye tıkladığınızda</string>
+    <string name="call_using_same_sim">Önceki (son) aramanın yapıldığı SIM kartı kullanın</string>
+    <string name="answer_end_other_call">Mevcut aramayı cevaplayın ve sonlandırın</string>
+    <string name="quick_answers">Hızlı yanıtlar</string>
+    <string name="voicemail">Sesli mesaj</string>
+    <string name="show_voicemail_icon">Sesli mesaj simgesini göster</string>
+    <string name="secondary_dialpad_language">İkincil tuş takımı dili</string>
+    <string name="sim_card_selection_dialog_style">SIM Seç İletişim Kutusu Stili</string>
+    <string name="clear_dialpad_when_start_call">Bir arama başlatırken aranan numarayı temizle</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d cevapsız arama</item>
+        <item quantity="other">%d cevapsız çağrı</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Çağrıları bildirimlerde bırakın</string>
+    <string name="on_contact_click">Bir kişiye tıkladığınızda</string>
+    <string name="on_recent_click">Son aramalardan birine tıkladığınızda</string>
+    <string name="add_pause">2 saniyelik duraklama ekle (,)</string>
+    <string name="missed">Kaçırıldı</string>
+    <string name="incoming">Gelen</string>
+    <string name="outgoing">Dışa dönük</string>
+</resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">شاشة مكالمة شفافة</string>
+    <string name="call_back_g">إعادة الاتصال</string>
+    <string name="call_back_person_g">اتصل مرة أخرى %s</string>
+    <string name="missed_call_g">مكالمة فائتة</string>
+    <string name="missed_calls_g">مكالمات</string>
+    <string name="missed_call_notifications_g">إشعارات المكالمات الفائتة</string>
+    <string name="dialpad_preferences">إعدادات شاشة الاتصال</string>
+    <string name="call_start_end_vibration">الاهتزاز عند بدء المكالمة وانتهائها</string>
+
+    <string name="show_contact_thumbnails_g">إظهار الصور المصغرة لجهات الاتصال</string>
+    <string name="hide_dialpad_letters_g">إخفاء حروف لوحة الطلب</string>
+    <string name="show_caller_description_g">إظهار معلومات المتصل الإضافية</string>
+    <string name="nickname">لقب</string>
+    <string name="company">شركة</string>
+    <string name="call_anonymously">الاتصال بشكل مجهول (مع البادئة #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>تحذير</h4>
+             سيتم الاتصال بالرقم بالبادئة #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             تأكد من أن مشغل شبكة الجوال لديك يدعم خدمة إخفاء الأرقام عند استخدام البادئة #31#. <ر>
+             قد يفرض مزود الخدمة الخاص بك رسومًا إضافية مقابل هذه الخدمة.
+        ]]>
+    </string>
+
+    <string name="add_wait">أضف الانتظار (;)</string>
+    <string name="rejected">مرفوض</string>
+    <string name="dialpad_buttons_color">لون أزرار لوحة الاتصال</string>
+    <string name="audio_route_earpiece_g">سماعة أذن الجهاز</string>
+    <string name="open_speed_dial_manage">فتح إدارة الاتصال السريع؟</string>
+
+    <!-- Timer -->
+    <string name="timer">الموقت</string>
+    <string name="timers_notification_msg">أجهزة ضبط الوقت قيد التشغيل</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="zero">جهاز ضبط الوقت %d قيد التشغيل</item>
+        <item quantity="one">جهاز ضبط الوقت %d قيد التشغيل</item>
+        <item quantity="two">جهاز ضبط الوقت %d قيد التشغيل</item>
+        <item quantity="few">جهاز ضبط الوقت %d قيد التشغيل</item>
+        <item quantity="many">اجهزة ضبط الوقت %d قيد التشغيل</item>
+        <item quantity="other">جهاز ضبط الوقت %d قيد التشغيل</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">لماذا يتعين علي إلغاء قفل جهازي للرد على مكالمة واردة؟</string>
+    <string name="faq_1_text_dialer_g">يحظر نظام التشغيل لديك وصول التطبيق إلى شاشة القفل. تحتاج إلى السماح للتطبيق بالوصول إلى شاشة القفل. على سبيل المثال ، في MIUI ، تحتاج إلى تمكين الوصول في الإعدادات => الإشعارات => إخطارات شاشة القفل.</string>
+    <string name="faq_2_title_dialer_g">كيف أنسخ رقمًا أو ألصقه على شاشة الاتصال؟</string>
+    <string name="faq_2_text_dialer_g">سيؤدي الضغط لفترة طويلة على زر الاتصال إلى لصق محتويات الحافظة. إذا كنت قد أدخلت بالفعل رقمًا ، فسيؤدي الضغط مع الاستمرار على زر الاتصال إلى نسخ الرقم إلى الحافظة.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">يعرض تطبيق Right Dialer جهات الاتصال المرتبطة برقم هاتف فقط. لا تُعرض جهات الاتصال التي لا تحتوي على رقم هاتف في التطبيق.</string>
+    <string name="slider_style">نمط المنزلق</string>
+    <string name="slider_style_summary">لا يُستخدم شريط التمرير إلا عندما تكون الشاشة مقفلة.</string>
+    <string name="answer_style">نمط زر الإجابة</string>
+    <string name="buttons">الأزرار</string>
+    <string name="answer_slider">شريط التمرير</string>
+    <string name="answer_slider_outline">شريط تمرير المخطط التفصيلي</string>
+    <string name="answer_slider_vertical">شريط التمرير العمودي</string>
+
+    <string name="show_recent_calls">عرض وبحث المكالمات الأخيرة</string>
+    <string name="search_contacts_in_dialpad">ابحث عن جهات الاتصال عند الاتصال برقم</string>
+    <string name="open_dialpad_when_call_from_another_app">عند محاولة إجراء مكالمة من تطبيق آخر، افتح لوحة الاتصال</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">يمكن أن يحميك هذا من البرامج الضارة التي تقوم بإجراء مكالمات دون علمك.</string>
+    <string name="number_of_recent_calls_displays">عرض عدد المكالمات الأخيرة</string>
+    <string name="number_of_recent_calls_displays_summary">بسبب التجميع، قد يكون عدد الصفوف المعروضة أقل.</string>
+    <string name="group_calls">تجميع المكالمات</string>
+    <string name="group_all_calls">تجميع جميع المكالمات، وسيتم عرض المكالمة الأخيرة فقط</string>
+    <string name="call_button_style">نمط زر الجرس</string>
+    <string name="call_notes">ملاحظات المكالمات</string>
+    <string name="back_pressed_end_call">الإجراء الخلفي ينهي المكالمة</string>
+    <string name="keep_calls_in_popup_summary">بعد الرد على مكالمة، تبقى ضمن الإشعارات ولا تظهر بملء الشاشة. هذا الإجراء يهدف إلى تجنب مقاطعة التطبيقات الأخرى، مثلاً أثناء اللعب.</string>
+    <string name="turn_on_speaker_in_popup">تشغيل مكبر الصوت تلقائياً</string>
+    <string name="turn_on_speaker_in_popup_summary">في حال عدم توصيل سماعة رأس، سيتم تشغيل مكبر الصوت.</string>
+    <string name="busy">مشغول</string>
+    <string name="block_calls">حظر المكالمات</string>
+    <string name="edit_number_before_call">تعديل الرقم قبل الاتصال</string>
+    <string name="on_favorite_click">عندما تنقر على المفضلة</string>
+    <string name="call_using_same_sim">استخدم نفس بطاقة SIM التي تم إجراء المكالمة السابقة (الأخيرة) إليها</string>
+    <string name="answer_end_other_call">الرد على المكالمة الحالية وإنهاؤها</string>
+    <string name="quick_answers">إجابات سريعة</string>
+    <string name="voicemail">البريد الصوتي</string>
+    <string name="show_voicemail_icon">إظهار أيقونة البريد الصوتي</string>
+    <string name="secondary_dialpad_language">لغة لوحة الاتصال الثانوية</string>
+    <string name="sim_card_selection_dialog_style">نمط حوار تحديد بطاقة SIM</string>
+    <string name="clear_dialpad_when_start_call">مسح الرقم الذي تم الاتصال به عند بدء مكالمة</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="zero">%d مكالمات فائتة</item>
+        <item quantity="one">%d مكالمة فائتة</item>
+        <item quantity="two">%d المكالمات الفائتة</item>
+        <item quantity="few">%d مكالمات فائتة</item>
+        <item quantity="many">%d مكالمات فائتة</item>
+        <item quantity="other">%d مكالمة فائتة</item>
+    </plurals>
+    <string name="missed_call_from">مكالمة فائتة من %s</string>
+    <string name="keep_calls_in_popup">ترك المكالمات في الإشعارات</string>
+    <string name="on_contact_click">عند النقر على جهة اتصال</string>
+    <string name="on_recent_click">عند النقر على مكالمة حديثة</string>
+    <string name="add_pause">أضف وقفة لمدة ثانيتين (,)</string>
+    <string name="missed">مٌفتَقد</string>
+    <string name="incoming">وارد</string>
+    <string name="outgoing">صادر</string>
+</resources>

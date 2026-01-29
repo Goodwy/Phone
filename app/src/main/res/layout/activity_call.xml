@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/call_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_call_background">
+
+    <!-- default = normal, small - for small screens -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/onHoldStatusHolder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/hint_black"
+        android:paddingStart="@dimen/normal_margin"
+        android:paddingEnd="@dimen/normal_margin"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin"
+            android:contentDescription="@string/call_on_hold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/on_hold_caller_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_phone_vector"/>
+
+        <com.goodwy.commons.views.MyTextView
+            android:id="@+id/on_hold_caller_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/call_status_text_size"
+            android:textDirection="firstStrongLtr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/on_hold_label"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0912 345 678"/>
+
+        <com.goodwy.commons.views.MyTextView
+            android:id="@+id/on_hold_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin"
+            android:text="@string/call_on_hold"
+            android:textSize="@dimen/call_status_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/callInfo"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="@dimen/big_margin"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/conference_manage"
+        android:elevation="@dimen/medium_margin"
+        android:src="@drawable/ic_info"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/onHoldStatusHolder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_goneMarginTop="56dp"
+        tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/addCallerNote"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="@dimen/big_margin"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/add_notes"
+        android:elevation="@dimen/medium_margin"
+        android:padding="@dimen/small_margin"
+        android:src="@drawable/ic_note"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/onHoldStatusHolder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_goneMarginTop="56dp"
+        tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/callerAvatar"
+        android:layout_width="@dimen/caller_avatar_max_size"
+        android:layout_height="@dimen/caller_avatar_max_size"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="@dimen/vertical_bias_avatar"
+        tools:src="@drawable/placeholder_contact"/>
+
+    <com.goodwy.commons.views.MyTextView
+        android:id="@+id/callerNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/caller_name_text_size"
+        android:textDirection="firstStrongLtr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callerAvatar"
+        tools:text="Caller name"/>
+
+    <com.goodwy.commons.views.MyTextView
+        android:id="@+id/callerDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/call_status_text_size"
+        android:visibility="gone"
+        android:textDirection="firstStrongLtr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callerNameLabel"
+        tools:text="Company (Job Position)"
+        tools:visibility="visible"/>
+
+    <com.goodwy.commons.views.MyTextView
+        android:id="@+id/callerNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/call_status_text_size"
+        android:paddingHorizontal="@dimen/normal_margin"
+        android:background="@drawable/ripple_all_corners_11dp"
+        android:textDirection="firstStrongLtr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callerDescription"
+        tools:text="*0912 345 678"/>
+
+    <com.goodwy.commons.views.MyTextView
+        android:id="@+id/callerNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/call_status_text_size"
+        android:paddingHorizontal="@dimen/activity_margin"
+        android:background="@drawable/ripple_all_corners_11dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:visibility="gone"
+        android:textDirection="firstStrongLtr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callerNumber"
+        tools:text="Caller notes"
+        tools:visibility="visible"/>
+
+    <RelativeLayout
+        android:id="@+id/call_status_holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callerNotes">
+
+        <ImageView
+            android:id="@+id/callDetails"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:alpha="0.8"
+            android:contentDescription="HD"
+            android:src="@drawable/ic_hd"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:id="@+id/callSimImage"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="@dimen/one_dp"
+            android:layout_toEndOf="@+id/callDetails"
+            android:alpha="0.8"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_sim_vector"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/callSimId"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignTop="@+id/callSimImage"
+            android:layout_alignBottom="@+id/callSimImage"
+            android:layout_alignStart="@+id/callSimImage"
+            android:layout_alignEnd="@+id/callSimImage"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:textColor="@color/md_grey_black"
+            android:textSize="@dimen/bigger_text_size"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="1"
+            tools:visibility="visible"/>
+
+        <com.goodwy.commons.views.MyTextView
+            android:id="@+id/callStatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one_dp"
+            android:layout_alignTop="@+id/callSimImage"
+            android:layout_alignBottom="@+id/callSimImage"
+            android:layout_toEndOf="@+id/callSimImage"
+            android:layout_marginStart="@dimen/small_margin"
+            android:alpha="0.8"
+            android:textSize="@dimen/call_status_text_size"
+            tools:text="Is Calling"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/hold_status_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:alpha="0.8"
+        android:text="@string/call_on_hold"
+        android:textColor="@color/red_missed"
+        android:textSize="@dimen/call_status_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/call_status_holder"
+        tools:visibility="visible"/>
+
+    <include
+        android:id="@+id/ongoingCallHolder"
+        layout="@layout/call_ongoing_holder"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <include
+        android:id="@+id/incomingCallHolder"
+        layout="@layout/call_incoming_holder"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

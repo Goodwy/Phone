@@ -1,0 +1,1726 @@
+package dev.goodwy.phone.activities
+
+import android.annotation.SuppressLint
+import android.app.KeyguardManager
+import android.app.WallpaperManager
+import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.*
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.RippleDrawable
+import android.media.AudioManager
+import android.net.Uri
+import android.os.*
+import android.telecom.Call
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.view.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.PopupMenu
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
+import androidx.core.view.isVisible
+import com.goodwy.commons.dialogs.ConfirmationAdvancedDialog
+import com.goodwy.commons.extensions.*
+import com.goodwy.commons.helpers.*
+import com.goodwy.commons.models.SimpleListItem
+import dev.goodwy.phone.R
+import dev.goodwy.phone.databinding.ActivityCallBinding
+import dev.goodwy.phone.dialogs.ChangeTextDialog
+import dev.goodwy.phone.extensions.*
+import dev.goodwy.phone.helpers.*
+import dev.goodwy.phone.models.*
+import com.mikhaellopez.rxanimation.*
+import com.mikhaellopez.rxanimation.fadeIn
+import com.mikhaellopez.rxanimation.fadeOut
+import org.greenrobot.eventbus.EventBus
+import java.util.concurrent.TimeUnit
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.get
+import androidx.core.view.size
+import dev.goodwy.phone.helpers.CallManager.Companion.isSpeakerOn
+
+
+class CallActivity : SimpleActivity() {
+    companion object {
+        fun getStartIntent(context: Context, needSelectSIM: Boolean = false): Intent {
+            val openAppIntent = Intent(context, CallActivity::class.java)
+            openAppIntent.putExtra(NEED_SELECT_SIM, needSelectSIM)
+            //Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT --removed it, it can cause a full screen ringing instead of notifications
+            openAppIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+            return openAppIntent
+        }
+    }
+
+    private val binding by viewBinding(ActivityCallBinding::inflate)
+
+    private var isMicrophoneOff = false
+    private var isMicrophoneInitialized = false
+    private var isCallEnded = false
+    private var callContact: CallContact? = null
+    private var proximityWakeLock: PowerManager.WakeLock? = null
+    private var screenOnWakeLock: PowerManager.WakeLock? = null
+    private var callDuration = 0
+    private val callContactAvatarHelper by lazy { CallContactAvatarHelper(this) }
+    private val callDurationHandler = Handler(Looper.getMainLooper())
+    private var dragDownX = 0f
+    private var stopAnimation = false
+    private var dialpadHeight = 0f
+    private var needSelectSIM = false //true - if the call is called from a third-party application not via ACTION_CALL, for example, this is how MIUI applications do it.
+    private var audioRoutePopupMenu: PopupMenu? = null
+    private var needHapticFeedback = true
+
+    @Suppress("DEPRECATION")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        addLockScreenFlags()
+        super.onCreate(savedInstanceState)
+        updateSystemBarsAppearance = false
+
+        setContentView(binding.root)
+
+        if (CallManager.getPhoneState() == NoCall) {
+            finish()
+            return
+        }
+
+        setupEdgeToEdge(
+            padTopSystem = listOf(binding.callHolder),
+            padBottomSystem = listOf(binding.callHolder),
+            moveTopSystem = listOf(binding.callerAvatar, binding.onHoldStatusHolder)
+        )
+
+        needSelectSIM = intent.getBooleanExtra(NEED_SELECT_SIM, false)
+        if (needSelectSIM) initOutgoingCall(CallManager.getPrimaryCall()!!.details.handle)
+
+        initButtons()
+
+        try {
+            audioManager.mode = AudioManager.MODE_IN_CALL
+        } catch (_: Exception) {
+        }
+
+        CallManager.addListener(callCallback)
+        updateTextColors(binding.callHolder)
+
+        if (config.backgroundCallScreen == TRANSPARENT_BACKGROUND) checkPermission()
+
+        val configBackgroundCallScreen = config.backgroundCallScreen
+        if (configBackgroundCallScreen != THEME_BACKGROUND ) {
+            window.setSystemBarsAppearance(Color.BLACK)
+
+            if (configBackgroundCallScreen == BLACK_BACKGROUND) {
+                binding.callHolder.setBackgroundColor(Color.BLACK)
+            } else if (configBackgroundCallScreen == TRANSPARENT_BACKGROUND) {
+                if (!isTiramisuPlus()) {
+                    if (hasPermission(PERMISSION_READ_STORAGE)) {
+                        try {
+                            val wallpaperManager = WallpaperManager.getInstance(this)
+                            @SuppressLint("MissingPermission")
+                            val wallpaperBlur = BlurFactory.fileToBlurBitmap(wallpaperManager.drawable!!, this, 0.2f, 25f)
+                            if (wallpaperBlur != null) {
+                                val drawable: Drawable = wallpaperBlur.toDrawable(resources)
+                                binding.callHolder.background = drawable
+                                binding.callHolder.background.alpha = 60
+                                if (isQPlus()) {
+                                    binding.callHolder.background.colorFilter = BlendModeColorFilter(Color.DKGRAY, BlendMode.SOFT_LIGHT)
+                                } else {
+                                    binding.callHolder.background.setColorFilter(Color.DKGRAY, PorterDuff.Mode.DARKEN)
+                                }
+                            }
+                        } catch (_: Exception) {
+                        }
+                    }
+                }
+            }
+
+            binding.apply {
+                arrayOf(
+                    callerNameLabel, callerDescription, callerNumber, callerNotes, callStatusLabel, incomingCallHolder.callDeclineLabel, incomingCallHolder.callAcceptLabel,
+                    ongoingCallHolder.dialpadInclude.dialpad1, ongoingCallHolder.dialpadInclude.dialpad2, ongoingCallHolder.dialpadInclude.dialpad3, ongoingCallHolder.dialpadInclude.dialpad4,
+                    ongoingCallHolder.dialpadInclude.dialpad5, ongoingCallHolder.dialpadInclude.dialpad6, ongoingCallHolder.dialpadInclude.dialpad7, ongoingCallHolder.dialpadInclude.dialpad8,
+                    ongoingCallHolder.dialpadInclude.dialpad9, ongoingCallHolder.dialpadInclude.dialpad0, ongoingCallHolder.dialpadInclude.dialpadPlus, ongoingCallHolder.dialpadInput,
+                    ongoingCallHolder.dialpadInclude.dialpad2Letters, ongoingCallHolder.dialpadInclude.dialpad3Letters, ongoingCallHolder.dialpadInclude.dialpad4Letters,
+                    ongoingCallHolder.dialpadInclude.dialpad5Letters, ongoingCallHolder.dialpadInclude.dialpad6Letters, ongoingCallHolder.dialpadInclude.dialpad7Letters,
+                    ongoingCallHolder.dialpadInclude.dialpad8Letters, ongoingCallHolder.dialpadInclude.dialpad9Letters,
+                    onHoldCallerName, onHoldLabel, incomingCallHolder.callMessageLabel, incomingCallHolder.callRemindLabel,
+                    ongoingCallHolder.callToggleMicrophoneLabel, ongoingCallHolder.callDialpadLabel, ongoingCallHolder.callToggleSpeakerLabel, ongoingCallHolder.callAddLabel,
+                    ongoingCallHolder.callSwapLabel, ongoingCallHolder.callMergeLabel, ongoingCallHolder.callToggleLabel,
+                    ongoingCallHolder.dialpadClose, ongoingCallHolder.callEndLabel, incomingCallHolder.callAcceptAndDecline
+                ).forEach {
+                    it.setTextColor(Color.WHITE)
+                }
+
+                arrayOf(
+                    ongoingCallHolder.callToggleMicrophone, ongoingCallHolder.callToggleSpeaker, ongoingCallHolder.callDialpad, /*dialpadClose,*/ callSimImage, callDetails,
+                    ongoingCallHolder.callToggleHold, ongoingCallHolder.callAdd, ongoingCallHolder.callSwap, ongoingCallHolder.callMerge, callInfo, addCallerNote, imageView,
+                    ongoingCallHolder.dialpadInclude.dialpadAsterisk, ongoingCallHolder.dialpadInclude.dialpadHashtag
+                ).forEach {
+                    it.applyColorFilter(Color.WHITE)
+                }
+
+                callSimId.setTextColor(Color.WHITE.getContrastColor())
+            }
+        } else {
+            //THEME_BACKGROUND
+            val backgroundColor = getProperBackgroundColor()
+            binding.callHolder.setBackgroundColor(backgroundColor)
+            window.setSystemBarsAppearance(backgroundColor)
+
+            val properTextColor = getProperTextColor()
+            binding.apply {
+                arrayOf(
+                    ongoingCallHolder.callToggleMicrophone, ongoingCallHolder.callToggleSpeaker, ongoingCallHolder.callDialpad, /*dialpadClose,*/ callSimImage, callDetails,
+                    ongoingCallHolder.callToggleHold, ongoingCallHolder.callAdd, ongoingCallHolder.callSwap, ongoingCallHolder.callMerge, callInfo, addCallerNote, imageView,
+                    ongoingCallHolder.dialpadInclude.dialpadAsterisk, ongoingCallHolder.dialpadInclude.dialpadHashtag, incomingCallHolder.callMessage, incomingCallHolder.callRemind
+                ).forEach {
+                    it.applyColorFilter(properTextColor)
+                }
+
+                callSimId.setTextColor(properTextColor.getContrastColor())
+                ongoingCallHolder.dialpadInput.disableKeyboard()
+
+                ongoingCallHolder.dialpadWrapper.onGlobalLayout {
+                    dialpadHeight = ongoingCallHolder.dialpadWrapper.height.toFloat()
+                }
+            }
+        }
+        updateCallContactInfo(CallManager.getPrimaryCall())
+
+        binding.apply {
+            arrayOf(
+                ongoingCallHolder.callToggleMicrophone, ongoingCallHolder.callToggleSpeaker, ongoingCallHolder.callToggleHold,
+                onHoldStatusHolder, incomingCallHolder.callRemind, incomingCallHolder.callMessage,
+                ongoingCallHolder.callDialpadHolder, ongoingCallHolder.callAddHolder,
+                ongoingCallHolder.callSwapHolder, ongoingCallHolder.callMergeHolder,
+                incomingCallHolder.callAcceptAndDecline
+            ).forEach {
+                it.background.applyColorFilter(Color.GRAY)
+                it.background.alpha = 60
+            }
+            ongoingCallHolder.apply {
+                arrayOf(
+                    dialpadInclude.dialpad0Holder, dialpadInclude.dialpad1Holder, dialpadInclude.dialpad2Holder, dialpadInclude.dialpad3Holder,
+                    dialpadInclude.dialpad4Holder, dialpadInclude.dialpad5Holder, dialpadInclude.dialpad6Holder, dialpadInclude.dialpad7Holder,
+                    dialpadInclude.dialpad8Holder, dialpadInclude.dialpad9Holder, dialpadInclude.dialpadAsteriskHolder, dialpadInclude.dialpadHashtagHolder
+                ).forEach {
+                    it.foreground.applyColorFilter(Color.GRAY)
+                    it.foreground.alpha = 60
+                }
+
+
+                if (config.hideDialpadLetters) {
+                    arrayOf(
+                        dialpadInclude.dialpad1Letters,
+                        dialpadInclude.dialpad2Letters,
+                        dialpadInclude.dialpad3Letters,
+                        dialpadInclude.dialpad4Letters,
+                        dialpadInclude.dialpad5Letters,
+                        dialpadInclude.dialpad6Letters,
+                        dialpadInclude.dialpad7Letters,
+                        dialpadInclude.dialpad8Letters,
+                        dialpadInclude.dialpad9Letters
+                    ).forEach {
+                        it.beGone()
+                    }
+                }
+            }
+        }
+
+        val isSmallScreen =
+            resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK == Configuration.SCREENLAYOUT_SIZE_SMALL
+        if (isSmallScreen) {
+            binding.apply {
+                arrayOf(
+                    incomingCallHolder.callDeclineLabel, incomingCallHolder.callAcceptLabel,
+                    incomingCallHolder.callMessageLabel, incomingCallHolder.callRemindLabel,
+                    ongoingCallHolder.callToggleMicrophoneLabel, ongoingCallHolder.callDialpadLabel,
+                    ongoingCallHolder.callToggleSpeakerLabel, ongoingCallHolder.callAddLabel,
+                    ongoingCallHolder.callSwapLabel, ongoingCallHolder.callMergeLabel,
+                    ongoingCallHolder.callToggleLabel, ongoingCallHolder.callEndLabel
+                ).forEach {
+                    it.beGone()
+                }
+            }
+        }
+
+        if (config.flashForAlerts) {
+            val phoneState = CallManager.getPhoneState()
+            if (phoneState is SingleCall) {
+                val call = phoneState.call
+                val isDeviceLocked = !powerManager.isInteractive || keyguardManager.isDeviceLocked
+                if (!call.isOutgoing() && isDeviceLocked) MyCameraImpl.newInstance(this).toggleSOS()
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun initOutgoingCall(callNumber: Uri) {
+        try {
+            getHandleToUse(intent, callNumber.toString()) { handle ->
+                if (handle != null) {
+                    CallManager.getPrimaryCall()?.phoneAccountSelected(handle, false)
+                }
+            }
+        } catch (e: Exception) {
+            showErrorToast(e)
+            finish()
+        }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        updateState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateState()
+    }
+
+    @Suppress("DEPRECATION")
+    @SuppressLint("MissingSuperCall", "Wakelock")
+    override fun onDestroy() {
+        super.onDestroy()
+        CallManager.removeListener(callCallback)
+        disableProximitySensor()
+
+        if (isOreoMr1Plus()) {
+            setShowWhenLocked(false)
+            setTurnScreenOn(false)
+        }
+
+        window.clearFlags(
+            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                or WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+        )
+
+        if (screenOnWakeLock?.isHeld == true) {
+            screenOnWakeLock!!.release()
+        }
+        if (config.flashForAlerts) MyCameraImpl.newInstance(this).stopSOS()
+    }
+
+    override fun onBackPressedCompat(): Boolean {
+        if (binding.ongoingCallHolder.dialpadWrapper.isVisible()) {
+            hideDialpad()
+            return true
+        }
+
+        if (config.backPressedEndCall) {
+            endCall()
+            return true
+        }
+
+        // Allow minimizing active call - user can return via notification
+        return false
+    }
+
+    private fun initButtons() = binding.apply {
+        val isDeviceLocked = !powerManager.isInteractive || keyguardManager.isDeviceLocked
+        if (isDeviceLocked) {
+            when (config.answerStyle) {
+                ANSWER_SLIDER_VERTICAL -> {
+                    incomingCallHolder.apply {
+                        arrayOf(
+                            callDecline, callDeclineLabel,
+                            callAccept, callAcceptLabel,
+                            callDraggable, callDraggableBackground,
+                            callLeftArrow, callRightArrow
+                        ).forEach {
+                            it.beGone()
+                        }
+                    }
+                    handleSwipeVertical()
+                }
+                else -> {
+                    incomingCallHolder.apply {
+                        arrayOf(
+                            callDecline, callDeclineLabel,
+                            callAccept, callAcceptLabel,
+                            callDraggableVertical, callUpArrow, callDownArrow
+                        ).forEach {
+                            it.beGone()
+                        }
+                    }
+                    handleSwipe()
+                }
+            }
+        } else {
+            incomingCallHolder.apply {
+                arrayOf(
+                    callDraggable, callDraggableBackground, callDraggableVertical,
+                    callLeftArrow, callRightArrow,
+                    callUpArrow, callDownArrow
+                ).forEach {
+                    it.beGone()
+                }
+
+                callDecline.setOnClickListener {
+                    endCall()
+                }
+
+                callAccept.setOnClickListener {
+                    acceptCall()
+                }
+            }
+        }
+
+        ongoingCallHolder.callToggleMicrophone.setOnClickListener {
+            toggleMicrophone()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.callToggleSpeaker.setOnClickListener {
+            changeCallAudioRoute()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.callToggleSpeaker.setOnLongClickListener {
+//            if (CallManager.getCallAudioRoute() == AudioRoute.BLUETOOTH) {
+//                openBluetoothSettings()
+            val supportAudioRoutes = CallManager.getSupportedAudioRoutes()
+            if (supportAudioRoutes.size > 2) {
+                CallManager.toggleSpeakerRoute()
+            }
+            else toast(ongoingCallHolder.callToggleSpeaker.contentDescription.toString())
+            maybePerformDialpadHapticFeedback(it)
+            true
+        }
+
+        ongoingCallHolder.callDialpadHolder.setOnClickListener {
+            toggleDialpadVisibility()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.dialpadClose.setOnClickListener {
+            hideDialpad()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.callAddHolder.setOnClickListener {
+            Intent(applicationContext, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+                startActivity(this)
+            }
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.callSwapHolder.setOnClickListener {
+            CallManager.swap()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.callMergeHolder.setOnClickListener {
+            CallManager.merge()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        callInfo.setOnClickListener {
+            startActivity(Intent(this@CallActivity, ConferenceActivity::class.java))
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+        ongoingCallHolder.callToggleHold.setOnClickListener {
+            toggleHold()
+            maybePerformDialpadHapticFeedback(it)
+        }
+
+//        ongoingCallHolder.callAddContactHolder.setOnClickListener {
+//            addContact()
+//            maybePerformDialpadHapticFeedback(it)
+//        }
+
+        ongoingCallHolder.callEnd.setOnClickListener {
+            endCall()
+        }
+
+        ongoingCallHolder.dialpadInclude.apply {
+            dialpad0Holder.setOnClickListener { dialpadPressed('0') }
+            dialpad1Holder.setOnClickListener { dialpadPressed('1') }
+            dialpad2Holder.setOnClickListener { dialpadPressed('2') }
+            dialpad3Holder.setOnClickListener { dialpadPressed('3') }
+            dialpad4Holder.setOnClickListener { dialpadPressed('4') }
+            dialpad5Holder.setOnClickListener { dialpadPressed('5') }
+            dialpad6Holder.setOnClickListener { dialpadPressed('6') }
+            dialpad7Holder.setOnClickListener { dialpadPressed('7') }
+            dialpad8Holder.setOnClickListener { dialpadPressed('8') }
+            dialpad9Holder.setOnClickListener { dialpadPressed('9') }
+
+            dialpad0Holder.setOnLongClickListener { dialpadPressed('+'); true }
+            dialpadAsteriskHolder.setOnClickListener { dialpadPressed('*') }
+            dialpadHashtagHolder.setOnClickListener { dialpadPressed('#') }
+        }
+
+        arrayOf(
+            ongoingCallHolder.callToggleMicrophone, ongoingCallHolder.callDialpadHolder,
+            ongoingCallHolder.callToggleHold, ongoingCallHolder.callAddHolder,
+            ongoingCallHolder.callSwapHolder, ongoingCallHolder.callMergeHolder,
+            callInfo, addCallerNote
+        ).forEach { imageView ->
+            imageView.setOnLongClickListener {
+                if (!imageView.contentDescription.isNullOrEmpty()) {
+                    toast(imageView.contentDescription.toString())
+                }
+                true
+            }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun handleSwipe() = binding.incomingCallHolder.apply {
+        var minDragX = 0f
+        var maxDragX = 0f
+        var initialDraggableX = 0f
+        var initialLeftArrowX = 0f
+        var initialRightArrowX = 0f
+        var initialLeftArrowScaleX = 0f
+        var initialLeftArrowScaleY = 0f
+        var initialRightArrowScaleX = 0f
+        var initialRightArrowScaleY = 0f
+        var leftArrowTranslation = 0f
+        var rightArrowTranslation = 0f
+        var initialBackgroundWidth = 0
+
+        val isRtl = isRTLLayout
+        callAccept.onGlobalLayout {
+            minDragX = if (isRtl) callDraggableBackground.left.toFloat() + resources.getDimension(R.dimen.three_dp)
+                        else callDraggableBackground.left.toFloat() - callDraggable.width.toFloat()
+            maxDragX = if (isRtl) callDraggableBackground.right.toFloat() - 60f
+                        else callDraggableBackground.right.toFloat() - callDraggable.width.toFloat() - resources.getDimension(R.dimen.three_dp) - 20f
+            initialDraggableX = if (isRtl) callDraggableBackground.right.toFloat() - callDraggable.width.toFloat() else callDraggableBackground.left.toFloat() + resources.getDimension(R.dimen.three_dp)
+            initialLeftArrowX = callLeftArrow.x
+            initialRightArrowX = callRightArrow.x
+            initialLeftArrowScaleX = callLeftArrow.scaleX
+            initialLeftArrowScaleY = callLeftArrow.scaleY
+            initialRightArrowScaleX = callRightArrow.scaleX
+            initialRightArrowScaleY = callRightArrow.scaleY
+            leftArrowTranslation = if (isRtl) 50f else -50f //-callDraggableBackground.x
+            rightArrowTranslation = if (isRtl) -50f else 50f //callDraggableBackground.x
+            initialBackgroundWidth = callDraggableBackground.width
+
+            callLeftArrow.applyColorFilter(getColor(R.color.red_call))
+            callRightArrow.applyColorFilter(getColor(R.color.green_call))
+
+            startArrowAnimation(callLeftArrow, initialLeftArrowX, initialLeftArrowScaleX, initialLeftArrowScaleY, leftArrowTranslation)
+            startArrowAnimation(callRightArrow, initialRightArrowX, initialRightArrowScaleX, initialRightArrowScaleY, rightArrowTranslation)
+        }
+
+        val configBackgroundCallScreen = config.backgroundCallScreen
+        if (config.answerStyle == ANSWER_SLIDER_OUTLINE) {
+            callDraggableBackground.background = AppCompatResources.getDrawable(this@CallActivity, R.drawable.call_draggable_background_stroke)
+            val colorBg = if (configBackgroundCallScreen == THEME_BACKGROUND) getProperTextColor() else Color.WHITE
+            callDraggableBackgroundIcon.background.mutate().setTint(colorBg)
+        } else {
+            callDraggableBackground.background.alpha = 51 // 20%
+        }
+        val colorBg =
+            if (configBackgroundCallScreen == TRANSPARENT_BACKGROUND
+                || configBackgroundCallScreen == BLUR_AVATAR
+                || configBackgroundCallScreen == AVATAR
+                || configBackgroundCallScreen == BLACK_BACKGROUND
+                ) Color.WHITE else getProperTextColor()
+        callDraggableBackgroundIcon.drawable.mutate().setTint(getColor(R.color.green_call))
+        callDraggableBackgroundIcon.background.mutate().setTint(colorBg)
+        callDraggableBackground.background.mutate().setTint(colorBg)
+
+        var lock = false
+        callDraggable.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    dragDownX = event.x
+                    //callDraggableBackground.animate().alpha(0f)
+                    stopAnimation = true
+                    callLeftArrow.animate().alpha(0f)
+                    callRightArrow.animate().alpha(0f)
+                    lock = false
+                }
+
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    dragDownX = 0f
+//                    callDraggable.animate().x(initialDraggableX).withEndAction {
+//                        callDraggableBackground.animate().alpha(0.2f)
+//                    }
+                    callDraggable.x(initialDraggableX)
+                    callDraggableBackgroundIcon.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_phone_down_vector))
+                    callDraggableBackgroundIcon.drawable.mutate().setTint(getColor(R.color.green_call))
+                    callLeftArrow.animate().alpha(1f)
+                    callRightArrow.animate().alpha(1f)
+                    stopAnimation = false
+                    startArrowAnimation(callLeftArrow, initialLeftArrowX, initialLeftArrowScaleX, initialLeftArrowScaleY, leftArrowTranslation)
+                    startArrowAnimation(callRightArrow, initialRightArrowX, initialRightArrowScaleX, initialRightArrowScaleY, rightArrowTranslation)
+
+                    callDraggableBackground.layoutParams.width = initialBackgroundWidth
+                    callDraggableBackground.layoutParams = callDraggableBackground.layoutParams
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    callDraggable.x = min(maxDragX, max(minDragX, event.rawX - dragDownX))
+                    callDraggableBackground.layoutParams.width = if (isRtl) (initialBackgroundWidth - (maxDragX + 60 - callDraggable.height.toFloat() - callDraggable.x)).toInt()
+                        else (initialBackgroundWidth + (minDragX + resources.getDimension(R.dimen.three_dp) + callDraggable.width - callDraggable.x)).toInt()
+                    callDraggableBackground.layoutParams = callDraggableBackground.layoutParams
+                    //callerNameLabel.text = callDraggable.x.toString() + "   " + initialBackgroundWidth.toString() + "   " + (minDragX + callDraggable.width - callDraggable.x).toString()
+                    when {
+                        callDraggable.x >= maxDragX -> {
+                            if (!lock) {
+                                lock = true
+                                if (isRtl) {
+                                    endCall()
+                                } else {
+                                    acceptCall()
+                                }
+                            }
+                        }
+
+                        callDraggable.x <= minDragX + 80f -> {
+                            if (!lock) {
+                                lock = true
+                                if (isRtl) {
+                                    acceptCall()
+                                } else {
+                                    endCall()
+                                }
+                            }
+                        }
+
+                        callDraggable.x > initialDraggableX + 20f -> {
+                            lock = false
+                            val drawableRes = if (isRtl) {
+                                R.drawable.ic_phone_down_red_vector
+                            } else {
+                                R.drawable.ic_phone_green_vector
+                            }
+                            callDraggableBackgroundIcon.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, drawableRes))
+                        }
+
+                        callDraggable.x < initialDraggableX - 20f -> {
+                            lock = false
+                            val drawableRes = if (isRtl) {
+                                R.drawable.ic_phone_green_vector
+                            } else {
+                                R.drawable.ic_phone_down_red_vector
+                            }
+                            callDraggableBackgroundIcon.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, drawableRes))
+                        }
+
+                        callDraggable.x <= initialDraggableX + 20f || callDraggable.x >= initialDraggableX - 20f -> {
+                            lock = false
+                            callDraggableBackgroundIcon.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_phone_down_vector))
+                            callDraggableBackgroundIcon.drawable.mutate().setTint(getColor(R.color.green_call))
+                        }
+                    }
+                }
+            }
+            true
+        }
+    }
+
+    private fun startArrowAnimation(arrow: ImageView, initialX: Float, initialScaleX: Float, initialScaleY: Float, translation: Float) {
+        arrow.apply {
+            alpha = 1f
+            x = initialX
+            scaleX = initialScaleX
+            scaleY = initialScaleY
+            animate()
+                .alpha(0f)
+                .translationX(translation)
+                .scaleXBy(-0.5f)
+                .scaleYBy(-0.5f)
+                .setDuration(1000)
+                .withEndAction {
+                    if (!stopAnimation) {
+                        startArrowAnimation(this, initialX, initialScaleX, initialScaleY, translation)
+                    }
+                }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun handleSwipeVertical() = binding.incomingCallHolder.apply {
+        var minDragY = 0f
+        var maxDragY = 0f
+        var initialDraggableY = 0f
+        var initialDownArrowY = 0f
+        var initialUpArrowY = 0f
+        var initialDownArrowScaleX = 0f
+        var initialDownArrowScaleY = 0f
+        var initialUpArrowScaleX = 0f
+        var initialUpArrowScaleY = 0f
+        var downArrowTranslation = 0f
+        var upArrowTranslation = 0f
+
+        callDraggableVertical.onGlobalLayout {
+            minDragY = callDraggableVertical.top.toFloat() - callDraggableVertical.height.toFloat()
+            maxDragY = callDraggableVertical.bottom.toFloat()
+            initialDraggableY = callDraggableVertical.top.toFloat()
+            initialDownArrowY = callDownArrow.y
+            initialUpArrowY = callUpArrow.y
+            initialDownArrowScaleX = callDownArrow.scaleX
+            initialDownArrowScaleY = callDownArrow.scaleY
+            initialUpArrowScaleX = callUpArrow.scaleX
+            initialUpArrowScaleY = callUpArrow.scaleY
+            downArrowTranslation = 50f
+            upArrowTranslation = -50f
+
+            callDownArrow.applyColorFilter(getColor(R.color.red_call))
+            callUpArrow.applyColorFilter(getColor(R.color.green_call))
+
+            startArrowAnimationVertical(callDownArrow, initialDownArrowY, initialDownArrowScaleX, initialDownArrowScaleY, downArrowTranslation)
+            startArrowAnimationVertical(callUpArrow, initialUpArrowY, initialUpArrowScaleX, initialUpArrowScaleY, upArrowTranslation)
+        }
+
+        val configBackgroundCallScreen = config.backgroundCallScreen
+        val colorBg =
+            if (configBackgroundCallScreen == TRANSPARENT_BACKGROUND
+                || configBackgroundCallScreen == BLUR_AVATAR
+                || configBackgroundCallScreen == AVATAR
+                || configBackgroundCallScreen == BLACK_BACKGROUND
+            ) Color.WHITE else getProperTextColor()
+        callDraggableVertical.drawable.mutate().setTint(getColor(R.color.green_call))
+        callDraggableVertical.background.mutate().setTint(colorBg)
+        //callDraggableVertical.background.alpha = 51 // 20%
+
+        var lock = false
+        callDraggableVertical.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+//                    dragDownX = event.y
+                    //callDraggableBackground.animate().alpha(0f)
+                    stopAnimation = true
+                    callDownArrow.animate().alpha(0f)
+                    callUpArrow.animate().alpha(0f)
+                    lock = false
+                }
+
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    dragDownX = 0f
+                    callDraggableVertical.animate().y(initialDraggableY)
+                    callDraggableVertical.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_phone_down_vector))
+                    callDraggableVertical.drawable.mutate().setTint(getColor(R.color.green_call))
+                    callDownArrow.animate().alpha(1f)
+                    callUpArrow.animate().alpha(1f)
+                    stopAnimation = false
+                    startArrowAnimationVertical(callDownArrow, initialDownArrowY, initialDownArrowScaleX, initialDownArrowScaleY, downArrowTranslation)
+                    startArrowAnimationVertical(callUpArrow, initialUpArrowY, initialUpArrowScaleX, initialUpArrowScaleY, upArrowTranslation)
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    callDraggableVertical.y = min(maxDragY, max(minDragY, event.rawY - dragDownX - statusBarHeight))
+                    //callerNameLabel.text = callDraggableVertical.y.toString() + "   " + statusBarHeight.toString() + "   " + callDraggableVertical.top.toFloat().toString()
+                    when {
+                        callDraggableVertical.y >= maxDragY -> {
+                            if (!lock) {
+                                lock = true
+                                endCall()
+                            }
+                        }
+                        callDraggableVertical.y <= minDragY -> {
+                            if (!lock) {
+                                lock = true
+                                acceptCall()
+                            }
+                        }
+                        callDraggableVertical.y > initialDraggableY + 20f -> {
+                            lock = false
+                            callDraggableVertical.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_phone_down_red_vector))
+                        }
+                        callDraggableVertical.y < initialDraggableY - 20f -> {
+                            lock = false
+                            callDraggableVertical.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_phone_green_vector))
+                        }
+                        callDraggableVertical.y <= initialDraggableY + 20f || callDraggableVertical.y >= initialDraggableY - 20f -> {
+                            lock = false
+                            callDraggableVertical.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_phone_down_vector))
+                            callDraggableVertical.drawable.mutate().setTint(getColor(R.color.green_call))
+                        }
+                    }
+                }
+            }
+            true
+        }
+    }
+
+    private fun startArrowAnimationVertical(arrow: ImageView, initialY: Float, initialScaleX: Float, initialScaleY: Float, translation: Float) {
+        arrow.apply {
+            alpha = 1f
+            y = initialY
+            scaleX = initialScaleX
+            scaleY = initialScaleY
+            animate()
+                .alpha(0f)
+                .translationY(translation)
+                .scaleXBy(-0.5f)
+                .scaleYBy(-0.5f)
+                .setDuration(1000)
+                .withEndAction {
+                    if (!stopAnimation) {
+                        startArrowAnimationVertical(this, initialY, initialScaleX, initialScaleY, translation)
+                    }
+                }
+        }
+    }
+
+    private fun dialpadPressed(char: Char) {
+        CallManager.keypad(char)
+        binding.ongoingCallHolder.dialpadInput.addCharacter(char)
+        maybePerformDialpadHapticFeedback(binding.ongoingCallHolder.dialpadInput)
+    }
+
+//    private fun openBluetoothSettings() {
+//        try {
+//            val storageSettingsIntent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+//            startActivity(storageSettingsIntent)
+//        } catch (e: Exception) {
+//            showErrorToast(e)
+//        }
+//    }
+
+    private fun changeCallAudioRoute() {
+        val supportAudioRoutes = CallManager.getSupportedAudioRoutes()
+        if (supportAudioRoutes.size > 2) {
+            createOrUpdateAudioRouteChooser(supportAudioRoutes)
+        } else {
+//            val isSpeakerOn = !isSpeakerOn
+//            val newRoute = if (isSpeakerOn) CallAudioState.ROUTE_SPEAKER else CallAudioState.ROUTE_WIRED_OR_EARPIECE
+//            CallManager.setAudioRoute(newRoute)
+            CallManager.toggleSpeakerRoute()
+        }
+    }
+
+    private fun createOrUpdateAudioRouteChooser(routes: Array<AudioRoute>, create: Boolean = true) {
+        val callAudioRoute = CallManager.getCallAudioRoute()
+        val items = routes
+            .sortedByDescending { it.route }
+            .map {
+                SimpleListItem(id = it.route, textRes = it.stringRes, imageRes = it.iconRes, selected = it == callAudioRoute)
+            }
+            .toTypedArray()
+
+        if (audioRoutePopupMenu != null) {
+            audioRoutePopupMenu?.dismiss()
+        }
+
+        if (create) {
+            val wrapper: Context = ContextThemeWrapper(this@CallActivity, getPopupMenuTheme())
+            audioRoutePopupMenu = PopupMenu(wrapper, binding.ongoingCallHolder.callToggleSpeaker, Gravity.END)
+
+            items.forEach { item ->
+                audioRoutePopupMenu?.menu?.add(
+                    1,
+                    item.id,
+                    item.id,
+                    item.textRes ?: R.string.other
+                )?.setIcon(item.imageRes ?: R.drawable.ic_transparent)
+            }
+
+            audioRoutePopupMenu?.setOnMenuItemClickListener { item ->
+                CallManager.setAudioRoute(item.itemId)
+                true
+            }
+
+            if (isQPlus()) {
+                audioRoutePopupMenu?.setForceShowIcon(true)
+            }
+
+            audioRoutePopupMenu?.show()
+
+            val selected = items.first { it.selected }
+            val primaryColor = getProperPrimaryColor()
+            val textColor = getProperTextColor()
+            // icon and text coloring
+            audioRoutePopupMenu?.menu?.apply {
+                for (index in 0 until this.size) {
+                    val item = this[index]
+                    val color = if (item.itemId == selected.id) primaryColor else textColor
+
+                    //icon coloring
+                    if (isQPlus()) {
+                        item.icon!!.colorFilter = BlendModeColorFilter(
+                            color, BlendMode.SRC_IN
+                        )
+                    } else {
+                        item.icon!!.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                    }
+
+                    //text coloring
+                    val spannableString = SpannableString(item.title)
+                    spannableString.setSpan(
+                        ForegroundColorSpan(color),
+                        0,
+                        spannableString.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    item.title = spannableString
+                }
+            }
+        }
+    }
+
+    private fun updateCallAudioState(route: AudioRoute?, changeProximitySensor: Boolean = true) {
+        if (route != null) {
+            //If enabled, one of the users (OnePlus 13r, Oxygen 16OS) has his microphone turned off at the start of a call??
+            //isMicrophoneOff = audioManager.isMicrophoneMute
+            if (isMicrophoneInitialized) isMicrophoneOff = audioManager.isMicrophoneMute
+            else isMicrophoneInitialized = true
+
+            updateMicrophoneButton()
+
+            isSpeakerOn = route == AudioRoute.SPEAKER
+            val supportedAudioRoutes = CallManager.getSupportedAudioRoutes()
+            binding.ongoingCallHolder.callToggleSpeaker.apply {
+                val bluetoothConnected = supportedAudioRoutes.contains(AudioRoute.BLUETOOTH)
+                contentDescription = if (bluetoothConnected) {
+                    getString(R.string.choose_audio_route)
+                } else {
+                    getString(if (isSpeakerOn) R.string.turn_speaker_off else R.string.turn_speaker_on)
+                }
+                // show speaker icon when a headset is connected, a headset icon maybe confusing to some
+                if (/*route == AudioRoute.WIRED_HEADSET || */route == AudioRoute.EARPIECE) {
+                    setImageResource(R.drawable.ic_volume_down_vector)
+                } else {
+                    setImageResource(route.iconRes)
+                }
+            }
+            val supportAudioRoutes = CallManager.getSupportedAudioRoutes()
+            binding.ongoingCallHolder.callToggleSpeakerLabel.text =
+                if (supportAudioRoutes.size == 2) getString(R.string.audio_route_speaker) else  getString(route.stringRes)
+            toggleButtonColor(binding.ongoingCallHolder.callToggleSpeaker, enabled = route != AudioRoute.EARPIECE && route != AudioRoute.WIRED_HEADSET)
+            createOrUpdateAudioRouteChooser(supportedAudioRoutes, create = false)
+
+            if (changeProximitySensor) { // No need to turn on the sensor when a call has not yet been answered
+                if (isSpeakerOn) {
+                    disableProximitySensor()
+                } else {
+                    enableProximitySensor()
+                }
+            }
+        }
+    }
+
+    private fun toggleMicrophone() {
+        isMicrophoneOff = !isMicrophoneOff
+
+        audioManager.isMicrophoneMute = isMicrophoneOff
+        CallManager.inCallService?.setMuted(isMicrophoneOff)
+        updateMicrophoneButton()
+
+        CallNotificationManager(this).updateNotification()
+    }
+
+    private fun updateMicrophoneButton() {
+        binding.ongoingCallHolder.apply {
+            val drawable = if (!isMicrophoneOff) R.drawable.ic_microphone_vector else R.drawable.ic_microphone_off_vector
+            callToggleMicrophone.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, drawable))
+
+            val configBackgroundCallScreen = config.backgroundCallScreen
+            if (configBackgroundCallScreen == TRANSPARENT_BACKGROUND ||
+                configBackgroundCallScreen == BLUR_AVATAR ||
+                configBackgroundCallScreen == AVATAR
+            ) {
+                val color = if (isMicrophoneOff) Color.WHITE else Color.GRAY
+                callToggleMicrophone.background.applyColorFilter(color)
+                val colorIcon = if (isMicrophoneOff) Color.BLACK else Color.WHITE
+                callToggleMicrophone.applyColorFilter(colorIcon)
+            }
+            callToggleMicrophone.background.alpha = if (isMicrophoneOff) 255 else 60
+            callToggleMicrophone.contentDescription =
+                getString(if (isMicrophoneOff) R.string.turn_microphone_on else R.string.turn_microphone_off)
+//            callToggleMicrophoneLabel.text =
+//                getString(if (isMicrophoneOff) R.string.turn_microphone_on else R.string.turn_microphone_off)
+        }
+    }
+
+    private fun toggleDialpadVisibility() {
+        if (binding.ongoingCallHolder.dialpadWrapper.isVisible()) hideDialpad() else showDialpad()
+    }
+
+    private fun showDialpad() {
+        binding.apply {
+            ongoingCallHolder.dialpadWrapper.beVisible()
+            ongoingCallHolder.dialpadClose.beVisible()
+            arrayOf(
+                callerAvatar, callerNameLabel, callerDescription, callerNumber, callerNotes, callStatusLabel,
+                callSimImage, callSimId, ongoingCallHolder.callToggleMicrophone, ongoingCallHolder.callDialpadHolder,
+                ongoingCallHolder.callToggleSpeaker, callInfo, addCallerNote, ongoingCallHolder.callEndLabel
+            ).forEach {
+                it.beGone()
+            }
+            ongoingCallHolder.controlsSingleCall.beGone()
+            ongoingCallHolder.controlsTwoCalls.beGone()
+
+            RxAnimation.together(
+                ongoingCallHolder.dialpadWrapper.scale(1f),
+                ongoingCallHolder.dialpadWrapper.fadeIn(duration = 160),
+                ongoingCallHolder.dialpadClose.fadeIn(duration = 160)
+            ).doAfterTerminate {
+            }.subscribe()
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun hideDialpad() {
+        binding.apply {
+            RxAnimation.together(
+                ongoingCallHolder.dialpadWrapper.scale(0.7f),
+                ongoingCallHolder.dialpadWrapper.fadeOut(duration = 160),
+                ongoingCallHolder.dialpadClose.fadeOut(duration = 160)
+            ).doAfterTerminate {
+                ongoingCallHolder.dialpadWrapper.beGone()
+                ongoingCallHolder.dialpadClose.beGone()
+                arrayOf(
+                    callerAvatar, callerNameLabel, callerNumber, callStatusLabel,
+                    ongoingCallHolder.callToggleMicrophone, ongoingCallHolder.callDialpadHolder,
+                    ongoingCallHolder.callToggleSpeaker, ongoingCallHolder.callEndLabel
+                ).forEach {
+                    it.beVisible()
+                }
+//                val isSmallScreen =
+//                    resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK == Configuration.SCREENLAYOUT_SIZE_SMALL
+//                ongoingCallHolder.callAddContactHolder.beVisibleIf(config.callButtonStyle == IOS16 && !isSmallScreen)
+                callerDescription.beVisibleIf(callerDescription.text.isNotEmpty())
+                callerNotes.beVisibleIf(callerNotes.text.isNotEmpty())
+                val accounts = telecomManager.callCapablePhoneAccounts
+                callSimImage.beVisibleIf(accounts.size > 1)
+                callSimId.beVisibleIf(accounts.size > 1)
+                updateState()
+            }.subscribe()
+        }
+    }
+
+    private fun toggleHold() {
+        binding.apply {
+            val isOnHold = CallManager.toggleHold()
+            val drawable = if (isOnHold) R.drawable.ic_pause_crossed_vector else R.drawable.ic_pause_vector
+            ongoingCallHolder.callToggleHold.setImageDrawable(AppCompatResources.getDrawable(this@CallActivity, drawable))
+            val description = getString(if (isOnHold) R.string.resume_call else R.string.hold_call)
+            ongoingCallHolder.callToggleLabel.text = description
+            ongoingCallHolder.callToggleHold.contentDescription = description
+            holdStatusLabel.beInvisibleIf(!isOnHold)
+            RxAnimation.from(holdStatusLabel)
+                .shake()
+                .subscribe()
+
+            val configBackgroundCallScreen = config.backgroundCallScreen
+            if (configBackgroundCallScreen == TRANSPARENT_BACKGROUND ||
+                configBackgroundCallScreen == BLUR_AVATAR ||
+                configBackgroundCallScreen == AVATAR
+            ) {
+                val color = if (isOnHold) Color.WHITE else Color.GRAY
+                ongoingCallHolder.callToggleHold.background.applyColorFilter(color)
+                val colorIcon = if (isOnHold) Color.BLACK else Color.WHITE
+                ongoingCallHolder.callToggleHold.applyColorFilter(colorIcon)
+            }
+            ongoingCallHolder.callToggleHold.background.alpha = if (isOnHold) 255 else 60
+        }
+    }
+
+    private fun addContact() {
+        val number = callContact?.number?.ifEmpty { "" } ?: ""
+        val formatNumber = if (config.formatPhoneNumbers) number.formatPhoneNumber() else number
+        Intent().apply {
+            action = Intent.ACTION_INSERT_OR_EDIT
+            type = "vnd.android.cursor.item/contact"
+            putExtra(KEY_PHONE, formatNumber)
+            launchActivityIntent(this)
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun updateOtherPersonsInfo(avatarUri: String, isConference: Boolean) {
+        if (callContact == null) {
+            return
+        }
+
+        binding.apply {
+            val (name, _, number, numberLabel, description, isABusinessCall, isVoiceMail) = callContact!!
+            callerNameLabel.text =
+                formatterUnicodeWrap(name.ifEmpty { getString(R.string.unknown_caller) })
+            if (number.isNotEmpty() && number != name) {
+                val numberText = formatterUnicodeWrap(number)
+                if (numberLabel.isNotEmpty()) {
+                    val numberLabelText = formatterUnicodeWrap(numberLabel)
+                    callerNumber.text = numberLabelText
+                    callerNumber.setOnClickListener {
+                        if (callerNumber.text == numberLabelText) callerNumber.text = numberText
+                        else callerNumber.text = numberLabelText
+                        maybePerformDialpadHapticFeedback(it)
+                    }
+                } else {
+                    callerNumber.text = numberText
+                }
+
+                if (description.isNotEmpty() && description != name) {
+                    callerDescription.text = formatterUnicodeWrap(description)
+                    callerDescription.beVisible()
+                } else callerDescription.beGone()
+            } else {
+                callerDescription.beGone()
+                val country = number.getCountryByNumber()
+                if (country != "") {
+                    callerNumber.text = formatterUnicodeWrap(country)
+                } else callerNumber.beGone()
+            }
+
+            callerAvatar.apply {
+                try {
+                    if (number == name || ((isABusinessCall || isVoiceMail) && avatarUri == "") || isDestroyed || isFinishing) {
+                        val drawable = when {
+                            isVoiceMail -> {
+                                @SuppressLint("UseCompatLoadingForDrawables")
+                                val drawableVoicemail = resources.getDrawable( R.drawable.placeholder_voicemail, theme)
+                                if (baseConfig.useColoredContacts) {
+                                    val letterBackgroundColors = getLetterBackgroundColors()
+                                    val color = letterBackgroundColors[abs(name.hashCode()) % letterBackgroundColors.size].toInt()
+                                    (drawableVoicemail as LayerDrawable).findDrawableByLayerId(R.id.placeholder_contact_background).applyColorFilter(color)
+                                }
+                                drawableVoicemail
+                            }
+                            isABusinessCall -> SimpleContactsHelper(this@CallActivity).getColoredCompanyIcon(name)
+                            else -> SimpleContactsHelper(this@CallActivity).getColoredContactIcon(name)
+                        }
+                        setImageDrawable(drawable)
+                    } else {
+                        if (!isFinishing && !isDestroyed) {
+                            val placeholder = if (isConference) {
+                                SimpleContactsHelper(this@CallActivity).getColoredGroupIcon(name)
+                            } else null
+                            SimpleContactsHelper(this@CallActivity.applicationContext).loadContactImage(
+                                avatarUri,
+                                this,
+                                name,
+                                placeholder
+                            )
+                        }
+                    }
+                } catch (_: Exception) {
+                    @SuppressLint("UseCompatLoadingForDrawables")
+                    val drawable = resources.getDrawable( R.drawable.placeholder_contact, theme)
+                    setImageDrawable(drawable)
+                }
+            }
+
+            incomingCallHolder.callMessage.apply {
+                setOnClickListener {
+                    val wrapper: Context = ContextThemeWrapper(this@CallActivity, getPopupMenuTheme())
+                    val popupMenu = PopupMenu(wrapper, incomingCallHolder.callMessage, Gravity.END)
+                    val quickAnswers = config.quickAnswers
+                    popupMenu.menu.add(1, 1, 1, R.string.other).setIcon(R.drawable.ic_transparent)
+                    if (quickAnswers.size == 3) {
+                        popupMenu.menu.add(1, 2, 2, quickAnswers[0]).setIcon(R.drawable.ic_clock_vector)
+                        popupMenu.menu.add(1, 3, 3, quickAnswers[1]).setIcon(R.drawable.ic_run)
+                        popupMenu.menu.add(1, 4, 4, quickAnswers[2]).setIcon(R.drawable.ic_microphone_off_vector)
+                    }
+                    popupMenu.setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            1 -> {
+                                sendSMS(callContact!!.number)
+                                endCall()
+                            }
+
+                            else -> {
+                                endCall(rejectWithMessage = true, textMessage = item.title.toString())
+                            }
+                        }
+                        true
+                    }
+                    if (isQPlus()) {
+                        popupMenu.setForceShowIcon(true)
+                    }
+                    popupMenu.show()
+                    // icon coloring
+                    popupMenu.menu.apply {
+                        for (index in 0 until this.size) {
+                            val item = this[index]
+
+                            if (isQPlus()) {
+                                item.icon!!.colorFilter = BlendModeColorFilter(
+                                    getProperTextColor(), BlendMode.SRC_IN
+                                )
+                            } else {
+                                item.icon!!.setColorFilter(getProperTextColor(), PorterDuff.Mode.SRC_IN)
+                            }
+                        }
+                    }
+
+                    //sendSMS(callContact!!.number, "textMessage")
+                }
+                setOnLongClickListener { toast(R.string.send_sms); true; }
+            }
+
+            incomingCallHolder.callRemind.apply {
+                setOnClickListener {
+                    this@CallActivity.handleNotificationPermission { permission ->
+                        if (permission) {
+                            val wrapper: Context = ContextThemeWrapper(this@CallActivity, getPopupMenuTheme())
+                            val popupMenu = PopupMenu(wrapper, incomingCallHolder.callRemind, Gravity.START)
+                            popupMenu.menu.add(1, 1, 1, String.format(resources.getQuantityString(R.plurals.minutes, 10, 10)))
+                            popupMenu.menu.add(1, 2, 2, String.format(resources.getQuantityString(R.plurals.minutes, 30, 30)))
+                            popupMenu.menu.add(1, 3, 3, String.format(resources.getQuantityString(R.plurals.minutes, 60, 60)))
+                            popupMenu.setOnMenuItemClickListener { item ->
+                                when (item.itemId) {
+                                    1 -> {
+                                        startTimer(600)
+                                        endCall()
+                                    }
+
+                                    2 -> {
+                                        startTimer(1800)
+                                        endCall()
+                                    }
+
+                                    else -> {
+                                        startTimer(3600)
+                                        endCall()
+                                    }
+                                }
+                                true
+                            }
+                            popupMenu.show()
+                        } else {
+                            toast(R.string.allow_notifications_reminders)
+                        }
+                    }
+                }
+                setOnLongClickListener { toast(R.string.remind_me); true; }
+            }
+
+            val callNote = callerNotesHelper.getCallerNotes(number)
+            callerNotes.apply {
+                beVisibleIf(callNote != null && !isConference)
+                if (callNote != null) {
+                    text = callNote.note
+                }
+                setOnClickListener {
+                    changeNoteDialog(number)
+                }
+            }
+
+            addCallerNote.apply {
+                setOnClickListener {
+                    changeNoteDialog(number)
+                }
+            }
+        }
+    }
+
+    private fun changeNoteDialog(number: String) {
+        val callerNote = callerNotesHelper.getCallerNotes(number)
+        ChangeTextDialog(
+            activity = this@CallActivity,
+            title = number.normalizeString(),
+            currentText = callerNote?.note,
+            maxLength = CALLER_NOTES_MAX_LENGTH,
+            showNeutralButton = true,
+            neutralTextRes = R.string.delete
+        ) {
+            if (it != "") {
+                callerNotesHelper.addCallerNotes(number, it, callerNote) {
+                    binding.callerNotes.text = it
+                    binding.callerNotes.beVisible()
+                }
+            } else {
+                callerNotesHelper.deleteCallerNotes(callerNote) {
+                    binding.callerNotes.text = it
+                    binding.callerNotes.beGone()
+                }
+            }
+        }
+    }
+
+    private fun startTimer(duration: Int) {
+        timerHelper.getTimers { timers ->
+            val runningTimers = timers.filter { it.state is TimerState.Running && it.id == 1 }
+            runningTimers.forEach { timer ->
+                EventBus.getDefault().post(TimerEvent.Delete(timer.id!!))
+            }
+            val newTimer = createNewTimer()
+            newTimer.id = 1
+            newTimer.title = callContact!!.name
+            newTimer.label = callContact!!.number
+            newTimer.seconds = duration
+            timerHelper.insertOrUpdateTimer(newTimer)
+            EventBus.getDefault().post(TimerEvent.Start(1, duration.secondsToMillis))
+        }
+    }
+
+    private val Int.secondsToMillis get() = TimeUnit.SECONDS.toMillis(this.toLong())
+
+    private fun sendSMS(number: String, text: String = " ") {
+        Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.fromParts("smsto", number, null)
+            putExtra("sms_body", text)
+            launchActivityIntent(this)
+        }
+    }
+
+    private fun getContactNameOrNumber(contact: CallContact): String {
+        return contact.name.ifEmpty {
+            contact.number.ifEmpty {
+                getString(R.string.unknown_caller)
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun checkCalledSIMCard() {
+        try {
+            val simLabels = getAvailableSIMCardLabels()
+            if (simLabels.size > 1) {
+                simLabels.forEachIndexed { index, sim ->
+                    if (sim.handle == CallManager.getPrimaryCall()?.details?.accountHandle) {
+                        binding.apply {
+                            callSimId.text = sim.id.toString()
+                            callSimId.beVisible()
+                            callSimImage.beVisible()
+                            val simColor = sim.color
+                            callSimId.setTextColor(simColor.getContrastColor())
+                            callSimImage.applyColorFilter(simColor)
+                        }
+
+                        val acceptDrawableId = when (index) {
+                            0 -> R.drawable.ic_phone_one_vector
+                            1 -> R.drawable.ic_phone_two_vector
+                            else -> R.drawable.ic_phone_vector
+                        }
+                        val acceptDrawable = AppCompatResources.getDrawable(this@CallActivity, acceptDrawableId)
+
+                        val rippleBg = AppCompatResources.getDrawable(this@CallActivity, R.drawable.ic_call_accept) as RippleDrawable
+                        val layerDrawable = rippleBg.findDrawableByLayerId(R.id.accept_call_background_holder) as LayerDrawable
+                        layerDrawable.setDrawableByLayerId(R.id.accept_call_icon, acceptDrawable)
+                        binding.incomingCallHolder.callAccept.setImageDrawable(rippleBg)
+                    }
+                }
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    private fun updateCallState(call: Call) {
+        val callDetails = call.details
+        val connectTimeMillis: Long = callDetails.connectTimeMillis
+        val isBusy = connectTimeMillis.toInt() == 0
+
+        val state = call.getStateCompat()
+        when (state) {
+            Call.STATE_RINGING -> callRinging()
+            Call.STATE_ACTIVE -> callStarted()
+            Call.STATE_DISCONNECTED -> endCall(isBusy = isBusy)
+            Call.STATE_CONNECTING, Call.STATE_DIALING -> initOutgoingCallUI()
+            Call.STATE_SELECT_PHONE_ACCOUNT -> showPhoneAccountPicker()
+        }
+
+        val statusTextId = when (state) {
+            Call.STATE_RINGING -> R.string.is_calling
+            Call.STATE_CONNECTING, Call.STATE_DIALING -> R.string.dialing
+            Call.STATE_DISCONNECTED -> if (isBusy) R.string.busy else 0
+            else -> 0
+        }
+
+        binding.apply {
+            if (statusTextId != 0) {
+                callStatusLabel.text = getString(statusTextId)
+            }
+
+            callInfo.beVisibleIf(!isCallEnded && call.hasCapability(Call.Details.CAPABILITY_MANAGE_CONFERENCE))
+            addCallerNote.beVisibleIf(!callInfo.isVisible)
+            if (ongoingCallHolder.dialpadWrapper.isGone()) {
+                setActionButtonEnabled(ongoingCallHolder.callSwapHolder, enabled = !isCallEnded && state == Call.STATE_ACTIVE)
+                setActionButtonEnabled(ongoingCallHolder.callMergeHolder, enabled = !isCallEnded && state == Call.STATE_ACTIVE)
+            }
+        }
+    }
+
+    private fun updateState() {
+        val phoneState = CallManager.getPhoneState()
+        var changeProximitySensor = true
+        if (phoneState is SingleCall) {
+            updateCallState(phoneState.call)
+            updateCallOnHoldState(null)
+            val state = phoneState.call.getStateCompat()
+            val isSingleCallActionsEnabled = !isCallEnded && (state == Call.STATE_ACTIVE || state == Call.STATE_DISCONNECTED
+                || state == Call.STATE_DISCONNECTING || state == Call.STATE_HOLDING)
+            if (binding.ongoingCallHolder.dialpadWrapper.isGone()) {
+                setActionImageViewEnabled(binding.ongoingCallHolder.callToggleHold, isSingleCallActionsEnabled)
+                setActionButtonEnabled(binding.ongoingCallHolder.callAddHolder, isSingleCallActionsEnabled)
+            }
+            if (state == Call.REJECT_REASON_UNWANTED) changeProximitySensor = false
+        } else if (phoneState is TwoCalls) {
+            updateCallState(phoneState.active)
+            updateCallOnHoldState(phoneState.onHold, phoneState.active)
+        }
+
+        runOnUiThread {
+            updateCallAudioState(CallManager.getCallAudioRoute(), changeProximitySensor)
+            updateMicrophoneButton()
+        }
+    }
+
+    private fun updateCallOnHoldState(call: Call?, callActive: Call? = null) {
+        val hasCallOnHold = call != null
+        if (hasCallOnHold) {
+            getCallContact(applicationContext, call) { contact ->
+                runOnUiThread {
+                    binding.onHoldCallerName.text = getContactNameOrNumber(contact)
+                }
+            }
+
+            // A second call has been received but not yet accepted
+            if (call.getStateCompat() == Call.REJECT_REASON_UNWANTED) {
+                binding.apply {
+                    ongoingCallHolder.root.beGone()
+                    incomingCallHolder.root.beVisible()
+                    callStatusLabel.text = getString(R.string.is_calling)
+                    RxAnimation.from(binding.callStatusLabel)
+                        .shake()
+                        .subscribe()
+
+                    incomingCallHolder.apply {
+                        arrayOf(
+                            callDraggable, callDraggableBackground, callDraggableVertical,
+                            callLeftArrow, callRightArrow,
+                            callUpArrow, callDownArrow
+                        ).forEach {
+                            it.beGone()
+                        }
+
+
+                        callDecline.beVisible()
+                        callDecline.setOnClickListener {
+                            endCall()
+                        }
+
+                        callAccept.beVisible()
+                        callAccept.setOnClickListener {
+                            acceptCall()
+                        }
+
+                        callAcceptAndDecline.apply {
+                            beVisible()
+                            setText(R.string.answer_end_other_call)
+                            setOnClickListener {
+                                acceptCall()
+                                callActive?.disconnect()
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if (config.callBlockButton) binding.incomingCallHolder.callAcceptAndDecline.apply {
+                beVisible()
+                setText(R.string.block_number)
+                setOnClickListener {
+                    if (callContact != null) {
+                        val number = callContact!!.number
+                        val baseString = R.string.block_confirmation
+                        val question = String.format(resources.getString(baseString), number)
+
+                        ConfirmationAdvancedDialog(this@CallActivity, question, cancelOnTouchOutside = false) {
+                            if (it) {
+                                blockNumbers(number.normalizePhoneNumber())
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        binding.apply {
+            onHoldStatusHolder.beVisibleIf(hasCallOnHold)
+            ongoingCallHolder.controlsSingleCall.beVisibleIf(!hasCallOnHold && ongoingCallHolder.dialpadWrapper.isGone())
+            ongoingCallHolder.controlsTwoCalls.beVisibleIf(hasCallOnHold && ongoingCallHolder.dialpadWrapper.isGone())
+        }
+    }
+
+    private fun blockNumbers(number: String) {
+        config.needRestart = true
+        if (addBlockedNumber(number)) endCall()
+    }
+
+    @Suppress("DEPRECATION")
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun updateCallContactInfo(call: Call?) {
+        binding.callDetails.beVisibleIf(call.isHD())
+        getCallContact(applicationContext, call) { contact ->
+            if (call != CallManager.getPrimaryCall()) {
+                return@getCallContact
+            }
+            callContact = contact
+
+            val configBackgroundCallScreen = config.backgroundCallScreen
+            val isConference = call.isConference()
+
+            var drawable: Drawable? = null
+            if (configBackgroundCallScreen == BLUR_AVATAR || configBackgroundCallScreen == AVATAR) {
+                val avatar =
+                    if (!isConference) callContactAvatarHelper.getCallContactAvatar(contact.photoUri, false) else null
+                if (avatar != null) {
+                    val bg = when (configBackgroundCallScreen) {
+                        BLUR_AVATAR -> BlurFactory.fileToBlurBitmap(avatar, this, 0.6f, 5f)
+                        AVATAR -> avatar
+                        else -> null
+                    }
+                    val windowHeight = binding.callHolder.height //window.decorView.height
+                    val windowWidth = binding.callHolder.width //window.decorView.width
+                    if (bg != null && windowWidth != 0) {
+                        val aspectRatio = windowHeight / windowWidth
+                        val aspectRatioNotZero = if (aspectRatio == 0) 1 else aspectRatio
+                        drawable = bg.cropCenter(bg.width / aspectRatioNotZero, bg.height)?.toDrawable(resources)
+                    }
+                }
+            }
+
+            runOnUiThread {
+                if (drawable != null) {
+                    binding.callHolder.background = drawable
+                    binding.callHolder.background.alpha = 60
+                    if (isQPlus()) {
+                        binding.callHolder.background.colorFilter = BlendModeColorFilter(Color.DKGRAY, BlendMode.SOFT_LIGHT)
+                    } else {
+                        binding.callHolder.background.setColorFilter(Color.DKGRAY, PorterDuff.Mode.DARKEN)
+                    }
+                }
+
+                val avatarRound = if (!isConference) contact.photoUri else ""
+                updateOtherPersonsInfo(avatarRound, isConference)
+                checkCalledSIMCard()
+            }
+        }
+    }
+
+    private fun acceptCall() {
+        CallManager.accept()
+    }
+
+    private fun initOutgoingCallUI() {
+        enableProximitySensor()
+        binding.incomingCallHolder.root.beGone()
+        binding.ongoingCallHolder.root.beVisible()
+        binding.ongoingCallHolder.callEnd.beVisible()
+        needHapticFeedback = true
+    }
+
+    private fun callRinging() {
+        binding.incomingCallHolder.root.beVisible()
+    }
+
+    private fun callStarted() {
+        enableProximitySensor()
+        binding.incomingCallHolder.root.beGone()
+        binding.ongoingCallHolder.root.beVisible()
+        binding.ongoingCallHolder.callEnd.beVisible()
+        callDurationHandler.removeCallbacks(updateCallDurationTask)
+        callDurationHandler.post(updateCallDurationTask)
+        if (needHapticFeedback) maybePerformCallHapticFeedback(binding.callerNameLabel)
+    }
+
+    private fun showPhoneAccountPicker() {
+        if (callContact != null && !needSelectSIM) {
+            getHandleToUse(intent, callContact!!.number) { handle ->
+                CallManager.getPrimaryCall()?.phoneAccountSelected(handle, false)
+            }
+        }
+    }
+
+    private fun endCall(rejectWithMessage: Boolean = false, textMessage: String? = null, isBusy: Boolean = false) {
+        CallManager.reject(rejectWithMessage, textMessage)
+
+        if (isBusy) toast(R.string.busy)
+
+        if (isCallEnded) {
+            safeFinishAndRemoveTask()
+            return
+        }
+
+        try {
+            audioManager.mode = AudioManager.MODE_NORMAL
+        } catch (_: Exception) {
+        }
+
+        isCallEnded = true
+        runOnUiThread {
+            val phoneState = CallManager.getPhoneState()
+            if (callDuration > 0) {
+                disableAllActionButtons()
+                @SuppressLint("SetTextI18n")
+                val label = "${callDuration.getFormattedDuration()} (${getString(R.string.call_ended)})"
+                binding.callStatusLabel.text = label
+                safeFinishAndRemoveTask()
+                if (phoneState is TwoCalls) startActivity(Intent(this, CallActivity::class.java))
+            } else {
+                disableAllActionButtons()
+                binding.callStatusLabel.text = getString(R.string.call_ended)
+                if (phoneState is TwoCalls) {
+                    safeFinishAndRemoveTask()
+                    startActivity(Intent(this, CallActivity::class.java))
+                } else finish()
+            }
+            if (phoneState is SingleCall) disableProximitySensor()
+        }
+        maybePerformCallHapticFeedback(binding.callerNameLabel)
+    }
+
+    private fun safeFinishAndRemoveTask() {
+        try {
+            if (intent != null) {
+                finishAndRemoveTask()
+            } else {
+                finish()
+            }
+        } catch (_: Exception) {
+            finish()
+        }
+    }
+
+    private val callCallback = object : CallManagerListener {
+        override fun onStateChanged() {
+            updateState()
+        }
+
+        override fun onAudioStateChanged(audioState: AudioRoute) {
+            updateCallAudioState(audioState)
+        }
+
+        override fun onPrimaryCallChanged(call: Call) {
+            callDurationHandler.removeCallbacks(updateCallDurationTask)
+            updateCallContactInfo(call)
+            updateState()
+        }
+    }
+
+    private val updateCallDurationTask = object : Runnable {
+        override fun run() {
+            val call = CallManager.getPrimaryCall()
+            callDuration = call.getCallDuration()
+            if (!isCallEnded && call.getStateCompat() != Call.REJECT_REASON_UNWANTED) {
+                binding.callStatusLabel.text = callDuration.getFormattedDuration()
+                callDurationHandler.postDelayed(this, 1000)
+            }
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun addLockScreenFlags() {
+        if (isOreoMr1Plus()) {
+            setShowWhenLocked(true)
+            setTurnScreenOn(true)
+        }
+
+        window.addFlags(
+            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON or
+                WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
+                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+        )
+
+        try {
+            val keyguardManager = getSystemService(KEYGUARD_SERVICE) as KeyguardManager
+            keyguardManager.requestDismissKeyguard(this, null)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        try {
+            val powerManager = getSystemService(POWER_SERVICE) as PowerManager
+            screenOnWakeLock = powerManager.newWakeLock(
+                PowerManager.FULL_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                "dev.goodwy.phone:full_wake_lock"
+            )
+            screenOnWakeLock!!.acquire(10 * 1000L)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun enableProximitySensor() {
+        if (!config.disableProximitySensor && (proximityWakeLock == null || proximityWakeLock?.isHeld == false)) {
+            val powerManager = getSystemService(POWER_SERVICE) as PowerManager
+            proximityWakeLock = powerManager.newWakeLock(
+                PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK,
+                "dev.goodwy.phone:wake_lock")
+            proximityWakeLock!!.acquire(60 * MINUTE_SECONDS * 1000L)
+        }
+    }
+
+    private fun disableProximitySensor() {
+        if (proximityWakeLock?.isHeld == true) {
+            proximityWakeLock!!.release()
+        }
+    }
+
+    private fun disableAllActionButtons() {
+        (binding.ongoingCallHolder.root.children + binding.ongoingCallHolder.callEnd)
+            .filter { it is ImageView && it.isVisible() }
+            .forEach { view ->
+                setActionButtonEnabled(button = view as ImageView, enabled = false)
+            }
+        (binding.ongoingCallHolder.root.children)
+            .filter { it is LinearLayout && it.isVisible() }
+            .forEach { view ->
+                setActionButtonEnabled(button = view as LinearLayout, enabled = false)
+            }
+    }
+
+    private fun setActionButtonEnabled(button: LinearLayout, enabled: Boolean) {
+        button.apply {
+            isEnabled = enabled
+            alpha = if (enabled) 1.0f else LOWER_ALPHA
+        }
+    }
+
+    private fun setActionButtonEnabled(button: ImageView, enabled: Boolean) {
+        button.apply {
+            isEnabled = enabled
+            alpha = if (enabled) 1.0f else LOWER_ALPHA
+        }
+    }
+
+    private fun setActionImageViewEnabled(button: ImageView, enabled: Boolean) {
+        button.apply {
+            isEnabled = enabled
+            alpha = if (enabled) 1.0f else LOWER_ALPHA
+        }
+    }
+
+    private fun toggleButtonColor(view: ImageView, enabled: Boolean) {
+        val configBackgroundCallScreen = config.backgroundCallScreen
+        if (configBackgroundCallScreen == TRANSPARENT_BACKGROUND || configBackgroundCallScreen == BLUR_AVATAR || configBackgroundCallScreen == AVATAR) {
+            val color = if (enabled) Color.WHITE else Color.GRAY
+            view.background.applyColorFilter(color)
+            val colorIcon = if (enabled) Color.BLACK else Color.WHITE
+            view.applyColorFilter(colorIcon)
+        }
+        view.background.alpha = if (enabled) 255 else 60
+    }
+
+    private fun checkPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            if (!hasPermission(PERMISSION_READ_STORAGE)) {
+                config.backgroundCallScreen = BLUR_AVATAR
+                toast(R.string.no_storage_permissions)
+            }
+        }
+    }
+
+    private fun maybePerformDialpadHapticFeedback(view: View?) {
+        if (config.callVibration) {
+            view?.performHapticFeedback()
+        }
+    }
+
+    private fun maybePerformCallHapticFeedback(view: View?) {
+        needHapticFeedback = false
+        if (config.callStartEndVibration) {
+            view?.performHapticFeedback()
+        }
+    }
+}

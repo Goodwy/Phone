@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/placeholder_contact_background">
+    <shape android:shape="oval">
+        <gradient android:endColor="#FFA4A8B5" android:startColor="#FF878B94" android:angle="90.0" />
+    </shape>
+</item>
+
+<item
+    android:drawable="@drawable/ic_voicemail"
+    android:height="@dimen/contact_photo_big_size"
+    android:width="@dimen/contact_photo_big_size"
+    android:bottom="26dp"
+    android:left="30dp"
+    android:right="30dp"
+    android:top="34dp" />
+
+</layer-list>

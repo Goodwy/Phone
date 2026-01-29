@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Travidebla Voka Ekrano</string>
+    <string name="call_back_g">Voki reen</string>
+    <string name="call_back_person_g">Revoku %s</string>
+    <string name="missed_call_g">Maltrafita voko</string>
+    <string name="missed_calls_g">Maltrafitaj vokoj</string>
+    <string name="missed_call_notifications_g">Sciigoj pri maltrafvoko</string>
+    <string name="dialpad_preferences">Dial Ekranaj Agordoj</string>
+    <string name="call_start_end_vibration">Vibru kiam via voko komenciĝas kaj finiĝas</string>
+
+    <string name="show_contact_thumbnails_g">Montru kontaktajn bildetojn</string>
+    <string name="hide_dialpad_letters_g">Kaŝi la literojn</string>
+    <string name="show_caller_description_g">Montri pliajn informojn pri alvokanto</string>
+    <string name="nickname">Alnomo</string>
+    <string name="company">Kompanio</string>
+    <string name="call_anonymously">Voku anonime (kun prefikso #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Averto</h4>
+             La numero estos nomita kun la prefikso #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Certiĝu, ke via telefonisto subtenas la numeron kaŝantan servon kiam vi uzas la #31# prefikson. <br>
+             Via provizanto de servoj povas pagi kroman kotizon por ĉi tiu servo.
+        ]]>
+    </string>
+
+    <string name="add_wait">Aldoni atendon (;)</string>
+    <string name="rejected">Malakceptita</string>
+    <string name="dialpad_buttons_color">Koloro de butonoj de la klavarklavaro</string>
+    <string name="audio_route_earpiece_g">Το ακουστικό της συσκευής\</string>
+    <string name="open_speed_dial_manage">Malfermi la rapidan telefonadon administri?</string>
+
+    <!-- Timer -->
+    <string name="timer">Temporizilo</string>
+    <string name="timers_notification_msg">Οι χρονοδιακόπτες τρέχουν</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d tempigilo funkcias</item>
+        <item quantity="other">%d tempigiloj funkcias</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Kial mi bezonas malŝlosi mian aparaton por respondi al envenanta voko?</string>
+    <string name="faq_1_text_dialer_g">La operaciumo malhelpas al aplikaĵoj aliro al la ŝlosila ekrano. Vi devas permesi al la aplikaĵo aliri la ŝlosan ekranon. Ekzemple, en MIUI, vi devas permesi aliron al Agordoj => Sciigoj => Sciigoj sur la ŝlosila ekrano.</string>
+    <string name="faq_2_title_dialer_g">Kiel mi kopias aŭ algluas numeron sur la telefona ekrano?</string>
+    <string name="faq_2_text_dialer_g"> Longpremu la vokbutonon por alglui la enhavon de la tondujo. Se la numero jam estas enigita, longa premo sur la vokobutono kopias ĝin al la tondujo.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer nur montras kontaktojn, kiuj havas telefonnumeron asociitan kun ili. Kontaktoj sen telefonnumero ne estas montrataj en la apo.</string>
+    <string name="slider_style">Ŝovilo-stilo</string>
+    <string name="slider_style_summary">La ŝovilo estas uzata nur kiam la ekrano estas ŝlosita.</string>
+    <string name="answer_style">Stilo de Respondbutono</string>
+    <string name="buttons">Butonoj</string>
+    <string name="answer_slider">Slider</string>
+    <string name="answer_slider_outline">Konturna glitilo</string>
+    <string name="answer_slider_vertical">Vertikala Glitilo</string>
+
+    <string name="show_recent_calls">Montri kaj serĉi lastatempajn alvokojn</string>
+    <string name="search_contacts_in_dialpad">Serĉi kontaktojn dum telefonado de numero</string>
+    <string name="open_dialpad_when_call_from_another_app">Kiam vi provas voki de alia aplikaĵo, malfermu la diskpadronon</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Ĉi tio povas protekti vin kontraŭ malware, kiu faras vokojn sen via scio.</string>
+    <string name="number_of_recent_calls_displays">Montrita nombro de lastatempaj vokoj</string>
+    <string name="number_of_recent_calls_displays_summary">Pro grupigo, la nombro de montrataj vicoj povas esti malpli granda.</string>
+    <string name="group_calls">Voka grupigo</string>
+    <string name="group_all_calls">Grupigu ĉiujn vokojn, nur la lasta voko estos montrata</string>
+    <string name="call_button_style">Voka butono stilo</string>
+    <string name="call_notes">Vokaj notoj</string>
+    <string name="back_pressed_end_call">Reen ago finas la vokon</string>
+    <string name="keep_calls_in_popup_summary">Post kiam vi respondas al voko, ĝi restas en viaj sciigoj kaj ne aperas plenekrane. Ĉi tio estas farita por eviti interrompon de aliaj aplikaĵoj, ekzemple dum ludado.</string>
+    <string name="turn_on_speaker_in_popup">Ŝalti laŭtparolilon aŭtomate</string>
+    <string name="turn_on_speaker_in_popup_summary">Se neniu kapaŭskultilo estas konektita, la laŭtparolilo estos ŝaltita.</string>
+    <string name="busy">Okupita</string>
+    <string name="block_calls">Bloki vokojn</string>
+    <string name="edit_number_before_call">Redakti numeron antaŭ alvoko</string>
+    <string name="on_favorite_click">Kiam vi alklakas ŝatatan</string>
+    <string name="call_using_same_sim">Uzu la saman SIM-karton al kiu estis farita la antaŭa (lasta) voko</string>
+    <string name="answer_end_other_call">Respondu kaj ĉesigu la nunan vokon</string>
+    <string name="quick_answers">Rapidaj respondoj</string>
+    <string name="voicemail">Voĉpoŝto</string>
+    <string name="show_voicemail_icon">Montru ikonon de voĉpoŝto</string>
+    <string name="secondary_dialpad_language">Malĉefa diskpadlingvo</string>
+    <string name="sim_card_selection_dialog_style">Stijl van het dialoogvenster voor SIM-selectie</string>
+    <string name="clear_dialpad_when_start_call">Malplenigi diskitan numeron kiam oni komencas vokon</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d maltrafita voko</item>
+        <item quantity="other">%d maltrafitaj vokoj</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Lasu vokojn en sciigoj</string>
+    <string name="on_contact_click">Kiam vi alklakas kontakton</string>
+    <string name="on_recent_click">Kiam vi alklakas lastatempan vokon</string>
+    <string name="add_pause">Aldoni 2-sekundan paŭzon (,)</string>
+    <string name="missed">Maltrafita</string>
+    <string name="incoming">Alvenanta</string>
+    <string name="outgoing">Eliranta</string>
+</resources>

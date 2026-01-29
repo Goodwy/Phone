@@ -1,0 +1,71 @@
+[versions]
+#jetbrains
+geocoderVersion = "3.18"
+kotlin = "2.2.21"
+kotlinxSerializationJson = "1.9.0"
+#KSP
+ksp = "2.2.10-2.0.2"
+#Detekt
+detekt = "1.23.8"
+detektCompose = "0.4.27"
+#Eventbus
+eventbus = "3.3.1"
+#Gradle
+gradlePlugins-agp = "8.11.1"
+#Other
+indicatorFastScroll = "fe6ddbc316"
+autofitTextView = "0.2.1"
+libphonenumberVersion = "9.0.18"
+#Goodwy
+right-commons = "395c45c606"
+badger = "1.1.22"
+androidx-lifecycle = "2.8.7"
+behavioRule = "1.0.1"
+rxAnimation = "2.1.1"
+rxJava3 = "3.1.5"
+room = "2.8.2"
+swipeToActionLayout = "0f7632fc36"
+#build
+app-build-compileSDKVersion = "36"
+app-build-targetSDK = "36"
+app-build-minimumSDK = "26"
+app-build-javaVersion = "VERSION_17"
+app-build-kotlinJVMTarget = "17"
+[libraries]
+#Compose
+compose-detekt = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
+#EventBus
+eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
+#Kotlin
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+#Other
+indicator-fast-scroll = { module = "com.github.goodwy:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
+autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "autofitTextView" }
+geocoder = { module = "com.googlecode.libphonenumber:geocoder", version.ref = "geocoderVersion" }
+libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumberVersion" }
+#Goodwy
+goodwy-commons-gplay = { module = "com.github.goodwy.goodwy-commons:commons-gplay", version.ref = "right-commons" }
+goodwy-commons-foss = { module = "com.github.goodwy.goodwy-commons:commons-foss", version.ref = "right-commons" }
+goodwy-commons-rustore = { module = "com.github.goodwy.goodwy-commons:commons-rustore", version.ref = "right-commons" }
+goodwy-commons-hms = { module = "com.github.goodwy.goodwy-commons:commons-hms", version.ref = "right-commons" }
+shortcut-badger = { module = "me.leolin:ShortcutBadger", version.ref = "badger" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidx-lifecycle" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+behavio-rule = { module = "com.github.Liverm0r:BehavioRule", version.ref = "behavioRule" }
+rx-animation = { module = "com.mikhaellopez:rxanimation", version.ref = "rxAnimation" }
+rx-java = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxJava3" }
+swipe-action = { module = "com.github.Goodwy:SwipeActionView", version.ref = "swipeToActionLayout" }
+[bundles]
+lifecycle = [
+    "androidx-lifecycle-runtime",
+    "androidx-lifecycle-viewModel",
+    "androidx-lifecycle-process",
+]
+[plugins]
+android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

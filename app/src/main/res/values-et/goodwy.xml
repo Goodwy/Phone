@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Läbipaistev kõneekraan</string>
+    <string name="call_back_g">Kutsuma</string>
+    <string name="call_back_person_g">Helistage tagasi %s</string>
+    <string name="missed_call_g">Vastamata kõne</string>
+    <string name="missed_calls_g">Vastamata kõned</string>
+    <string name="missed_call_notifications_g">Vastamata kõne teatised</string>
+    <string name="dialpad_preferences">Valimiskuva seaded</string>
+    <string name="call_start_end_vibration">Vibreerige, kui kõne algus ja lõpp on</string>
+
+    <string name="show_contact_thumbnails_g">Kontakti pisipiltide kuvamine</string>
+    <string name="hide_dialpad_letters_g">Peida dialpadi tähed</string>
+    <string name="show_caller_description_g">Näita helistaja lisateavet</string>
+    <string name="nickname">Hüüdnimi</string>
+    <string name="company">Ettevõte</string>
+    <string name="call_anonymously">Helistage anonüümselt (eesliitega #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Hoiatus</h4>
+             Numbrile helistatakse eesliitega #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Veenduge, et teie operaator toetaks numbri peitmise teenust, kui kasutate eesliidet #31#. <br>
+             Teie teenusepakkuja võib selle teenuse eest küsida lisatasu.
+        ]]>
+    </string>
+
+    <string name="add_wait">Lisa ootama (;)</string>
+    <string name="rejected">Tagasilükatud</string>
+    <string name="dialpad_buttons_color">Valimisklaviatuuri nuppude värv</string>
+    <string name="audio_route_earpiece_g">Seadme kuular</string>
+    <string name="open_speed_dial_manage">Kas avada kiirvalimise haldamine?</string>
+
+    <!-- Timer -->
+    <string name="timer">Taimer</string>
+    <string name="timers_notification_msg">Taimerid töötavad</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d taimer töötab</item>
+        <item quantity="other">%d taimerit töötavad</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Miks pean sissetulevale kõnele vastamiseks oma seadme avama?</string>
+    <string name="faq_1_text_dialer_g">Operatsioonisüsteem blokeerib rakendustel juurdepääsu lukustuskuvale. Peate lubama rakendusel juurdepääsu lukustuskuvale. Näiteks MIUI-s peate lubama juurdepääsu lukustuskuval valikutele Seaded => Teavitused => Märguanded.</string>
+    <string name="faq_2_title_dialer_g">Kuidas numbrit helistamisekraanile kopeerida või kleepida?</string>
+    <string name="faq_2_text_dialer_g">Vajutage pikalt helistamisnuppu, et lõikelaua sisu kleepida. Kui number on juba sisestatud, kopeerib helistamisnupu pikk vajutus selle lõikepuhvrisse.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Paremvalija kuvab ainult need kontaktid, millel on seotud telefoninumber. Ilma telefoninumbrita kontakte rakenduses ei kuvata.</string>
+    <string name="slider_style">Liuguri stiil</string>
+    <string name="slider_style_summary">Liugurit kasutatakse ainult siis, kui ekraan on lukus.</string>
+    <string name="answer_style">Vastusenupu stiil</string>
+    <string name="buttons">Nupud</string>
+    <string name="answer_slider">Liugur</string>
+    <string name="answer_slider_outline">Liigendi liugur</string>
+    <string name="answer_slider_vertical">Vertikaalne liugur</string>
+
+    <string name="show_recent_calls">Kuva ja otsi hiljutisi kõnesid</string>
+    <string name="search_contacts_in_dialpad">Kontaktide otsimine numbri valimisel</string>
+    <string name="open_dialpad_when_call_from_another_app">Kui proovite helistada teisest rakendusest, avage valimisklahvistik</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">See võib teid kaitsta pahavara eest, mis helistab teie teadmata.</string>
+    <string name="number_of_recent_calls_displays">Kuvatakse viimaste kõnede arv</string>
+    <string name="number_of_recent_calls_displays_summary">Grupeerimise tõttu võib kuvatavate ridade arv olla väiksem.</string>
+    <string name="group_calls">Kõnede rühmitamine</string>
+    <string name="group_all_calls">Grupeeri kõik kõned, kuvatakse ainult viimane kõne</string>
+    <string name="call_button_style">Kellanupu stiil</string>
+    <string name="call_notes">Kõne märkmed</string>
+    <string name="back_pressed_end_call">Tagasitegevus lõpetab kõne</string>
+    <string name="keep_calls_in_popup_summary">Pärast kõnele vastamist jääb see teie teavitustesse ega kuvata täisekraanil. Seda tehakse selleks, et vältida teiste rakenduste, näiteks mängu mängimise ajal, segamist.</string>
+    <string name="turn_on_speaker_in_popup">Lülitage kõlar automaatselt sisse</string>
+    <string name="turn_on_speaker_in_popup_summary">Kui peakomplekti pole ühendatud, lülitub kõlar sisse.</string>
+    <string name="busy">Hõivatud</string>
+    <string name="block_calls">Blokeeri kõned</string>
+    <string name="edit_number_before_call">Muuda numbrit enne helistamist</string>
+    <string name="on_favorite_click">Kui klõpsate lemmikul</string>
+    <string name="call_using_same_sim">Kasutage sama SIM-kaarti, millele tehti eelmine (viimane) kõne</string>
+    <string name="answer_end_other_call">Praegusele kõnele vastamine ja selle lõpetamine</string>
+    <string name="quick_answers">Kiired vastused</string>
+    <string name="voicemail">Kõnepost</string>
+    <string name="show_voicemail_icon">Kuva kõneposti ikoon</string>
+    <string name="secondary_dialpad_language">Teisene dialpadi keel</string>
+    <string name="sim_card_selection_dialog_style">SIM-kaardi valimise dialoogilaad</string>
+    <string name="clear_dialpad_when_start_call">Kõne alustamisel valitud numbri tühjendamine</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d vastamata kõne</item>
+        <item quantity="other">%d vastamata kõnet</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Jäta kõned märguannetesse</string>
+    <string name="on_contact_click">Kui klõpsate kontaktil</string>
+    <string name="on_recent_click">Kui klõpsate hiljutisel kõnel</string>
+    <string name="add_pause">Lisa 2-sekundiline paus (,)</string>
+    <string name="missed">Vastamata</string>
+    <string name="incoming">Sissetulev</string>
+    <string name="outgoing">Väljaminev</string>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Pantalla de llamada transparente</string>
+    <string name="call_back_g">Llamar</string>
+    <string name="call_back_person_g">Llama al %s</string>
+    <string name="missed_call_g">Llamada perdida</string>
+    <string name="missed_calls_g">Llamadas perdidas</string>
+    <string name="missed_call_notifications_g">Notificaciones de llamadas perdidas</string>
+    <string name="dialpad_preferences">Configuración de la pantalla de marcación</string>
+    <string name="call_start_end_vibration">Vibrar cuando la llamada comienza y termina</string>
+
+    <string name="show_contact_thumbnails_g">Mostrar miniaturas de contactos</string>
+    <string name="hide_dialpad_letters_g">Ocultar letras de dialpad</string>
+    <string name="show_caller_description_g">Mostrar información adicional sobre la persona que llama</string>
+    <string name="nickname">Apodo</string>
+    <string name="company">Compañía</string>
+    <string name="call_anonymously">Llamar de forma anónima (con el prefijo #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Advertencia</h4>
+            El número se llamará con el prefijo #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Asegúrese de que su operador admite el servicio de ocultación de números cuando utilice el prefijo #31#.. <br>
+            Su proveedor de servicios puede cobrarle una tarifa adicional por este servicio..
+        ]]>
+    </string>
+
+    <string name="add_wait">Añadir espera (;)</string>
+    <string name="rejected">Rechazado</string>
+    <string name="dialpad_buttons_color">Color de los botones del teclado de marcación</string>
+    <string name="audio_route_earpiece_g">Auricular del dispositivo</string>
+    <string name="open_speed_dial_manage">¿Abrir la administración de marcación rápida?</string>
+
+    <!-- Timer -->
+    <string name="timer">Temporizador</string>
+    <string name="timers_notification_msg">Los temporizadores están en marcha</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d temporizador están funcionando</item>
+        <item quantity="many">%d temporizadores están funcionando</item>
+        <item quantity="other">%d temporizadores están funcionando</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">¿Por qué tengo que desbloquear el dispositivo para responder a una llamada entrante?</string>.
+    <string name="faq_1_text_dialer_g">El sistema operativo bloquea el acceso de las aplicaciones a la pantalla de bloqueo. Debes permitir que la aplicación acceda a la pantalla de bloqueo. Por ejemplo, en MIUI tienes que permitir el acceso a Ajustes => Notificaciones => Notificaciones en la pantalla de bloqueo.</string>
+    <string name="faq_2_title_dialer_g">¿Cómo copiar o pegar un número en la pantalla de marcación? </string>
+    <string name="faq_2_text_dialer_g">Una pulsación larga en el botón de llamada pega el contenido del portapapeles. Si el número ya está introducido, una pulsación larga del botón de llamada lo copia en el portapapeles.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer solo muestra los contactos que tienen un número de teléfono asociado. Los contactos sin número de teléfono no se muestran en la aplicación.</string>
+    <string name="slider_style">Estilo deslizante</string>
+    <string name="slider_style_summary">El control deslizante solo se utiliza cuando la pantalla está bloqueada.</string>
+    <string name="answer_style">Estilo del botón de respuesta</string>
+    <string name="buttons">Botones</string>
+    <string name="answer_slider">Deslizador</string>
+    <string name="answer_slider_outline">Deslizador con contorno</string>
+    <string name="answer_slider_vertical">Deslizador vertical</string>
+
+    <string name="show_recent_calls">Mostrar y buscar llamadas recientes</string>
+    <string name="search_contacts_in_dialpad">Buscar contactos al marcar un número</string>
+    <string name="open_dialpad_when_call_from_another_app">Al intentar realizar una llamada desde otra aplicación, abra el teclado de marcación</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Esto puede protegerle contra malware que realiza llamadas sin su conocimiento.</string>
+    <string name="number_of_recent_calls_displays">Número mostrado de llamadas recientes</string>
+    <string name="number_of_recent_calls_displays_summary">På grund av gruppering kan antalet rader som visas vara färre.</string>
+    <string name="group_calls">Agrupación de llamadas</string>
+    <string name="group_all_calls">Agrupar todas las llamadas, solo se mostrará la última llamada</string>
+    <string name="call_button_style">Estilo de botón de campana</string>
+    <string name="call_notes">Notas de la convocatoria</string>
+    <string name="back_pressed_end_call">La acción de retroceso finaliza la llamada</string>
+    <string name="keep_calls_in_popup_summary">Después de responder una llamada, esta permanece en tus notificaciones y no aparece en pantalla completa. Esto se hace para evitar interrumpir otras aplicaciones, como cuando juegas.</string>
+    <string name="turn_on_speaker_in_popup">Encender el altavoz automáticamente</string>
+    <string name="turn_on_speaker_in_popup_summary">Si no hay ningún auricular conectado, se encenderá el altavoz.</string>
+    <string name="busy">Ocupado</string>
+    <string name="block_calls">Bloquear llamadas</string>
+    <string name="edit_number_before_call">Editar el número antes de llamar</string>
+    <string name="on_favorite_click">Al hacer clic en un favorito</string>
+    <string name="call_using_same_sim">Utilice la misma tarjeta SIM a la que se realizó la (última) llamada anterior</string>
+    <string name="answer_end_other_call">Responder y finalizar la llamada actual</string>
+    <string name="quick_answers">Respuestas rápidas</string>
+    <string name="voicemail">Mensaje de voz</string>
+    <string name="show_voicemail_icon">Mostrar icono de correo de voz</string>
+    <string name="secondary_dialpad_language">Idioma del teclado de marcación secundario</string>
+    <string name="sim_card_selection_dialog_style">Estilo de cuadro de diálogo de selección de SIM</string>
+    <string name="clear_dialpad_when_start_call">Borrar el número marcado al iniciar una llamada</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d llamada perdida</item>
+        <item quantity="many">%d llamadas perdidas</item>
+        <item quantity="other">%d llamadas perdidas</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Dejar llamadas en notificaciones</string>
+    <string name="on_contact_click">Al hacer clic en un contacto</string>
+    <string name="on_recent_click">Al hacer clic en una llamada reciente</string>
+    <string name="add_pause">Añadir pausa de 2 segundos (,)</string>
+    <string name="missed">Omitido</string>
+    <string name="incoming">Entrante</string>
+    <string name="outgoing">Extrovertido</string>
+</resources>

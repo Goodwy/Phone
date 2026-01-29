@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Màn hình cuộc gọi trong suốt</string>
+    <string name="call_back_g">Gọi lại</string>
+    <string name="call_back_person_g">Gọi lại %s</string>
+    <string name="missed_call_g">Cuộc gọi nhỡ</string>
+    <string name="missed_calls_g">Cuộc gọi nhỡ</string>
+    <string name="missed_call_notifications_g">Thông báo cuộc gọi nhỡ</string>
+    <string name="dialpad_preferences">Cài đặt màn hình quay số</string>
+    <string name="call_start_end_vibration">Rung khi cuộc gọi của bạn bắt đầu và kết thúc</string>
+
+    <string name="show_contact_thumbnails_g">Hiển thị hình thu nhỏ liên hệ</string>
+    <string name="hide_dialpad_letters_g">Ẩn các chữ cái trên bàn phím quay số</string>
+    <string name="show_caller_description_g">Hiển thị thông tin bổ sung về người gọi</string>
+    <string name="nickname">Tên hiệu</string>
+    <string name="company">Công ty</string>
+    <string name="call_anonymously">Gọi ẩn danh (có đầu số #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Cảnh báo</h4>
+             Số này sẽ được gọi với tiền tố #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Đảm bảo rằng nhà cung cấp dịch vụ của bạn hỗ trợ dịch vụ ẩn số khi sử dụng tiền tố #31#. <br>
+             Nhà cung cấp dịch vụ của bạn có thể tính thêm phí cho dịch vụ này.
+        ]]>
+    </string>
+
+    <string name="add_wait">Thêm chờ (;)</string>
+    <string name="rejected">Vật bị loại bỏ</string>
+    <string name="dialpad_buttons_color">Màu sắc các nút bàn phím</string>
+    <string name="audio_route_earpiece_g">Tai nghe của thiết bị</string>
+    <string name="open_speed_dial_manage">Mở quản lý quay số nhanh?</string>
+
+    <!-- Timer -->
+    <string name="timer">Hẹn giờ</string>
+    <string name="timers_notification_msg">Bộ hẹn giờ đang chạy</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="other">%d bộ tính giờ đang chạy</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Tại sao tôi phải mở khóa thiết bị của mình để trả lời cuộc gọi đến?</string>
+    <string name="faq_1_text_dialer_g">Hệ điều hành của bạn đang chặn quyền truy cập của ứng dụng vào màn hình khóa. Bạn cần cho phép ứng dụng truy cập vào màn hình khóa. Ví dụ: trong MIUI bạn cần kích hoạt quyền truy cập trong Cài đặt => Thông báo => Thông báo màn hình khóa.</string>
+    <string name="faq_2_title_dialer_g">Làm cách nào để sao chép hoặc dán một số trên màn hình quay số?</string>
+    <string name="faq_2_text_dialer_g">Nhấn và giữ nút gọi sẽ dán nội dung vào bảng tạm. Nếu bạn đã nhập một số, nhấn và giữ nút gọi sẽ sao chép số đó vào bảng nhớ tạm.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer chỉ hiển thị những liên hệ có số điện thoại được liên kết. Những liên hệ không có số điện thoại sẽ không được hiển thị trong ứng dụng.</string>
+    <string name="slider_style">Kiểu thanh trượt</string>
+    <string name="slider_style_summary">Thanh trượt chỉ được sử dụng khi màn hình bị khóa.</string>
+    <string name="answer_style">Phong cách trả lời</string>
+    <string name="buttons">Các nút</string>
+    <string name="answer_slider">Thanh trượt</string>
+    <string name="answer_slider_outline">Thanh trượt phác thảo</string>
+    <string name="answer_slider_vertical">Thanh trượt dọc</string>
+
+    <string name="show_recent_calls">Hiển thị và tìm kiếm các cuộc gọi gần đây</string>
+    <string name="search_contacts_in_dialpad">Tìm kiếm danh bạ khi quay số</string>
+    <string name="open_dialpad_when_call_from_another_app">Khi cố gắng thực hiện cuộc gọi từ một ứng dụng khác, hãy mở bàn phím quay số</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Tính năng này có thể bảo vệ bạn khỏi phần mềm độc hại thực hiện cuộc gọi mà bạn không hề hay biết.</string>
+    <string name="number_of_recent_calls_displays">Hiển thị số cuộc gọi gần đây</string>
+    <string name="number_of_recent_calls_displays_summary">Do nhóm, số lượng hàng hiển thị có thể ít hơn.</string>
+    <string name="group_calls">Nhóm cuộc gọi</string>
+    <string name="group_all_calls">Nhóm tất cả các cuộc gọi, chỉ cuộc gọi cuối cùng sẽ được hiển thị</string>
+    <string name="call_button_style">Kiểu nút chuông</string>
+    <string name="call_notes">Ghi chú cuộc gọi</string>
+    <string name="back_pressed_end_call">Hành động quay lại kết thúc cuộc gọi</string>
+    <string name="keep_calls_in_popup_summary">Sau khi bạn trả lời cuộc gọi, cuộc gọi đó vẫn hiển thị trong thông báo và không hiện toàn màn hình. Điều này nhằm tránh làm gián đoạn các ứng dụng khác, ví dụ như khi đang chơi game.</string>
+    <string name="turn_on_speaker_in_popup">Tự động bật loa</string>
+    <string name="turn_on_speaker_in_popup_summary">Nếu không có tai nghe nào được kết nối, loa sẽ tự động bật.</string>
+    <string name="busy">Bận</string>
+    <string name="block_calls">Chặn cuộc gọi</string>
+    <string name="edit_number_before_call">Chỉnh sửa số trước khi gọi</string>
+    <string name="on_favorite_click">Khi bạn nhấp vào mục yêu thích</string>
+    <string name="call_using_same_sim">Sử dụng cùng một thẻ SIM mà cuộc gọi trước đó (cuối cùng) đã được thực hiện</string>
+    <string name="answer_end_other_call">Trả lời và kết thúc cuộc gọi hiện tại</string>
+    <string name="quick_answers">Câu trả lời nhanh</string>
+    <string name="voicemail">Thư thoại</string>
+    <string name="show_voicemail_icon">Hiển thị biểu tượng thư thoại</string>
+    <string name="secondary_dialpad_language">Ngôn ngữ bàn phím số phụ</string>
+    <string name="sim_card_selection_dialog_style">Kiểu hộp thoại chọn SIM</string>
+    <string name="clear_dialpad_when_start_call">Xóa số đã quay khi bắt đầu cuộc gọi</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="other">%d cuộc gọi nhỡ</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Để lại cuộc gọi trong thông báo</string>
+    <string name="on_contact_click">Khi bạn nhấp vào một liên hệ</string>
+    <string name="on_recent_click">Khi bạn nhấp vào cuộc gọi gần đây</string>
+    <string name="add_pause">Thêm khoảng dừng 2 giây (,)</string>
+    <string name="missed">Bỏ lỡ</string>
+    <string name="incoming">Đang đến</string>
+    <string name="outgoing">Hướng ngoại</string>
+</resources>

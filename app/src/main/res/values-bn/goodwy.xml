@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">স্বচ্ছ কল স্ক্রিন ব্যাকগ্রাউন্ড</string>
+    <string name="call_back_g">কল ব্যাক করুন</string>
+    <string name="call_back_person_g">কল ব্যাক করুন %s</string>
+    <string name="missed_call_g">মিসড কল</string>
+    <string name="missed_calls_g">মিসড কল</string>
+    <string name="missed_call_notifications_g">মিসড কল বিজ্ঞপ্তি</string>
+    <string name="call_start_end_vibration">কল শুরু এবং শেষ করার সময় কম্পন করুন</string>
+    <string name="show_recent_calls">সাম্প্রতিক কলগুলি দেখান এবং অনুসন্ধান করুন</string>
+    <string name="search_contacts_in_dialpad">কোনও নম্বর ডায়াল করার সময় পরিচিতি খুঁজুন</string>
+    <string name="open_dialpad_when_call_from_another_app">অন্য অ্যাপ থেকে কল করার চেষ্টা করার সময় ডায়ালপ্যাড খুলুন</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">এটি আপনাকে ম্যালওয়্যার ব্যবহার না করে কল করা থেকে রক্ষা করতে পারে আপনার জ্ঞান।</string>
+    <string name="number_of_recent_calls_displays">সাম্প্রতিক কলের সংখ্যা প্রদর্শন করুন</string>
+    <string name="number_of_recent_calls_displays_summary">গ্রুপিংয়ের কারণে, প্রদর্শিত সারির সংখ্যা কম হতে পারে।</string>
+    <string name="group_calls">কল গ্রুপিং</string>
+    <string name="group_all_calls">সমস্ত কল গ্রুপ করুন, শুধুমাত্র সাম্প্রতিকতম কলটি দেখানো হবে</string>
+    <string name="call_button_style">কল বোতাম স্টাইল</string>
+    <string name="call_notes">কল নোট</string>
+    <string name="back_pressed_end_call">ব্যাক অ্যাকশন কল শেষ করে</string>
+    <string name="keep_calls_in_popup">বিজ্ঞপ্তিতে কল ছেড়ে দিন</string>
+    <string name="keep_calls_in_popup_summary">আপনি কল রিসিভ করার পরেও, এটি আপনার নোটিফিকেশনে থেকে যায় এবং পূর্ণ-স্ক্রিনে দেখা যায় না। এটি করা হয় যাতে অন্যান্য অ্যাপগুলি বাধাগ্রস্ত না হয়, যেমন গেম খেলার সময়।</string>
+    <string name="turn_on_speaker_in_popup">স্পিকার স্বয়ংক্রিয়ভাবে চালু করুন</string>
+    <string name="turn_on_speaker_in_popup_summary">যদি কোনও হেডসেট সংযুক্ত না থাকে, তাহলে স্পিকারটি চালু হবে।</string>
+    <string name="busy">ব্যস্ত</string>
+
+    <string name="block_calls">কল ব্লক করুন</string>
+    <string name="edit_number_before_call">কল করার আগে নম্বর সম্পাদনা করুন</string>
+    <string name="on_favorite_click">যখন আপনি একটি পছন্দের উপর ক্লিক করেন</string>
+    <string name="call_using_same_sim">পূর্ববর্তী (শেষ) কলের মতো একই সিম কার্ড ব্যবহার করুন</string>
+    <string name="answer_end_other_call">বর্তমান কলটির উত্তর দিন এবং শেষ করুন</string>
+    <string name="quick_answers">দ্রুত উত্তর</string>
+    <string name="voicemail">ভয়েসমেইল</string>
+    <string name="show_voicemail_icon">ভয়েসমেইল আইকনটি দেখান</string>
+    <string name="secondary_dialpad_language">সেকেন্ডারি ডায়ালপ্যাড ভাষা</string>
+    <string name="sim_card_selection_dialog_style">সিম কার্ড নির্বাচনের ডায়ালগ স্টাইল</string>
+    <string name="clear_dialpad_when_start_call">কল শুরু করার সময় ডায়াল করা নম্বরটি সাফ করুন</string>
+    <string name="dialpad_preferences">স্ক্রিন সেটিংস ডায়াল করুন</string>
+    <string name="show_contact_thumbnails_g">যোগাযোগের ছবি দেখান</string>
+    <string name="hide_dialpad_letters_g">ডায়ালপ্যাডের অক্ষর লুকান</string>
+    <string name="show_caller_description_g">অতিরিক্ত কলারের তথ্য দেখান</string>
+    <string name="nickname">ডাকনাম</string>
+    <string name="company">সংগঠন</string>
+    <string name="call_anonymously">অজ্ঞাতভাবে কল করুন (প্রিফিক্স #31# সহ)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>সতর্কতা</h4>
+নম্বরটি #31# প্রিফিক্স দিয়ে ডায়াল করা হবে <br><br>
+<h6"><i> #31#%s</i></h6>
+#31# প্রিফিক্স ব্যবহার করার সময় নিশ্চিত করুন যে আপনার ক্যারিয়ার কলার আইডি গোপন পরিষেবা সমর্থন করে। <br>
+আপনার ক্যারিয়ার এই পরিষেবার জন্য অতিরিক্ত ফি নিতে পারে।
+        ]]>
+    </string>
+
+    <string name="add_wait">অপেক্ষা করুন (;) যোগ করুন</string>
+    <string name="rejected">প্রত্যাখ্যাত</string>
+    <string name="dialpad_buttons_color">ডায়ালপ্যাড বোতামের রঙ</string>
+    <string name="audio_route_earpiece_g">ফোন</string>
+    <string name="open_speed_dial_manage">স্পিড ডায়াল ম্যানেজমেন্ট খুলবেন?</string>
+
+    <!-- Timer -->
+    <string name="timer">টাইমার</string>
+    <string name="timers_notification_msg">টাইমার শুরু হয়েছে</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d টি টাইমার চলছে</item>
+        <item quantity="other">%d টি টাইমার চলছে</item>
+
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">আসন্ন কলের উত্তর দেওয়ার জন্য আমার ডিভাইসটি আনলক করার প্রয়োজন কেন?</string>
+    <string name="faq_1_text_dialer_g">অপারেটিং সিস্টেম অ্যাপগুলিকে লক স্ক্রিন অ্যাক্সেস করতে বাধা দেয়। আপনাকে অ্যাপটিকে লক স্ক্রিন অ্যাক্সেস করার অনুমতি দিতে হবে। উদাহরণস্বরূপ, MIUI-তে, আপনাকে "সেটিংস => বিজ্ঞপ্তি => লক স্ক্রিন বিজ্ঞপ্তি" অ্যাক্সেসের অনুমতি দিতে হবে এবং "পটভূমিতে চলমান অবস্থায় পপ-আপ দেখান" অনুমতি সক্ষম করতে হবে।</string>
+    <string name="faq_2_title_dialer_g">ডায়ালার থেকে নম্বর কীভাবে কপি বা পেস্ট করব?</string>
+    <string name="faq_2_text_dialer_g">কল বোতামটি দীর্ঘক্ষণ টিপে ক্লিপবোর্ডের বিষয়বস্তু পেস্ট করে। যদি নম্বরটি ইতিমধ্যেই প্রবেশ করানো থাকে, তাহলে কল বোতামটি দীর্ঘক্ষণ টিপে ক্লিপবোর্ডে কপি করে।</string>
+    <string name="faq_3_text_g">ডান ডায়ালার শুধুমাত্র সেই পরিচিতিগুলি প্রদর্শন করে যেগুলির সাথে একটি ফোন নম্বর যুক্ত থাকে৷ ফোন নম্বর ছাড়া পরিচিতি অ্যাপটিতে প্রদর্শিত হয় না।</string>
+
+    <!-- Answer style -->
+    <string name="slider_style">স্লাইডার স্টাইল</string>
+    <string name="slider_style_summary">স্লাইডারটি কেবল তখনই ব্যবহার করা হয় যখন স্ক্রিন লক থাকে।</string>
+    <string name="answer_style">উত্তর বোতামের ধরণ</string>
+    <string name="buttons">বোতাম</string>
+    <string name="answer_slider">স্লাইডার</string>
+    <string name="answer_slider_outline">আউটলাইন সহ স্লাইডার</string>
+    <string name="answer_slider_vertical">উল্লম্ব স্লাইডার</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d টি মিসড কল</item>
+        <item quantity="other">%d টি মিসড কল</item>
+    </plurals>
+    <string name="missed_call_from">%s থেকে মিসড কল</string>
+    <string name="on_contact_click">যখন আপনি কোনও পরিচিতিতে ক্লিক করেন</string>
+    <string name="on_recent_click">যখন আপনি একটি সাম্প্রতিক কলে ক্লিক করেন</string>
+    <string name="add_pause">২-সেকেন্ডের বিরতি যোগ করুন (,)</string>
+    <string name="missed">মিস করা হয়েছে</string>
+    <string name="incoming">ইনকামিং</string>
+    <string name="outgoing">বহির্গামী</string>
+</resources>

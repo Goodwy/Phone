@@ -1,0 +1,53 @@
+package dev.goodwy.phone.activities
+
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import com.goodwy.commons.extensions.launchActivityIntent
+import com.goodwy.commons.extensions.notificationManager
+import com.goodwy.commons.helpers.CURRENT_PHONE_NUMBER
+import com.goodwy.commons.helpers.IS_RIGHT_APP
+import dev.goodwy.phone.BuildConfig
+import dev.goodwy.phone.helpers.MISSED_CALL_BACK
+import dev.goodwy.phone.helpers.MISSED_CALL_MESSAGE
+import dev.goodwy.phone.receivers.MissedCallReceiver.Companion.clearMissedCallCount
+
+//Empty activation to remove missed call notifications when you press to call or send a message
+//https://stackoverflow.com/questions/18261969/clicking-android-notification-actions-does-not-close-notification-drawer?noredirect=1&lq=1
+class NotificationActivity : SimpleActivity() {
+    @SuppressLint("MissingPermission")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val phoneNumber = intent.extras?.getString(CURRENT_PHONE_NUMBER) ?: return
+
+        // When answering a call or message, we clear the counter for that number.
+        phoneNumber.let {
+            clearMissedCallCount(it)
+            notificationManager.cancel(it.hashCode())
+//            updateUnreadCountAndGroup(this)
+        }
+
+        when (intent.action) {
+            MISSED_CALL_BACK -> phoneNumber.let {
+                Intent(Intent.ACTION_CALL).apply {
+                    data = Uri.fromParts("tel", it, null)
+                    putExtra(IS_RIGHT_APP, BuildConfig.RIGHT_APP_KEY)
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    launchActivityIntent(this)
+                }
+            }
+
+            MISSED_CALL_MESSAGE -> phoneNumber.let {
+                Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.fromParts("smsto", it, null)
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    launchActivityIntent(this)
+                }
+            }
+        }
+
+        finish()
+    }
+}

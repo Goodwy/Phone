@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--collapsing toolbar-->
+    <dimen name="image_right_margin">22dp</dimen>
+
+    <!--dialpad style-->
+    <dimen name="call_slider_margin">168dp</dimen>
+</resources>

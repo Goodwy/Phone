@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Transparentni zaslon klica</string>
+    <string name="call_back_g">Klic nazaj</string>
+    <string name="call_back_person_g">Povratni klic %s</string>
+    <string name="missed_call_g">Zgrešeni klic</string>
+    <string name="missed_calls_g">Odloženi klici</string>
+    <string name="missed_call_notifications_g">Obvestila o zamujenih klicih</string>
+    <string name="dialpad_preferences">Nastavitve zaslona klicanja</string>
+    <string name="call_start_end_vibration">Vibriranje, ko se klic začne in konča</string>
+
+    <string name="show_contact_thumbnails_g">Predstavi sličice stikov</string>
+    <string name="hide_dialpad_letters_g">Skrije črke na številčnici</string>
+    <string name="show_caller_description_g">Pokaže dodatne informacije o klicatelju</string>
+    <string name="nickname">Vzdevek</string>
+    <string name="company">Podjetje</string>
+    <string name="call_anonymously">Pokličite anonimno (s predpono #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Opozorilo</h4>
+            Številka bo klicana s predpono #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Prepričajte se, da vaš operater podpira storitev skrivanja številk, če uporabljate predpono #31#. <br>
+            Ponudnik storitev lahko za to storitev zaračuna dodatno pristojbino.
+        ]]>
+    </string>
+
+    <string name="add_wait">Dodaj čakanje (;)</string>
+    <string name="rejected">Zavrnjeno</string>
+    <string name="dialpad_buttons_color">Barva gumbov številčnice</string>
+    <string name="audio_route_earpiece_g">Slušalka naprave</string>
+    <string name="open_speed_dial_manage">Odprite upravljanje hitrega izbiranja?</string>
+
+    <!-- Timer -->
+    <string name="timer">Časovnik</string>
+    <string name="timers_notification_msg">Tečejo časovniki</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d teče časovnik</item>
+        <item quantity="two">%d tečeta časovnika</item>
+        <item quantity="few">%d tečejo nekateri časovniki</item>
+        <item quantity="other">%d tečejo drugi časovniki</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Zakaj moram odkleniti svojo napravo, da sprejmem dohodni klic?</string>
+    <string name="faq_1_text_dialer_g">Operacijski sistem blokira aplikacijam dostop do zaklenjenega zaslona. Aplikaciji morate dovoliti dostop do zaklenjenega zaslona. Na primer, v MIUI morate omogočiti dostop do Nastavitve => Obvestila => Obvestila na zaklenjenem zaslonu.</string>
+    <string name="faq_2_title_dialer_g">Kako kopiram ali prilepim številko na zaslon klicalnika?</string>
+    <string name="faq_2_text_dialer_g">Dolgo pritisnite gumb za klic, da prilepite vsebino odložišča. Če je številka že vnesena, jo dolg pritisk na klicni gumb kopira v odložišče.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Desni klicalnik prikaže samo stike, ki imajo povezano telefonsko številko. Stiki brez telefonske številke niso prikazani v aplikaciji.</string>
+    <string name="slider_style">Slog drsnika</string>
+    <string name="slider_style_summary">Drsnik se uporablja samo, ko je zaslon zaklenjen.</string>
+    <string name="answer_style">Slog gumba za odgovor</string>
+    <string name="buttons">Gumbi</string>
+    <string name="answer_slider">Drsnik</string>
+    <string name="answer_slider_outline">Orisni drsnik</string>
+    <string name="answer_slider_vertical">Navpični drsnik</string>
+
+    <string name="show_recent_calls">Prikaz in iskanje nedavnih klicev</string>
+    <string name="search_contacts_in_dialpad">Iskanje stikov pri klicanju številke</string>
+    <string name="open_dialpad_when_call_from_another_app">Ko poskušate klicati iz druge aplikacije, odprite številčnico</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">To vas lahko zaščiti pred zlonamerno programsko opremo, ki kliče brez vaše vednosti.</string>
+    <string name="number_of_recent_calls_displays">Prikazano število zadnjih klicev</string>
+    <string name="number_of_recent_calls_displays_summary">Debido a la agrupación, el número de filas mostradas puede ser menor.</string>
+    <string name="group_calls">Združevanje klicev v skupine</string>
+    <string name="group_all_calls">Združi vse klice, prikazan bo samo zadnji klic</string>
+    <string name="call_button_style">Slog zvonca</string>
+    <string name="call_notes">Opombe o klicu</string>
+    <string name="back_pressed_end_call">Dejanje nazaj konča klic</string>
+    <string name="keep_calls_in_popup_summary">Ko sprejmete klic, ta ostane v obvestilih in se ne prikaže v celozaslonskem načinu. To storite, da ne prekinjate drugih aplikacij, na primer med igranjem igre.</string>
+    <string name="turn_on_speaker_in_popup">Samodejni vklop zvočnika</string>
+    <string name="turn_on_speaker_in_popup_summary">Če slušalke niso priključene, se bo zvočnik vklopil.</string>
+    <string name="busy">zaseden</string>
+    <string name="block_calls">Blokiraj klice</string>
+    <string name="edit_number_before_call">Pred klicem uredite številko</string>
+    <string name="on_favorite_click">Ko kliknete na priljubljeno</string>
+    <string name="call_using_same_sim">Uporabite isto kartico SIM, na katero je bil opravljen prejšnji (zadnji) klic</string>
+    <string name="answer_end_other_call">Sprejemanje in končanje trenutnega klica</string>
+    <string name="quick_answers">Hitri odgovori</string>
+    <string name="voicemail">Glasovna pošta</string>
+    <string name="show_voicemail_icon">Pokaži ikono glasovne pošte</string>
+    <string name="secondary_dialpad_language">Jezik sekundarne številčne tipkovnice</string>
+    <string name="sim_card_selection_dialog_style">Slog pogovornega okna Izbira kartice SIM</string>
+    <string name="clear_dialpad_when_start_call">Počistite klicano številko ob začetku klica</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d neodgovorjeni klic</item>
+        <item quantity="two">%d zgrešena klica</item>
+        <item quantity="few">%d zamujenih klicev</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Pustite klice v obvestilih</string>
+    <string name="on_contact_click">Ko kliknete na stik</string>
+    <string name="on_recent_click">Ko kliknete na nedavni klic</string>
+    <string name="add_pause">Dodaj 2-sekundni premor (,)</string>
+    <string name="missed">Zamujeno</string>
+    <string name="incoming">Dohodni</string>
+    <string name="outgoing">Odhodni</string>
+</resources>

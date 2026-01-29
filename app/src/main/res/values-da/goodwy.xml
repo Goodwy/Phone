@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Gennemsigtig opkaldsskærm</string>
+    <string name="call_back_g">Kalde</string>
+    <string name="call_back_person_g">Ring tilbage %s</string>
+    <string name="missed_call_g">Ubesvaret opkald</string>
+    <string name="missed_calls_g">Ubesvarede opkald</string>
+    <string name="missed_call_notifications_g">Meddelelser om ubesvarede opkald</string>
+    <string name="dialpad_preferences">Opkaldsskærmindstillinger</string>
+    <string name="call_start_end_vibration">Vibrere, når dit opkald starter og slutter</string>
+
+    <string name="show_contact_thumbnails_g">Vis miniaturebilleder af kontakter</string>
+    <string name="hide_dialpad_letters_g">Skjul dialpad-bogstaver</string>
+    <string name="show_caller_description_g">Vis yderligere opkaldsoplysninger</string>
+    <string name="nickname">Kælenavn</string>
+    <string name="company">Firma</string>
+    <string name="call_anonymously">Ring anonymt (med præfiks #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Advarsel</h4>
+             Nummeret vil blive kaldt med præfikset #31# <br><br>
+                 <h6"><i> #31#%s</i></h6>
+             Sørg for, at din operatør understøtter nummerskjulningstjenesten, når du bruger præfikset #31#. <br>
+             Din tjenesteudbyder kan opkræve et ekstra gebyr for denne tjeneste.
+        ]]>
+    </string>
+
+    <string name="add_wait">Tilføj ventetid (;)</string>
+    <string name="rejected">Afvist</string>
+    <string name="dialpad_buttons_color">Farve på knapperne på tastaturet</string>
+    <string name="audio_route_earpiece_g">Enhedens ørestykke</string>
+    <string name="open_speed_dial_manage">Åbn hurtigopkaldsstyringen?</string>
+
+    <!-- Timer -->
+    <string name="timer">Æggeur</string>
+    <string name="timers_notification_msg">Æggeuret kører</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d timer kører</item>
+        <item quantity="other">%d timere kører</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Hvorfor skal jeg låse min enhed op for at besvare et indgående opkald?</string>
+    <string name="faq_1_text_dialer_g">operativsystemet blokerer apps fra at få adgang til låseskærmen. Du skal give appen tilladelse til at få adgang til låseskærmen. For eksempel skal du i MIUI tillade adgang til Indstillinger => Meddelelser => Meddelelser på låseskærmen.</string>
+    <string name="faq_2_title_dialer_g">Hvordan kopierer eller indsætter jeg et nummer på opkaldsskærmen?</string>
+    <string name="faq_2_text_dialer_g">Tryk længe på opkaldsknappen for at indsætte indholdet af udklipsholderen. Hvis nummeret allerede er indtastet, vil et langt tryk på opkaldsknappen kopiere det til udklipsholderen.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer viser kun kontakter, der har et telefonnummer tilknyttet dem. Kontakter uden telefonnummer vises ikke i appen.</string>
+    <string name="slider_style">Slider-stil</string>
+    <string name="slider_style_summary">Skyderen bruges kun, når skærmen er låst.</string>
+    <string name="answer_style">Svarknapstil</string>
+    <string name="buttons">Knapper</string>
+    <string name="answer_slider">Slider</string>
+    <string name="answer_slider_outline">Konturskyder</string>
+    <string name="answer_slider_vertical">Lodret skyder</string>
+
+    <string name="show_recent_calls">Vis og søg efter de seneste opkald</string>
+    <string name="search_contacts_in_dialpad">Søg efter kontakter, når du ringer til et nummer</string>
+    <string name="open_dialpad_when_call_from_another_app">Når du prøver at foretage et opkald fra et andet program, skal du åbne opkaldstastaturet</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Dette kan beskytte dig mod malware, der foretager opkald uden din viden.</string>
+    <string name="number_of_recent_calls_displays">Vist antal seneste opkald</string>
+    <string name="number_of_recent_calls_displays_summary">På grund af gruppering kan antallet af viste rækker være mindre.</string>
+    <string name="group_calls">Opkaldsgruppering</string>
+    <string name="group_all_calls">Gruppér alle opkald, kun det sidste opkald vises</string>
+    <string name="call_button_style">Klokkeknap stil</string>
+    <string name="call_notes">Opkaldsnoter</string>
+    <string name="back_pressed_end_call">Tilbage-handlingen afslutter opkaldet</string>
+    <string name="keep_calls_in_popup_summary">Når du besvarer et opkald, forbliver det i dine notifikationer og vises ikke i fuld skærm. Dette gøres for at undgå at afbryde andre apps, f.eks. mens du spiller et spil.</string>
+    <string name="turn_on_speaker_in_popup">Tænd højttaleren automatisk</string>
+    <string name="turn_on_speaker_in_popup_summary">Hvis der ikke er tilsluttet et headset, vil højttaleren være tændt.</string>
+    <string name="busy">Optaget</string>
+    <string name="block_calls">Bloker opkald</string>
+    <string name="edit_number_before_call">Rediger nummer før opkald</string>
+    <string name="on_favorite_click">Når du klikker på en favorit</string>
+    <string name="call_using_same_sim">Brug det samme SIM-kort, som det forrige (sidste) opkald blev foretaget til</string>
+    <string name="answer_end_other_call">Besvar og afslut det aktuelle opkald</string>
+    <string name="quick_answers">Hurtige svar</string>
+    <string name="voicemail">Telefonsvarer</string>
+    <string name="show_voicemail_icon">Vis telefonsvarerikon</string>
+    <string name="secondary_dialpad_language">Sekundært sprog på det numeriske tastatur</string>
+    <string name="sim_card_selection_dialog_style">SIM-valgdialogtypografi</string>
+    <string name="clear_dialpad_when_start_call">Ryd det opkaldte nummer, når du starter et opkald</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d ubesvaret opkald</item>
+        <item quantity="other">%d ubesvarede opkald</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Efterlad opkald i notifikationer</string>
+    <string name="on_contact_click">Når du klikker på en kontakt</string>
+    <string name="on_recent_click">Når du klikker på et nyligt opkald</string>
+    <string name="add_pause">Tilføj 2 sekunders pause (,)</string>
+    <string name="missed">Misset</string>
+    <string name="incoming">Indgående</string>
+    <string name="outgoing">Udgående</string>
+</resources>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Прозорий фон екрану дзвінків</string>
+    <string name="call_back_g">Передзвонити</string>
+    <string name="call_back_person_g">Передзвоніть %s</string>
+    <string name="missed_call_g">Пропущений дзвінок</string>
+    <string name="missed_calls_g">Пропущених дзвінків</string>
+    <string name="missed_call_notifications_g">Повідомлення про пропущені дзвінки</string>
+    <string name="call_start_end_vibration">Вібрація під час початку та завершення виклику</string>
+    <string name="show_recent_calls">Показувати та шукати останні дзвінки</string>
+    <string name="search_contacts_in_dialpad">Пошук контактів під час набору номера</string>
+    <string name="open_dialpad_when_call_from_another_app">При спробі здійснити дзвінок з іншої програми відкривати панель набору номера</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Це може захистити вас від шкідливих програм, які здійснюють дзвінки без вашого відома.</string>
+    <string name="number_of_recent_calls_displays">Кількість недавніх дзвінків, що відображається</string>
+    <string name="number_of_recent_calls_displays_summary">گروپ بندی کی وجہ سے، دکھائی جانے والی قطاروں کی تعداد کم ہو سکتی ہے۔</string>
+    <string name="group_calls">Угруповання дзвінків</string>
+    <string name="group_all_calls">Групувати всі дзвінки, буде показано лише останній дзвінок</string>
+    <string name="call_button_style">Стиль кнопки дзвінка</string>
+    <string name="call_notes">Нотатки про дзвінки</string>
+    <string name="back_pressed_end_call">Дія назад завершує виклик</string>
+
+    <string name="keep_calls_in_popup_summary">Після відповіді на дзвінок він залишається в повідомленнях і не з\'являється на весь екран. Це зроблено для того, щоб не переривати роботу інших програм, наприклад, під час гри.</string>
+    <string name="turn_on_speaker_in_popup">Вмикати автоматично динамік</string>
+    <string name="turn_on_speaker_in_popup_summary">Якщо гарнітура не підключена, динамік увімкнеться.</string>
+    <string name="busy">Зайнято</string>
+    <string name="block_calls">Блокувати дзвінки</string>
+    <string name="edit_number_before_call">Редагувати номер перед дзвінком</string>
+    <string name="on_favorite_click">При натисканні на обраний</string>
+    <string name="call_using_same_sim">Використовувати ту саму SIM-картку, на яку було зроблено попередній (останній) дзвінок</string>
+    <string name="answer_end_other_call">Відповідь на поточний дзвінок і його завершення</string>
+    <string name="quick_answers">Швидкі відповіді</string>
+    <string name="voicemail">Голосова пошта</string>
+    <string name="show_voicemail_icon">Показувати значок голосової пошти</string>
+    <string name="secondary_dialpad_language">Додаткова мова на клавіатурі</string>
+    <string name="sim_card_selection_dialog_style">Стиль діалогу вибору SIM карти</string>
+    <string name="clear_dialpad_when_start_call">Очистити набраний номер під час початку виклику</string>
+    <string name="dialpad_preferences">Налаштування екрана набору номера</string>
+    <string name="show_contact_thumbnails_g">Показувати фото контакту</string>
+    <string name="hide_dialpad_letters_g">Приховати літери цифрової клавіатури</string>
+    <string name="show_caller_description_g">Показати додаткову інформацію про абонента</string>
+    <string name="nickname">Псевдонім</string>
+    <string name="company">Організація</string>
+    <string name="call_anonymously">Дзвонити анонімно (з префіксом #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Попередження</h4>
+            Номер буде набрано з префіксом #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Переконайтеся, що ваш оператор підтримує послугу приховування номера при використанні префікса #31#. <br>
+            Ваш оператор може стягувати додаткову плату за цю послугу.
+        ]]>
+    </string>
+
+    <string name="add_wait">Додати очікування (;)</string>
+    <string name="rejected">Відхилені</string>
+    <string name="dialpad_buttons_color">Колір кнопок цифрової панелі</string>
+    <string name="audio_route_earpiece_g">Телефон</string>
+    <string name="open_speed_dial_manage">Відкрити управління швидким викликом?</string>
+
+    <!-- Timer -->
+    <string name="timer">Таймер</string>
+    <string name="timers_notification_msg">Таймери працюють</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d таймер працює</item>
+        <item quantity="few">%d таймера працюють</item>
+        <item quantity="many">%d таймерів працюють</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Чому для відповіді на вхідний виклик необхідно розблокувати пристрій?</string>
+    <string name="faq_1_text_dialer_g">Операційна система блокує доступ додатків до екрана блокування. Необхідно дозволити застосунку доступ до екрана блокування. Наприклад, у MIUI необхідно дозволити доступ у \"Налаштування => Сповіщення => Сповіщення на екрані блокування\" та увімкнути дозвіл \"Відображати спливаючі вікна, коли запущено у фоновому режимі\".</string>
+    <string name="faq_2_title_dialer_g">Як скопіювати або вставити номер на екрані набору номера?</string>
+    <string name="faq_2_text_dialer_g">Тривале натискання на кнопку виклику вставляє вміст буфера обміну. Якщо номер уже введено, тривале натискання на кнопку виклику копіює його в буфер обміну.</string>
+    <string name="faq_3_text_g">Right Dialer показує лише контакти, до яких прив\'язаний телефонний номер. Контакти без телефонного номера не відображаються у програмі.</string>
+
+    <!-- Answer style -->
+    <string name="slider_style">Стиль слайдера</string>
+    <string name="slider_style_summary">Слайдер використовується лише при заблокованому екрані</string>
+    <string name="answer_style">Стиль кнопок відповіді</string>
+    <string name="buttons">Кнопки</string>
+    <string name="answer_slider">Слайдер</string>
+    <string name="answer_slider_outline">Слайдер з контуром</string>
+    <string name="answer_slider_vertical">Вертикальний слайдер</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d пропущений дзвінок</item>
+        <item quantity="few">%d пропущених дзвінка</item>
+        <item quantity="many">%d пропущених дзвінків</item>
+    </plurals>
+    <string name="missed_call_from">Пропущений дзвінок від %s</string>
+    <string name="keep_calls_in_popup">Залишати дзвінки в повідомленнях</string>
+    <string name="on_contact_click">При натисканні на контакт</string>
+    <string name="on_recent_click">При натисканні на недавній дзвінок</string>
+    <string name="add_pause">Додати 2-секундну паузу (,)</string>
+    <string name="missed">Пропущені</string>
+    <string name="incoming">Вхідні</string>
+    <string name="outgoing">Вихідні</string>
+</resources>

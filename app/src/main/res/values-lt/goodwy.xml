@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Skaidrus skambučių ekranas</string>
+    <string name="call_back_g">Šaukti</string>
+    <string name="call_back_person_g">Atgalinis skambutis %s</string>
+    <string name="missed_call_g">Praleistas skambutis</string>
+    <string name="missed_calls_g">Praleisti skambučiai</string>
+    <string name="missed_call_notifications_g">Pranešimai apie praleistus skambučius</string>
+    <string name="dialpad_preferences">Rinkimo ekrano nustatymai</string>
+    <string name="call_start_end_vibration">Vibruokite, kai skambutis prasideda ir baigiasi</string>
+
+    <string name="show_contact_thumbnails_g">Kontaktų miniatiūrų rodymas</string>
+    <string name="hide_dialpad_letters_g">Numerio rinkiklio raidžių slėpimas</string>
+    <string name="show_caller_description_g">Rodyti papildomą skambinančiojo informaciją</string>
+    <string name="nickname">Slapyvardis</string>
+    <string name="company">Įmonė</string>
+    <string name="call_anonymously">Skambinkite anonimiškai (su priešdėliu #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Įspėjimas</h4>
+            Numeris bus skambinamas su priešdėliu #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Įsitikinkite, kad jūsų operatorius palaiko numerio slėpimo paslaugą, kai naudojate priešdėlį #31#. <br>
+            Paslaugų teikėjas už šią paslaugą gali imti papildomą mokestį.
+        ]]>
+    </string>
+
+    <string name="add_wait">Pridėti laukimą (;)</string>
+    <string name="rejected">Atmesta</string>
+    <string name="dialpad_buttons_color">Rinkiklio mygtukų spalva</string>
+    <string name="audio_route_earpiece_g">Įrenginio ausinės</string>
+    <string name="open_speed_dial_manage">Atidaryti greitojo rinkimo valdymą?</string>
+
+    <!-- Timer -->
+    <string name="timer">Laikmatis</string>
+    <string name="timers_notification_msg">Veikia laikmačiai</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d laikmatis veikia</item>
+        <item quantity="few">%d laikmačių veikia</item>
+        <item quantity="many">%d laikmačių veikia</item>
+        <item quantity="other">%d laikmačiai veikia</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Kodėl turiu atrakinti įrenginį, kad galėčiau atsiliepti į įeinantį skambutį?</string>
+    <string name="faq_1_text_dialer_g">Operacinė sistema blokuoja programoms pasiekti užrakinimo ekraną. Turite leisti programai pasiekti užrakinimo ekraną. Pavyzdžiui, MIUI turite leisti pasiekti nustatymus => Pranešimai => Pranešimai užrakinimo ekrane.</string>
+    <string name="faq_2_title_dialer_g">Kaip nukopijuoti arba įklijuoti numerį numerio rinkiklio ekrane?</string>
+    <string name="faq_2_text_dialer_g">Ilgai paspauskite skambinimo mygtuką, kad įklijuotumėte iškarpinės turinį. Jei numeris jau įvestas, ilgai paspaudus skambinimo mygtuką, jis nukopijuojamas į mainų sritį.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Dešinysis rinkiklis rodo tik tuos kontaktus, kurie turi susietą telefono numerį. Kontaktai be telefono numerio programoje nerodomi.</string>
+    <string name="slider_style">Slankiklio stilius</string>
+    <string name="slider_style_summary">Slankiklis naudojamas tik tada, kai ekranas užrakintas.</string>
+    <string name="answer_style">Atsakymo mygtuko stilius</string>
+    <string name="buttons">Mygtukai</string>
+    <string name="answer_slider">Slankiklis</string>
+    <string name="answer_slider_outline">Kontūro slankiklis</string>
+    <string name="answer_slider_vertical">Vertikalus slankiklis</string>
+
+    <string name="show_recent_calls">Rodyti ir ieškoti naujausių skambučių</string>
+    <string name="search_contacts_in_dialpad">Ieškoti kontaktų renkant numerį</string>
+    <string name="open_dialpad_when_call_from_another_app">Bandydami skambinti iš kitos programos, atidarykite rinkimo klaviatūrą</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Tai gali apsaugoti jus nuo kenkėjiškų programų, kurios skambina jums nežinant.</string>
+    <string name="number_of_recent_calls_displays">Rodomas paskutinių skambučių skaičius</string>
+    <string name="number_of_recent_calls_displays_summary">Dėl grupavimo rodomų eilučių skaičius gali būti mažesnis.</string>
+    <string name="group_calls">Skambučių grupavimas</string>
+    <string name="group_all_calls">Grupuokite visus skambučius, bus rodomas tik paskutinis skambutis</string>
+    <string name="call_button_style">Varpo mygtuko stilius</string>
+    <string name="call_notes">Skambučių pastabos</string>
+    <string name="back_pressed_end_call">Atgalinis veiksmas užbaigia skambutį</string>
+    <string name="keep_calls_in_popup_summary">Atsiliepus į skambutį, jis lieka pranešimuose ir nerodomas per visą ekraną. Taip daroma siekiant netrukdyti kitoms programoms, pvz., žaidžiant žaidimą.</string>
+    <string name="turn_on_speaker_in_popup">Įjungti garsiakalbį automatiškai</string>
+    <string name="turn_on_speaker_in_popup_summary">Jei ausinės neprijungtos, garsiakalbis įsijungs.</string>
+    <string name="busy">Užimtas</string>
+    <string name="block_calls">Blokuoti skambučius</string>
+    <string name="edit_number_before_call">Redaguoti numerį prieš skambutį</string>
+    <string name="on_favorite_click">Kai spustelėsite mėgstamiausią</string>
+    <string name="call_using_same_sim">Naudokite tą pačią SIM kortelę, į kurią buvo skambinta ankstesniu (paskutiniu) skambučiu</string>
+    <string name="answer_end_other_call">Atsiliepkite ir užbaikite dabartinį skambutį</string>
+    <string name="quick_answers">Greiti atsakymai</string>
+    <string name="voicemail">Balso paštas</string>
+    <string name="show_voicemail_icon">Rodyti balso pašto piktogramą</string>
+    <string name="secondary_dialpad_language">Antrinė numerio rinkiklio kalba</string>
+    <string name="sim_card_selection_dialog_style">SIM pasirinkimo dialogo stilius</string>
+    <string name="clear_dialpad_when_start_call">Išvalyti surinktą numerį pradedant skambutį</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d praleistas skambutis</item>
+        <item quantity="few">%d praleisti skambučiai</item>
+        <item quantity="many">%d praleistų skambučių</item>
+        <item quantity="other">%d praleistų skambučių</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Palikite skambučius pranešimuose</string>
+    <string name="on_contact_click">Kai spustelėsite kontaktą</string>
+    <string name="on_recent_click">Kai spustelėsite neseniai atliktą skambutį</string>
+    <string name="add_pause">Pridėti 2 sekundžių pauzę (,)</string>
+    <string name="missed">Praleista</string>
+    <string name="incoming">Įeinantis</string>
+    <string name="outgoing">Išeinantis</string>
+</resources>

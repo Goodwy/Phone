@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Przezroczysty ekran połączenia</string>
+    <string name="call_back_g">Oddzwoń</string>
+    <string name="call_back_person_g">Oddzwoń %s</string>
+    <string name="missed_call_g">Nieodebranych</string>
+    <string name="missed_calls_g">Nieodebrane połączenia</string>
+    <string name="missed_call_notifications_g">Powiadomienia o nieodebranych połączeniach</string>
+    <string name="dialpad_preferences">Ustawienia ekranu wybierania</string>
+    <string name="call_start_end_vibration">Wibracje, gdy połączenie jest rozpoczynane i kończone</string>
+
+    <string name="show_contact_thumbnails_g">Pokazywanie miniatur kontaktów</string>
+    <string name="hide_dialpad_letters_g">Ukryj litery klawiatury numerycznej</string>
+    <string name="show_caller_description_g">Wyświetlanie dodatkowych informacji o dzwoniącym</string>
+    <string name="nickname">Przydomek</string>
+    <string name="company">Firma</string>
+    <string name="call_anonymously">Zadzwoń anonimowo (z prefiksem #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Ostrzeżenie</h4>
+            Numer będzie wywoływany z prefiksem #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Upewnij się, że Twój operator obsługuje usługę ukrywania numeru podczas korzystania z prefiksu #31#. <br>
+            Dostawca usług może naliczyć dodatkową opłatę za tę usługę.
+        ]]>
+    </string>
+
+    <string name="add_wait">Dodaj czekanie (;)</string>
+    <string name="rejected">Odrzucony</string>
+    <string name="dialpad_buttons_color">Kolor przycisków klawiatury numerycznej</string>
+    <string name="audio_route_earpiece_g">Słuchawka urządzenia</string>
+    <string name="open_speed_dial_manage">Otworzyć zarządzanie szybkim wybieraniem?</string>
+
+    <!-- Timer -->
+    <string name="timer">Minutnik</string>
+    <string name="timers_notification_msg">Minutniki są uruchomione</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d minutnik jest uruchomiony</item>
+        <item quantity="few">%d minutniki są uruchomione</item>
+        <item quantity="many">%d minutników jest uruchomionych</item>
+        <item quantity="other">%d minutników jest uruchomionych</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Dlaczego muszę odblokować urządzenie, aby odebrać połączenie przychodzące?</string>
+    <string name="faq_1_text_dialer_g">System operacyjny blokuje aplikacjom dostęp do ekranu blokady. Musisz zezwolić aplikacji na dostęp do ekranu blokady. Na przykład w MIUI musisz zezwolić na dostęp do Ustawienia => Powiadomienia => Powiadomienia na ekranie blokady.</string>
+    <string name="faq_2_title_dialer_g">Jak skopiować lub wkleić numer na ekranie dialera?</string>
+    <string name="faq_2_text_dialer_g">Naciśnij długo przycisk połączenia, aby wkleić zawartość schowka. Jeśli numer jest już wprowadzony, długie naciśnięcie przycisku połączenia kopiuje go do schowka.</string>
+
+    <!-- Answer style -->
+    <string name="faq_3_text_g">Right Dialer wyświetla tylko kontakty z przypisanym numerem telefonu. Kontakty bez numeru telefonu nie są wyświetlane w aplikacji.</string>
+    <string name="slider_style">Styl suwaka</string>
+    <string name="slider_style_summary">Suwak jest używany tylko wtedy, gdy ekran jest zablokowany.</string>
+    <string name="answer_style">Styl przycisku odpowiedzi</string>
+    <string name="buttons">Przyciski</string>
+    <string name="answer_slider">Suwak</string>
+    <string name="answer_slider_outline">Suwak konspektu</string>
+    <string name="answer_slider_vertical">Pionowy suwak</string>
+
+    <string name="show_recent_calls">Pokaż i wyszukaj ostatnie połączenia</string>
+    <string name="search_contacts_in_dialpad">Wyszukaj kontakty podczas wybierania numeru</string>
+    <string name="open_dialpad_when_call_from_another_app">Podczas próby wykonania połączenia z innej aplikacji otwórz klawiaturę numeryczną</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Może to zapewnić Ci ochronę przed złośliwym oprogramowaniem, które wykonuje połączenia bez Twojej wiedzy.</string>
+    <string name="number_of_recent_calls_displays">Wyświetlana liczba ostatnich połączeń</string>
+    <string name="number_of_recent_calls_displays_summary">Ze względu na grupowanie liczba wyświetlanych wierszy może być mniejsza.</string>
+    <string name="group_calls">Grupowanie połączeń</string>
+    <string name="group_all_calls">Zgrupuj wszystkie połączenia, będzie wyświetlane tylko ostatnie połączenie</string>
+    <string name="call_button_style">Styl przycisku dzwonka</string>
+    <string name="call_notes">Notatki z rozmów</string>
+    <string name="back_pressed_end_call">Akcja wsteczna kończy połączenie</string>
+    <string name="keep_calls_in_popup_summary">Po odebraniu połączenia pozostaje ono w powiadomieniach i nie wyświetla się na pełnym ekranie. Ma to na celu uniknięcie zakłócania działania innych aplikacji, na przykład podczas grania w grę.</string>
+    <string name="turn_on_speaker_in_popup">Włącz głośnik automatycznie</string>
+    <string name="turn_on_speaker_in_popup_summary">Jeśli zestaw słuchawkowy nie jest podłączony, głośnik zostanie włączony.</string>
+    <string name="busy">Zajęty</string>
+    <string name="block_calls">Blokuj połączenia</string>
+    <string name="edit_number_before_call">Edytuj numer przed połączeniem</string>
+    <string name="on_favorite_click">Kiedy klikniesz na ulubione</string>
+    <string name="call_using_same_sim">Użyj tej samej karty SIM, na którą wykonano poprzednie (ostatnie) połączenie</string>
+    <string name="answer_end_other_call">Odbieranie i kończenie bieżącego połączenia</string>
+    <string name="quick_answers">Szybkie odpowiedzi</string>
+    <string name="voicemail">Poczta głosowa</string>
+    <string name="show_voicemail_icon">Pokaż ikonę poczty głosowej</string>
+    <string name="secondary_dialpad_language">Dodatkowy język klawiatury numerycznej</string>
+    <string name="sim_card_selection_dialog_style">Styl okna dialogowego wyboru karty SIM</string>
+    <string name="clear_dialpad_when_start_call">Wyczyść wybrany numer podczas rozpoczynania połączenia</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d nieodebrane połączenie</item>
+        <item quantity="few">%d nieodebrane połączenia</item>
+        <item quantity="many">%d nieodebranych połączeń</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="keep_calls_in_popup">Pozostaw połączenia w powiadomieniach</string>
+    <string name="on_contact_click">Po kliknięciu kontaktu</string>
+    <string name="on_recent_click">Kiedy klikniesz na ostatnie połączenie</string>
+    <string name="add_pause">Dodaj 2-sekundową pauzę (,)</string>
+    <string name="missed">Pominięty</string>
+    <string name="incoming">Przybywający</string>
+    <string name="outgoing">Towarzyski</string>
+</resources>

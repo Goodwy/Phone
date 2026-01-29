@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_phone_app_prompt">سیٹنگاں وچ ایہہ اَیپ مول فون چاہدی</string>
+    <string name="could_not_access_contacts">تہاڈے فون‌بوک پہنچ نہیں سکے</string>
+    <string name="no_previous_calls">کوئی پچھلیا کالاں نہیں لبھیاں</string>
+    <string name="clear_call_history">کال دی تریخ ہٹاؤ</string>
+    <string name="dialpad">فون کیبورڈ</string>
+    <string name="asterisk">ایسٹرسک</string>
+    <string name="hashtag">ہیش‌ٹیگ</string>
+    <string name="call_number">کال دا نمبر</string>
+    <string name="dialer">فون دائک</string>
+</resources>

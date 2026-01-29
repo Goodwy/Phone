@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/copy_number"
+        android:title="@string/copy"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/paste_number"
+        android:title="@string/paste_g"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/web_search"
+        android:title="@string/search_the_web"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_call_anonymously"
+        android:icon="@drawable/ic_phone_vector"
+        android:title="@string/call_anonymously" />
+    <item
+        android:id="@+id/clear_call_history"
+        android:title="@string/clear_call_history"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/show_blocked_numbers"
+        android:icon="@drawable/ic_show_block"
+        android:title="@string/blocked_numbers"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/settings_dialpad"
+        android:title="@string/dialpad_preferences"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/add_number_to_contact"
+        android:icon="@drawable/ic_plus_vector"
+        android:title="@string/add_number_to_contact"
+        android:visible="false"
+        app:showAsAction="never" />
+</menu>

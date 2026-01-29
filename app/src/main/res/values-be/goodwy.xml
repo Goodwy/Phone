@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transparent_call_screen_g">Празрысты экран выкліку</string>
+    <string name="call_back_g">Ператэлефанаваць</string>
+    <string name="call_back_person_g">Ператэлефануйце %s</string>
+    <string name="missed_call_g">Прапушчаны выклік</string>
+    <string name="missed_calls_g">Прапушчаныя званкі</string>
+    <string name="missed_call_notifications_g">Апавяшчэнні аб прапушчаных выкліках</string>
+    <string name="dialpad_preferences">Настройкі экрана набору нумара</string>
+    <string name="call_start_end_vibration">Вібрацыя пры пачатку і завяршэнні выкліку</string>
+    <string name="call_notes">Ноты для званкоў</string>
+    <string name="back_pressed_end_call">Дзеянне таму завяршае выклік</string>
+
+    <string name="keep_calls_in_popup_summary">Пасля адказу на выклік ён застаецца ў апавяшчэннях і не адлюстроўваецца на ўвесь экран. Гэта зроблена для таго, каб не перарываць працу іншых прыкладанняў, напрыклад падчас гульні.</string>
+    <string name="turn_on_speaker_in_popup">Уключаць аўтаматычна дынамік</string>
+    <string name="turn_on_speaker_in_popup_summary">Калі гарнітура не падключана, дынамік будзе ўключаны.</string>
+    <string name="busy">Занята</string>
+    <string name="block_calls">Блакіраваць званкі</string>
+    <string name="edit_number_before_call">Рэдагаваць нумар перад званком</string>
+    <string name="on_favorite_click">Пры націску на абраны</string>
+    <string name="call_using_same_sim">Выкарыстоўваць тую ж SIM-карту, на якую быў зроблены папярэдні (апошні) званок</string>
+    <string name="show_contact_thumbnails_g">Паказаць мініяцюры кантактаў</string>
+    <string name="hide_dialpad_letters_g">Схаваць літары панэлі набору</string>
+    <string name="show_caller_description_g">Паказаць дадатковую інфармацыю аб абаненце</string>
+    <string name="nickname">Псеўданім</string>
+    <string name="company">Кампанія</string>
+    <string name="call_anonymously">Тэлефанаваць ананімна (з прэфіксам #31#)</string>
+    <string name="call_anonymously_warning">
+        <![CDATA[
+            <h4>Папярэджанне</h4>
+            Нумар будзе набраны з прэфіксам #31# <br><br>
+                <h6"><i>  #31#%s</i></h6>
+            Пераканайцеся, што ваш аператар падтрымлівае паслугу ўтойвання нумара пры выкарыстанні прэфікса #31#. <br>
+            Ваш аператар можа спаганяць дадатковую плату за гэтую паслугу.
+        ]]>
+    </string>
+
+    <string name="add_wait">Дадаць чаканне (;)</string>
+    <string name="rejected">Адхіленыя</string>
+    <string name="dialpad_buttons_color">Колер кнопак лічбавай панэлі</string>
+    <string name="audio_route_earpiece_g">Тэлефон</string>
+    <string name="open_speed_dial_manage">Адкрыць кіраванне хуткім наборам?</string>
+
+    <!-- Timer -->
+    <string name="timer">Таймер</string>
+    <string name="timers_notification_msg">Таймеры запушчаны</string>
+    <plurals name="timer_notification_msg">
+        <item quantity="one">%d таймер запушчаны</item>
+        <item quantity="few">%d таймера запушчаны</item>
+        <item quantity="many">%d таймераў запушчана</item>
+        <item quantity="other">%d таймераў запушчана</item>
+    </plurals>
+
+    <!-- FAQ -->
+    <string name="faq_1_title_dialer_g">Чаму для адказу на ўваходны выклік неабходна разблакаваць прыладу?</string>
+    <string name="faq_1_text_dialer_g">Аперацыйная сістэма блакуе доступ прыкладанняў да экрана блакавання. Неабходна дазволіць з дадаткам доступ да экрана блакавання. Напрыклад, у MIUI неабходна дазволіць доступ у \"Налады => Апавяшчэнні => Апавяшчэнні на экране блакавання\" і ўключыць дазвол \"Адлюстроўваць усплывальныя вокны, калі запушчана ў фонавым рэжыме\".</string>
+    <string name="faq_2_title_dialer_g">Як скапіяваць ці ўставіць нумар на экране набору нумара?</string>
+    <string name="faq_2_text_dialer_g">Працяглы націск на кнопку выкліку ўстаўляе змесціва буфера абмену. Калі нумар ужо ўведзены, працяглы націск на кнопку выкліку капіюе яго ў буфер абмену.</string>
+    <string name="faq_3_text_g">Right Dialer паказвае толькі кантакты, да якіх прывязаны нумар тэлефона. Кантакты без тэлефоннага нумара не адлюстроўваюцца ў дадатку.</string>
+
+    <!-- Answer style -->
+    <string name="slider_style">Стыль слайдара</string>
+    <string name="slider_style_summary">Слайдэр выкарыстоўваецца толькі пры заблакаваным экране</string>
+    <string name="answer_style">Стыль кнопак адказу</string>
+    <string name="buttons">Кнопкі</string>
+    <string name="answer_slider">Слайдэр</string>
+    <string name="answer_slider_outline">Слайдэр з контурам</string>
+    <string name="answer_slider_vertical">Вертыкальны слайдэр</string>
+
+    <string name="show_recent_calls">Паказваць і шукаць апошнія званкі</string>
+    <string name="search_contacts_in_dialpad">Пошук кантактаў пры наборы нумара</string>
+    <string name="open_dialpad_when_call_from_another_app">Пры спробе здзейсніць званок з іншага прыкладання адкрываць панэль набору нумара</string>
+    <string name="open_dialpad_when_call_from_another_app_summary">Гэта можа абараніць вас ад шкоднасных праграм, якія здзяйсняюць званкі без вашага ведама.</string>
+    <string name="number_of_recent_calls_displays">Якая адлюстроўваецца колькасць нядаўніх званкоў</string>
+    <string name="number_of_recent_calls_displays_summary">З улікам групоўкі якая адлюстроўваецца колькасць радкоў можа быць менш.</string>
+    <string name="group_calls">Групоўка званкоў</string>
+    <string name="group_all_calls">Групаваць усе званкі, будзе паказаны толькі апошні званок</string>
+    <string name="call_button_style">Стыль кнопак званка</string>
+    <string name="answer_end_other_call">Адказаць і завяршыць бягучы выклік</string>
+    <string name="quick_answers">Хуткія адказы</string>
+    <string name="voicemail">Галасавая пошта</string>
+    <string name="show_voicemail_icon">Паказваць значок галасавой пошты</string>
+    <string name="secondary_dialpad_language">Дадатковая мова на клавіятуры</string>
+    <string name="sim_card_selection_dialog_style">Стыль дыялогу выбару SIM карты</string>
+    <string name="clear_dialpad_when_start_call">Ачысціць набраны нумар пры пачатку выкліку</string>
+
+    <!-- Notifications -->
+    <plurals name="missed_calls">
+        <item quantity="one">%d прапушчаны званок</item>
+        <item quantity="few">%d прапушчаныя званкі</item>
+        <item quantity="many">%d прапушчаных званкоў</item>
+    </plurals>
+    <string name="missed_call_from">Прапушчаны званок ад %s</string>
+    <string name="keep_calls_in_popup">Пакідаць званкі ў апавяшчэннях</string>
+    <string name="on_contact_click">Пры націску на кантакт</string>
+    <string name="on_recent_click">Пры націску на нядаўні званок</string>
+    <string name="add_pause">Дадаць 2-секундную паўзу (,)</string>
+    <string name="missed">Прапушчаныя</string>
+    <string name="incoming">Уваходныя</string>
+    <string name="outgoing">Выходныя</string>
+</resources>

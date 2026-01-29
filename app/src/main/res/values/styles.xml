@@ -1,0 +1,44 @@
+<resources>
+
+    <style name="AppTheme" parent="AppTheme.Base" />
+
+    <style name="DialpadButtonStyle">
+        <item name="android:background">@drawable/pill_background</item>
+        <item name="android:layout_marginHorizontal">@dimen/three_dp</item>
+        <item name="android:layout_marginVertical">@dimen/three_dp</item>
+        <item name="android:paddingTop">@dimen/one_dp</item>
+    </style>
+
+    <style name="DialpadNumberStyle">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">@dimen/dialpad_text_size</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="DialpadLetterStyle">
+        <item name="android:textSize">@dimen/smaller_text_size</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="LetterFastscrollerStyleSmall">
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+
+    <style name="LetterFastscrollerStyleTiny">
+        <item name="android:textSize">@dimen/tiny_text_size</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+
+    <style name="LetterFastscrollerStyleTooTiny">
+        <item name="android:textSize">@dimen/too_tiny_text_size</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+
+    <style name="roundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>
