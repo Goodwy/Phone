@@ -1,4 +1,6 @@
-<img alt="Logo" src="app/src/main/res/drawable/ic_launcher.png" width="80" />
+<img align="left" width="80" height="80"
+src="app/src/main/res/drawable/ic_launcher.png" alt="App icon">
+
 # AlRight Dialer
 
 <a href='https://play.google.com/store/apps/details?id=dev.goodwy.phone'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height=80/></a>
