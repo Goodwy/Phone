@@ -1,4 +1,4 @@
-<img align="left" width="80" height="80"
+<img align="left" width="60" height="60"
 src="app/src/main/res/drawable/ic_launcher.png" alt="App icon">
 
 # AlRight Dialer
