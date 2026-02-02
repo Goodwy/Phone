@@ -51,6 +51,7 @@
     <string name="answer_style">回答ボタンのスタイル</string>
     <string name="buttons">ボタン</string>
     <string name="answer_slider">スライダー</string>
+    <string name="answer_slider_classic">クラシックスライダー</string>
     <string name="answer_slider_outline">アウトライン スライダー</string>
     <string name="answer_slider_vertical">垂直スライダー</string>
 

@@ -52,6 +52,7 @@
     <string name="answer_style">उत्तर शैली</string>
     <string name="buttons">बटन</string>
     <string name="answer_slider">स्लाइडर</string>
+    <string name="answer_slider_classic">क्लासिक स्लाइडर</string>
     <string name="answer_slider_outline">आउटलाइन स्लाइडर</string>
     <string name="answer_slider_vertical">वर्टिकल स्लाइडर</string>
 

@@ -52,6 +52,7 @@
     <string name="answer_style">Στυλ κουμπιού απάντησης</string>
     <string name="buttons">Μπουτόν</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">Κλασικό ρυθμιστικό</string>
     <string name="answer_slider_outline">Slider με περίγραμμα</string>
     <string name="answer_slider_vertical">Κάθετο ρυθμιστικό</string>
 

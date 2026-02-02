@@ -54,6 +54,7 @@
     <string name="answer_style">Slog gumba za odgovor</string>
     <string name="buttons">Gumbi</string>
     <string name="answer_slider">Drsnik</string>
+    <string name="answer_slider_classic">Klasični drsnik</string>
     <string name="answer_slider_outline">Orisni drsnik</string>
     <string name="answer_slider_vertical">Navpični drsnik</string>
 

@@ -80,6 +80,7 @@
     <string name="answer_style">উত্তর বোতামের ধরণ</string>
     <string name="buttons">বোতাম</string>
     <string name="answer_slider">স্লাইডার</string>
+    <string name="answer_slider_classic">ক্লাসিক স্লাইডার</string>
     <string name="answer_slider_outline">আউটলাইন সহ স্লাইডার</string>
     <string name="answer_slider_vertical">উল্লম্ব স্লাইডার</string>
 

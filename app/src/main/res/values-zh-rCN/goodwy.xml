@@ -51,6 +51,7 @@
     <string name="answer_style">接听按钮样式</string>
     <string name="buttons">按钮样式</string>
     <string name="answer_slider">滑块样式</string>
+    <string name="answer_slider_classic">经典滑块</string>
     <string name="answer_slider_outline">带大纲的滑块</string>
     <string name="answer_slider_vertical">垂直滑块</string>
 

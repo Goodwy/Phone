@@ -52,6 +52,7 @@
     <string name="answer_style">Antworttaste Stil</string>
     <string name="buttons">Buttons</string>
     <string name="answer_slider">Schieberegler</string>
+    <string name="answer_slider_classic">Klassischer Schieberegler</string>
     <string name="answer_slider_outline">Schieberegler mit Umrandung</string>
     <string name="answer_slider_vertical">Vertikaler Schieberegler</string>
 

@@ -52,6 +52,7 @@
     <string name="answer_style">Cevap düğmesi stili</string>
     <string name="buttons">Düğmeler</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">Klasik kaydırıcı</string>
     <string name="answer_slider_outline">Anahatlı kaydırıcı</string>
     <string name="answer_slider_vertical">Dikey kaydırıcı</string>
 

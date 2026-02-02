@@ -160,6 +160,7 @@ class SettingsActivity : SimpleActivity() {
         setupBackgroundCallScreen()
         setupTransparentCallScreen()
         setupAnswerStyle()
+        setupSliderStyle()
         setupCallButtonStyle()
         setupAlwaysShowFullscreen()
         setupKeepCallsInPopUp()
@@ -770,6 +771,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupAnswerStyle() {
+        visibleAnswerStyle()
         binding.settingsAnswerStyle.text = getAnswerStyleText()
         binding.settingsAnswerStyleHolder.setOnClickListener {
             launchAnswerStyleDialog()
@@ -777,14 +779,15 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun launchAnswerStyleDialog() {
-        val pro = checkPro()
-        val sliderOutline = addLockedLabelIfNeeded(R.string.answer_slider_outline, pro)
-        val sliderVertical = addLockedLabelIfNeeded(R.string.answer_slider_vertical, pro)
+        val sliderDrawable = when (config.sliderStyle) {
+            ANSWER_SLIDER_OUTLINE -> R.drawable.ic_slider_outline
+            ANSWER_SLIDER_VERTICAL -> R.drawable.ic_slider_vertical
+            else -> R.drawable.ic_slider
+        }
         val items = arrayListOf(
-//            RadioItem(ANSWER_BUTTON, getString(R.string.buttons), icon = R.drawable.ic_answer_buttons),
-            RadioItem(ANSWER_SLIDER, getString(R.string.answer_slider), icon = R.drawable.ic_slider),
-            RadioItem(ANSWER_SLIDER_OUTLINE, sliderOutline, icon = R.drawable.ic_slider_outline),
-            RadioItem(ANSWER_SLIDER_VERTICAL, sliderVertical, icon = R.drawable.ic_slider_vertical),
+            RadioItem(ANSWER_AUTO, getString(R.string.auto_theme), icon = R.drawable.ic_transparent),
+            RadioItem(ANSWER_BUTTON, getString(R.string.buttons), icon = R.drawable.ic_answer_buttons),
+            RadioItem(ANSWER_SLIDER, getString(R.string.answer_slider), icon = sliderDrawable),
         )
 
         RadioGroupIconDialog(
@@ -792,33 +795,75 @@ class SettingsActivity : SimpleActivity() {
             items,
             config.answerStyle,
             R.string.answer_style,
+            defaultItemId = ANSWER_AUTO
+        ) {
+            config.answerStyle = it as Int
+            binding.settingsAnswerStyle.text = getAnswerStyleText()
+            visibleAnswerStyle()
+        }
+    }
+
+    private fun getAnswerStyleText() = getString(
+        when (config.answerStyle) {
+            ANSWER_BUTTON -> R.string.buttons
+            ANSWER_SLIDER -> R.string.answer_slider
+            else -> R.string.auto_theme
+        }
+    )
+
+    private fun visibleAnswerStyle() {
+        binding.settingsSliderStyleHolder.beVisibleIf(config.answerStyle != ANSWER_BUTTON)
+        binding.settingsAnswerStyleSummary.beVisibleIf(config.answerStyle == ANSWER_AUTO)
+    }
+
+    private fun setupSliderStyle() {
+        binding.settingsSliderStyle.text = getSliderStyleText()
+        binding.settingsSliderStyleHolder.setOnClickListener {
+            launchSliderStyleDialog()
+        }
+    }
+
+    private fun launchSliderStyleDialog() {
+        val pro = checkPro()
+        val sliderOutline = addLockedLabelIfNeeded(R.string.answer_slider_outline, pro)
+        val sliderVertical = addLockedLabelIfNeeded(R.string.answer_slider_vertical, pro)
+        val items = arrayListOf(
+            RadioItem(ANSWER_SLIDER, getString(R.string.answer_slider_classic), icon = R.drawable.ic_slider),
+            RadioItem(ANSWER_SLIDER_OUTLINE, sliderOutline, icon = R.drawable.ic_slider_outline),
+            RadioItem(ANSWER_SLIDER_VERTICAL, sliderVertical, icon = R.drawable.ic_slider_vertical),
+        )
+
+        RadioGroupIconDialog(
+            this@SettingsActivity,
+            items,
+            config.sliderStyle,
+            R.string.slider_style,
             defaultItemId = ANSWER_SLIDER
         ) {
             if (it as Int == ANSWER_SLIDER_OUTLINE || it == ANSWER_SLIDER_VERTICAL) {
                 if (pro) {
-                    config.answerStyle = it
-                    binding.settingsAnswerStyle.text = getAnswerStyleText()
+                    config.sliderStyle = it
+                    binding.settingsSliderStyle.text = getSliderStyleText()
                 } else {
-                    RxAnimation.from(binding.settingsAnswerStyleHolder)
+                    RxAnimation.from(binding.settingsSliderStyleHolder)
                         .shake(shakeTranslation = 2f)
                         .subscribe()
 
                     showSnackbar(binding.root)
                 }
             } else {
-                config.answerStyle = it
-                binding.settingsAnswerStyle.text = getAnswerStyleText()
+                config.sliderStyle = it
+                binding.settingsSliderStyle.text = getSliderStyleText()
             }
 
         }
     }
 
-    private fun getAnswerStyleText() = getString(
-        when (config.answerStyle) {
-            ANSWER_SLIDER -> R.string.answer_slider
+    private fun getSliderStyleText() = getString(
+        when (config.sliderStyle) {
             ANSWER_SLIDER_OUTLINE -> R.string.answer_slider_outline
             ANSWER_SLIDER_VERTICAL -> R.string.answer_slider_vertical
-            else -> R.string.buttons
+            else -> R.string.answer_slider_classic
         }
     )
 

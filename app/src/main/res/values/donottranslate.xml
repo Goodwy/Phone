@@ -4,6 +4,7 @@
 
     <!-- Release notes --><!-- TODO changelog -->
     <string name="release_811">
+        Added ‘Answer style’ option\n
         Fixed a bug causing call notifications to freeze\n
         Fixed bugs, improved stability
     </string>

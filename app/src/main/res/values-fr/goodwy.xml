@@ -53,6 +53,7 @@
     <string name="answer_style">Style de bouton de réponse</string>
     <string name="buttons">Boutons</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">curseur classique</string>
     <string name="answer_slider_outline">Slider avec contour</string>
     <string name="answer_slider_vertical">Slider vertical</string>
 

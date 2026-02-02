@@ -52,6 +52,7 @@
     <string name="answer_style">Cavab Düyməsi Üslubu</string>
     <string name="buttons">Düymələr</string>
     <string name="answer_slider">Slayder</string>
+    <string name="answer_slider_classic">Klassik sürgü</string>
     <string name="answer_slider_outline">Kontur kaydırıcısı</string>
     <string name="answer_slider_vertical">Şaquli Sürgü</string>
 

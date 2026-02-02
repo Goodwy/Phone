@@ -52,6 +52,7 @@
     <string name="answer_style">Стил на бутона за отговор</string>
     <string name="buttons">Бутони</string>
     <string name="answer_slider">Плъзгач</string>
+    <string name="answer_slider_classic">Класически слайдер</string>
     <string name="answer_slider_outline">Плъзгач за контур</string>
     <string name="answer_slider_vertical">Вертикален плъзгач</string>
 

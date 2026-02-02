@@ -54,6 +54,7 @@
     <string name="answer_style">Stilul butonului de răspuns</string>.
     <string name="buttons">Butoni</string>.
     <string name="answer_slider">Slider</string>.
+    <string name="answer_slider_classic">Cursor clasic</string>
     <string name="answer_slider_outline">Slider cu contur</string>
     <string name="answer_slider_vertical">Slider vertical</string>
 

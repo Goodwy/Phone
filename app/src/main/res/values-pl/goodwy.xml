@@ -54,6 +54,7 @@
     <string name="answer_style">Styl przycisku odpowiedzi</string>
     <string name="buttons">Przyciski</string>
     <string name="answer_slider">Suwak</string>
+    <string name="answer_slider_classic">Klasyczny suwak</string>
     <string name="answer_slider_outline">Suwak konspektu</string>
     <string name="answer_slider_vertical">Pionowy suwak</string>
 

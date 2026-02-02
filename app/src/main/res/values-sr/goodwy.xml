@@ -63,6 +63,7 @@
     <string name="answer_style">Стил дугмета за одговор</string>
     <string name="buttons">Дугмад</string>
     <string name="answer_slider">Клизач</string>
+    <string name="answer_slider_classic">Класични клизач</string>
     <string name="answer_slider_outline">Оквирни клизач</string>
     <string name="answer_slider_vertical">Вертикални клизач</string>
     <string name="show_recent_calls">Прикажи и претражи скорашње позиве</string>

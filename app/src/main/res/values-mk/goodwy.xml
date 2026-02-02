@@ -79,6 +79,7 @@
     <string name="answer_style">Стил на одговор</string>
     <string name="buttons">Копчиња</string>
     <string name="answer_slider">Лизгач</string>
+    <string name="answer_slider_classic">Класичен лизгач</string>
     <string name="answer_slider_outline">Лизгач на контура</string>
     <string name="answer_slider_vertical">Вертикален лизгач</string>
 

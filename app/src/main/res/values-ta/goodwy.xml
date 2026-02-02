@@ -52,6 +52,7 @@
     <string name="answer_style">பதில் நடை</string>
     <string name="buttons">பொத்தான்கள்</string>
     <string name="answer_slider">ஸ்லைடர்</string>
+    <string name="answer_slider_classic">கிளாசிக் ஸ்லைடர்</string>
     <string name="answer_slider_outline">அவுட்லைன் ஸ்லைடர்</string>
     <string name="answer_slider_vertical">செங்குத்து ஸ்லைடர்</string>
 

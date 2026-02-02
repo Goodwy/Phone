@@ -54,6 +54,7 @@
     <string name="answer_style">Svarstil</string>
     <string name="buttons">Knapper</string>
     <string name="answer_slider">Glidebryter</string>
+    <string name="answer_slider_classic">Klassisk glidebryter</string>
     <string name="answer_slider_outline">Glidebryter for omriss</string>
     <string name="answer_slider_vertical">Vertikal glidebryter</string>
 

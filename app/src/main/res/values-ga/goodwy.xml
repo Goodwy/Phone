@@ -81,6 +81,7 @@
     <string name="answer_style">Stíl freagra</string>
     <string name="buttons">Cnaipí</string>
     <string name="answer_slider">Sleamhnán</string>
+    <string name="answer_slider_classic">Sleamhnán clasaiceach</string>
     <string name="answer_slider_outline">Sleamhnán imlíne</string>
     <string name="answer_slider_vertical">Sleamhnán ingearach</string>
 

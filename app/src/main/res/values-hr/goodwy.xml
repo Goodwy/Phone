@@ -53,6 +53,7 @@
     <string name="answer_style">Stil gumba za odgovor</string>
     <string name="buttons">Gumbi</string>
     <string name="answer_slider">Klizač</string>
+    <string name="answer_slider_classic">Klasični klizač</string>
     <string name="answer_slider_outline">Klizač obrisa</string>
     <string name="answer_slider_vertical">Okomiti klizač</string>
 

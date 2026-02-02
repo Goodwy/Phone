@@ -52,6 +52,7 @@
     <string name="answer_style">سبک پاسخ</string>
     <string name="buttons">دکمه‌ها</string>
     <string name="answer_slider">لغزنده</string>
+    <string name="answer_slider_classic">اسلایدر کلاسیک</string>
     <string name="answer_slider_outline">لغزنده طرح کلی</string>
     <string name="answer_slider_vertical">لغزنده عمودی</string>
 

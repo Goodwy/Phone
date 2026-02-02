@@ -53,6 +53,7 @@
     <string name="answer_style">Estilo del botón de respuesta</string>
     <string name="buttons">Botones</string>
     <string name="answer_slider">Deslizador</string>
+    <string name="answer_slider_classic">Control deslizante clásico</string>
     <string name="answer_slider_outline">Deslizador con contorno</string>
     <string name="answer_slider_vertical">Deslizador vertical</string>
 

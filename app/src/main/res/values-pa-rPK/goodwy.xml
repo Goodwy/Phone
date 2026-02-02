@@ -52,6 +52,7 @@
     <string name="answer_style">جواب بٹن کا انداز</string>
     <string name="buttons">بٹن</string>
     <string name="answer_slider">سلائیڈر</string>
+    <string name="answer_slider_classic">کلاسیکی سلائیڈر</string>
     <string name="answer_slider_outline">آؤٹ لائن سلائیڈر</string>
     <string name="answer_slider_vertical">عمودی سلائیڈر</string>
 

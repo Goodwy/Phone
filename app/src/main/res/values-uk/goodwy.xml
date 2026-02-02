@@ -79,6 +79,7 @@
     <string name="answer_style">Стиль кнопок відповіді</string>
     <string name="buttons">Кнопки</string>
     <string name="answer_slider">Слайдер</string>
+    <string name="answer_slider_classic">Класичний слайдер</string>
     <string name="answer_slider_outline">Слайдер з контуром</string>
     <string name="answer_slider_vertical">Вертикальний слайдер</string>
 

@@ -938,33 +938,59 @@
                             app:switchPadding="@dimen/bigger_margin"/>
                     </RelativeLayout>
 
-                    <RelativeLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/settingsAnswerStyleHolder"
                         style="@style/SettingsHolderStyle">
 
                         <com.goodwy.commons.views.MyTextView
                             android:id="@+id/settings_answer_style_label"
                             style="@style/SettingsTextLabelStyle"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="false"
-                            android:layout_toStartOf="@+id/settings_answer_style"
-                            android:text="@string/slider_style"/>
+                            android:text="@string/answer_style"
+                            android:layout_marginEnd="@dimen/settings_value_width"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/settings_answer_style_summary"
+                            app:layout_constraintStart_toStartOf="parent"/>
 
                         <com.goodwy.commons.views.MyTextView
                             android:id="@+id/settings_answer_style_summary"
                             style="@style/SettingsTextSummaryStyle"
-                            android:layout_alignParentStart="true"
-                            android:layout_below="@+id/settings_answer_style_label"
-                            android:layout_toStartOf="@+id/settings_answer_style"
+                            android:layout_width="0dp"
                             android:clickable="false"
-                            android:text="@string/slider_style_summary"/>
+                            android:text="@string/slider_style_summary"
+                            android:layout_marginEnd="@dimen/settings_value_width"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/settings_answer_style_label"
+                            app:layout_constraintStart_toStartOf="@+id/settings_answer_style_label"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                         <com.goodwy.commons.views.MyTextView
                             android:id="@+id/settings_answer_style"
                             style="@style/SettingsTextValueStyle"
+                            android:layout_marginEnd="@dimen/settings_margin"
+                            tools:text="@string/auto_theme"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/settings_slider_style_holder"
+                        style="@style/SettingsHolderStyle">
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settings_slider_style_label"
+                            style="@style/SettingsTextLabelStyle"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/settings_slider_style"
+                            android:text="@string/slider_style"/>
+
+                        <com.goodwy.commons.views.MyTextView
+                            android:id="@+id/settings_slider_style"
+                            style="@style/SettingsTextValueStyle"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="@dimen/settings_margin"
-                            tools:text="@string/answer_slider"/>
+                            tools:text="@string/answer_slider_classic"/>
                     </RelativeLayout>
 
                     <RelativeLayout

@@ -51,6 +51,7 @@
     <string name="answer_style">답변 스타일</string>
     <string name="buttons">버튼</string>
     <string name="answer_slider">슬라이더</string>
+    <string name="answer_slider_classic">클래식 슬라이더</string>
     <string name="answer_slider_outline">아웃라인 슬라이더</string>
     <string name="answer_slider_vertical">수직 슬라이더</string>
 

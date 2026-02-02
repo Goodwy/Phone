@@ -51,6 +51,7 @@
     <string name="answer_style">รูปแบบปุ่มรับสาย</string>
     <string name="buttons">ปุ่ม</string>
     <string name="answer_slider">แถบเลื่อน</string>
+    <string name="answer_slider_classic">สไลเดอร์แบบคลาสสิก</string>
     <string name="answer_slider_outline">แถบเลื่อนเค้าร่าง</string>
     <string name="answer_slider_vertical">แถบเลื่อนแนวตั้ง</string>
 

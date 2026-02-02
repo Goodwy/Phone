@@ -52,6 +52,7 @@
     <string name="answer_style">ਜਵਾਬ ਸ਼ੈਲੀ</string>
     <string name="buttons">ਬਟਨ</string>
     <string name="answer_slider">ਸਲਾਈਡਰ</string>
+    <string name="answer_slider_classic">ਕਲਾਸਿਕ ਸਲਾਈਡਰ</string>
     <string name="answer_slider_outline">ਆਊਟਲਾਈਨ ਸਲਾਈਡਰ</string>
     <string name="answer_slider_vertical">ਵਰਟੀਕਲ ਸਲਾਈਡਰ</string>
 

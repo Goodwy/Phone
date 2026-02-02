@@ -52,6 +52,7 @@
     <string name="answer_style">ഉത്തര ബട്ടൺ ശൈലി</string>
     <string name="buttons">ബട്ടണുകൾ</string>
     <string name="answer_slider">സ്ലൈഡർ</string>
+    <string name="answer_slider_classic">ക്ലാസിക് സ്ലൈഡർ</string>
     <string name="answer_slider_outline">ഔട്ട്‌ലൈൻ സ്ലൈഡർ</string>
     <string name="answer_slider_vertical">ലംബ സ്ലൈഡർ</string>
 

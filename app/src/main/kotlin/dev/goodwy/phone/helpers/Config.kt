@@ -190,8 +190,12 @@ class Config(context: Context) : BaseConfig(context) {
         set(callButtonSecondarySize) = prefs.edit { putInt(CALL_BUTTON_SECONDARY_SIZE, callButtonSecondarySize) }
 
     var answerStyle: Int
-        get() = prefs.getInt(ANSWER_STYLE, ANSWER_SLIDER)
+        get() = prefs.getInt(ANSWER_STYLE, ANSWER_AUTO)
         set(answerStyle) = prefs.edit { putInt(ANSWER_STYLE, answerStyle) }
+
+    var sliderStyle: Int
+        get() = prefs.getInt(SLIDER_STYLE, ANSWER_SLIDER)
+        set(answerStyle) = prefs.edit { putInt(SLIDER_STYLE, answerStyle) }
 
     var showCallerDescription: Int
         get() = prefs.getInt(SHOW_CALLER_DESCRIPTION, SHOW_CALLER_COMPANY)

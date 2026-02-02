@@ -254,17 +254,18 @@
 
     <ImageView
         android:id="@+id/call_draggable_vertical"
-        android:layout_width="@dimen/incoming_call_button_size"
-        android:layout_height="@dimen/incoming_call_button_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/decline_call"
         android:padding="@dimen/activity_margin"
         android:background="@drawable/pulsing_background"
         android:src="@drawable/ic_phone_down_vector"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sliderSpaceButton"
+        app:layout_constraintStart_toStartOf="@+id/sliderSpaceButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87"/>
+        app:layout_constraintVertical_bias="0.9"/>
 
     <ImageView
         android:id="@+id/call_up_arrow"

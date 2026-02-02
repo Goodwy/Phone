@@ -53,6 +53,7 @@
     <string name="answer_style">סגנון כפתור תשובה</string>
     <string name="buttons">כפתורים</string>
     <string name="answer_slider">מחוון</string>
+    <string name="answer_slider_classic">סליידר קלאסי</string>
     <string name="answer_slider_outline">מחוון מתאר</string>
     <string name="answer_slider_vertical">מחוון אנכי</string>
 

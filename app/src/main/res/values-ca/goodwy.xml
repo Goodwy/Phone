@@ -53,6 +53,7 @@
     <string name="answer_style">Estil del botó de resposta</string>
     <string name="buttons">Botons</string>
     <string name="answer_slider">Lliscant</string>
+    <string name="answer_slider_classic">Control lliscant clàssic</string>
     <string name="answer_slider_outline">Control lliscant d\'esquema</string>
     <string name="answer_slider_vertical">Lliscant vertical</string>
 

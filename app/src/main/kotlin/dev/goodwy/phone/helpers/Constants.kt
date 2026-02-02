@@ -32,6 +32,7 @@ const val DIALPAD_BOTTOM_MARGIN = "dialpad_bottom_margin"
 const val CALL_BUTTON_PRIMARY_SIZE = "call_button_primary_size"
 const val CALL_BUTTON_SECONDARY_SIZE = "call_button_secondary_size"
 const val ANSWER_STYLE = "answer_style"
+const val SLIDER_STYLE = "slider_style"
 const val SHOW_CALLER_DESCRIPTION = "show_caller_description"
 const val CURRENT_RECENT_CALL = "current_recent_call"
 const val CURRENT_RECENT_CALL_LIST = "current_recent_call_list"
@@ -123,6 +124,7 @@ const val ANSWER_BUTTON = 0
 const val ANSWER_SLIDER = 1
 const val ANSWER_SLIDER_OUTLINE = 2
 const val ANSWER_SLIDER_VERTICAL = 3
+const val ANSWER_AUTO = 10
 
 // Show caller description
 const val SHOW_CALLER_NOTHING = 0

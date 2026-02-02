@@ -52,6 +52,7 @@
     <string name="answer_style">Svarsknappstil</string>
     <string name="buttons">Knappar</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">Klassisk skjutreglage</string>
     <string name="answer_slider_outline">Konturreglage</string>
     <string name="answer_slider_vertical">Vertikal skjutreglage</string>
 

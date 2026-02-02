@@ -52,6 +52,7 @@
     <string name="answer_style">Válasz gombstílus</string>
     <string name="buttons">Gombok</string>
     <string name="answer_slider">Csúszka</string>
+    <string name="answer_slider_classic">Klasszikus csúszka</string>
     <string name="answer_slider_outline">Körvonal csúszka</string>
     <string name="answer_slider_vertical">Függőleges csúszka</string>
 

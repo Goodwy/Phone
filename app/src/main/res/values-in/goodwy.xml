@@ -51,6 +51,7 @@
     <string name="answer_style">Gaya Tombol Jawab</string>
     <string name="buttons">Tombol</string>
     <string name="answer_slider">Penggeser</string>
+    <string name="answer_slider_classic">Slider klasik</string>
     <string name="answer_slider_outline">Penggeser garis luar</string>
     <string name="answer_slider_vertical">Penggeser Vertikal</string>
 

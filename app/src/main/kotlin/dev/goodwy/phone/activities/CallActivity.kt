@@ -325,53 +325,33 @@ class CallActivity : SimpleActivity() {
         return false
     }
 
-    private fun initButtons() = binding.apply {
-        val isDeviceLocked = !powerManager.isInteractive || keyguardManager.isDeviceLocked
-        if (isDeviceLocked) {
-            when (config.answerStyle) {
-                ANSWER_SLIDER_VERTICAL -> {
-                    incomingCallHolder.apply {
-                        arrayOf(
-                            callDecline, callDeclineLabel,
-                            callAccept, callAcceptLabel,
-                            callDraggable, callDraggableBackground,
-                            callLeftArrow, callRightArrow
-                        ).forEach {
-                            it.beGone()
-                        }
-                    }
-                    handleSwipeVertical()
-                }
-                else -> {
-                    incomingCallHolder.apply {
-                        arrayOf(
-                            callDecline, callDeclineLabel,
-                            callAccept, callAcceptLabel,
-                            callDraggableVertical, callUpArrow, callDownArrow
-                        ).forEach {
-                            it.beGone()
-                        }
-                    }
-                    handleSwipe()
-                }
+    private fun initAnswerButtons() {
+        binding.incomingCallHolder.apply {
+            arrayOf(
+                callDraggable, callDraggableBackground, callDraggableVertical,
+                callLeftArrow, callRightArrow,
+                callUpArrow, callDownArrow
+            ).forEach {
+                it.beGone()
             }
-        } else {
-            incomingCallHolder.apply {
-                arrayOf(
-                    callDraggable, callDraggableBackground, callDraggableVertical,
-                    callLeftArrow, callRightArrow,
-                    callUpArrow, callDownArrow
-                ).forEach {
-                    it.beGone()
-                }
 
-                callDecline.setOnClickListener {
-                    endCall()
-                }
+            callDecline.setOnClickListener {
+                endCall()
+            }
 
-                callAccept.setOnClickListener {
-                    acceptCall()
-                }
+            callAccept.setOnClickListener {
+                acceptCall()
+            }
+        }
+    }
+
+    private fun initButtons() = binding.apply {
+        when (config.answerStyle) {
+            ANSWER_SLIDER -> initAnswerSlider()
+            ANSWER_BUTTON -> initAnswerButtons()
+            else -> { //ANSWER_AUTO
+                val isDeviceLocked = !powerManager.isInteractive || keyguardManager.isDeviceLocked
+                if (isDeviceLocked) initAnswerSlider() else initAnswerButtons()
             }
         }
 
@@ -472,6 +452,37 @@ class CallActivity : SimpleActivity() {
                     toast(imageView.contentDescription.toString())
                 }
                 true
+            }
+        }
+    }
+
+    private fun initAnswerSlider() {
+        when (config.sliderStyle) {
+            ANSWER_SLIDER_VERTICAL -> {
+                binding.incomingCallHolder.apply {
+                    arrayOf(
+                        callDecline, callDeclineLabel,
+                        callAccept, callAcceptLabel,
+                        callDraggable, callDraggableBackground,
+                        callLeftArrow, callRightArrow
+                    ).forEach {
+                        it.beGone()
+                    }
+                }
+                handleSwipeVertical()
+            }
+
+            else -> {
+                binding.incomingCallHolder.apply {
+                    arrayOf(
+                        callDecline, callDeclineLabel,
+                        callAccept, callAcceptLabel,
+                        callDraggableVertical, callUpArrow, callDownArrow
+                    ).forEach {
+                        it.beGone()
+                    }
+                }
+                handleSwipe()
             }
         }
     }
@@ -659,8 +670,8 @@ class CallActivity : SimpleActivity() {
         var upArrowTranslation = 0f
 
         callDraggableVertical.onGlobalLayout {
-            minDragY = callDraggableVertical.top.toFloat() - callDraggableVertical.height.toFloat()
-            maxDragY = callDraggableVertical.bottom.toFloat()
+            minDragY = callDraggableVertical.top.toFloat() - (callDraggableVertical.height.toFloat() / 2)
+            maxDragY = callDraggableVertical.bottom.toFloat() - 38f
             initialDraggableY = callDraggableVertical.top.toFloat()
             initialDownArrowY = callDownArrow.y
             initialUpArrowY = callUpArrow.y

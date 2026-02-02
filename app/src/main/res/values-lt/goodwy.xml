@@ -54,6 +54,7 @@
     <string name="answer_style">Atsakymo mygtuko stilius</string>
     <string name="buttons">Mygtukai</string>
     <string name="answer_slider">Slankiklis</string>
+    <string name="answer_slider_classic">Klasikinis slankiklis</string>
     <string name="answer_slider_outline">Kontūro slankiklis</string>
     <string name="answer_slider_vertical">Vertikalus slankiklis</string>
 

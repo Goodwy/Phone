@@ -53,6 +53,7 @@
     <string name="answer_style">Styl tlačítka odpovědi</string>
     <string name="buttons">Tlačítka</string>
     <string name="answer_slider">Posuvník</string>
+    <string name="answer_slider_classic">Klasický posuvník</string>
     <string name="answer_slider_outline">Posuvník obrysu</string>
     <string name="answer_slider_vertical">Vertikální posuvník</string>
 

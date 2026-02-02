@@ -51,6 +51,7 @@
     <string name="answer_style">應答按鈕樣式</string>
     <string name="buttons">按鈕</string>
     <string name="answer_slider">滑塊</string>
+    <string name="answer_slider_classic">經典滑桿</string>
     <string name="answer_slider_outline">大綱滑塊</string>
     <string name="answer_slider_vertical">垂直滑塊</string>
 

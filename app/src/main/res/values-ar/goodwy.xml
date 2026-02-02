@@ -56,6 +56,7 @@
     <string name="answer_style">نمط زر الإجابة</string>
     <string name="buttons">الأزرار</string>
     <string name="answer_slider">شريط التمرير</string>
+    <string name="answer_slider_classic">شريط تمرير كلاسيكي</string>
     <string name="answer_slider_outline">شريط تمرير المخطط التفصيلي</string>
     <string name="answer_slider_vertical">شريط التمرير العمودي</string>
 

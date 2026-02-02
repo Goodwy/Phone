@@ -52,6 +52,7 @@
     <string name="answer_style">Vastauspainikkeen tyyli</string>
     <string name="buttons">Painikkeet</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">Klassinen liukusäädin</string>
     <string name="answer_slider_outline">Liukusäädin ääriviivalla</string>
     <string name="answer_slider_vertical">Pystysuora liukusäädin</string>
 

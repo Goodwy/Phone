@@ -52,6 +52,7 @@
     <string name="answer_style">Stilo de Respondbutono</string>
     <string name="buttons">Butonoj</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">Klasika glitŝovilo</string>
     <string name="answer_slider_outline">Konturna glitilo</string>
     <string name="answer_slider_vertical">Vertikala Glitilo</string>
 

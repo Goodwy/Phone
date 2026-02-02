@@ -52,6 +52,7 @@
     <string name="answer_style">Svarknapstil</string>
     <string name="buttons">Knapper</string>
     <string name="answer_slider">Slider</string>
+    <string name="answer_slider_classic">Klassisk slider</string>
     <string name="answer_slider_outline">Konturskyder</string>
     <string name="answer_slider_vertical">Lodret skyder</string>
 

@@ -51,6 +51,7 @@
     <string name="answer_style">Phong cách trả lời</string>
     <string name="buttons">Các nút</string>
     <string name="answer_slider">Thanh trượt</string>
+    <string name="answer_slider_classic">Thanh trượt cổ điển</string>
     <string name="answer_slider_outline">Thanh trượt phác thảo</string>
     <string name="answer_slider_vertical">Thanh trượt dọc</string>
 
