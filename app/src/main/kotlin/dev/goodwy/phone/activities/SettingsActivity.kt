@@ -693,7 +693,7 @@ class SettingsActivity : SimpleActivity() {
                 items = items,
                 checkedItemId = config.contactColorList,
                 defaultItemId = LBC_ANDROID,
-                titleId = com.goodwy.strings.R.string.overflow_icon
+                titleId = com.goodwy.strings.R.string.contact_color_list
             ) { wasPositivePressed, newValue ->
                 if (wasPositivePressed) {
                     if (config.contactColorList != newValue) {
@@ -1753,7 +1753,10 @@ class SettingsActivity : SimpleActivity() {
             settingsSwipeRippleHolder.beVisibleIf(config.useSwipeToAction)
             settingsSwipeRightActionHolder.beVisibleIf(config.useSwipeToAction)
             settingsSwipeLeftActionHolder.beVisibleIf(config.useSwipeToAction)
-            settingsSkipDeleteConfirmationHolder.beVisibleIf(config.useSwipeToAction &&(config.swipeLeftAction == SWIPE_ACTION_DELETE || config.swipeRightAction == SWIPE_ACTION_DELETE))
+            settingsSkipDeleteConfirmationHolder.beVisibleIf(
+                config.useSwipeToAction &&
+                    (config.swipeLeftAction == SWIPE_ACTION_DELETE || config.swipeRightAction == SWIPE_ACTION_DELETE)
+            )
         }
     }
 
@@ -1973,7 +1976,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private fun checkPro(collection: Boolean = false) =
+    private fun checkPro(collection: Boolean = resources.getBoolean(R.bool.show_collection)) =
         if (collection) isPro() || isCollection()
         else isPro()
 }

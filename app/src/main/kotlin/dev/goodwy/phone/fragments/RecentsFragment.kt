@@ -413,6 +413,7 @@ class RecentsFragment(
                     },
                     itemClick = {
                         itemClickAction(context.config.onRecentClick, it as RecentCall)
+                        if (context.config.dialpadClearWhenStartCall) (activity as MainActivity).clearInputWithDelay()
                     },
                     profileInfoClick = { recentCall ->
                         actionOpen(recentCall)

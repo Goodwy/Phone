@@ -1088,40 +1088,45 @@ class CallActivity : SimpleActivity() {
             }
 
             callerAvatar.apply {
-                try {
-                    if (number == name || ((isABusinessCall || isVoiceMail) && avatarUri == "") || isDestroyed || isFinishing) {
-                        val drawable = when {
-                            isVoiceMail -> {
-                                @SuppressLint("UseCompatLoadingForDrawables")
-                                val drawableVoicemail = resources.getDrawable( R.drawable.placeholder_voicemail, theme)
-                                if (baseConfig.useColoredContacts) {
-                                    val letterBackgroundColors = getLetterBackgroundColors()
-                                    val color = letterBackgroundColors[abs(name.hashCode()) % letterBackgroundColors.size].toInt()
-                                    (drawableVoicemail as LayerDrawable).findDrawableByLayerId(R.id.placeholder_contact_background).applyColorFilter(color)
+                if (config.backgroundCallScreen == AVATAR) {
+                    beGone()
+                } else {
+                    try {
+                        if (number == name || ((isABusinessCall || isVoiceMail) && avatarUri == "") || isDestroyed || isFinishing) {
+                            val drawable = when {
+                                isVoiceMail -> {
+                                    @SuppressLint("UseCompatLoadingForDrawables")
+                                    val drawableVoicemail = resources.getDrawable(R.drawable.placeholder_voicemail, theme)
+                                    if (baseConfig.useColoredContacts) {
+                                        val letterBackgroundColors = getLetterBackgroundColors()
+                                        val color = letterBackgroundColors[abs(name.hashCode()) % letterBackgroundColors.size].toInt()
+                                        (drawableVoicemail as LayerDrawable).findDrawableByLayerId(R.id.placeholder_contact_background).applyColorFilter(color)
+                                    }
+                                    drawableVoicemail
                                 }
-                                drawableVoicemail
+
+                                isABusinessCall -> SimpleContactsHelper(this@CallActivity).getColoredCompanyIcon(name)
+                                else -> SimpleContactsHelper(this@CallActivity).getColoredContactIcon(name)
                             }
-                            isABusinessCall -> SimpleContactsHelper(this@CallActivity).getColoredCompanyIcon(name)
-                            else -> SimpleContactsHelper(this@CallActivity).getColoredContactIcon(name)
+                            setImageDrawable(drawable)
+                        } else {
+                            if (!isFinishing && !isDestroyed) {
+                                val placeholder = if (isConference) {
+                                    SimpleContactsHelper(this@CallActivity).getColoredGroupIcon(name)
+                                } else null
+                                SimpleContactsHelper(this@CallActivity.applicationContext).loadContactImage(
+                                    avatarUri,
+                                    this,
+                                    name,
+                                    placeholder
+                                )
+                            }
                         }
+                    } catch (_: Exception) {
+                        @SuppressLint("UseCompatLoadingForDrawables")
+                        val drawable = resources.getDrawable(R.drawable.placeholder_contact, theme)
                         setImageDrawable(drawable)
-                    } else {
-                        if (!isFinishing && !isDestroyed) {
-                            val placeholder = if (isConference) {
-                                SimpleContactsHelper(this@CallActivity).getColoredGroupIcon(name)
-                            } else null
-                            SimpleContactsHelper(this@CallActivity.applicationContext).loadContactImage(
-                                avatarUri,
-                                this,
-                                name,
-                                placeholder
-                            )
-                        }
                     }
-                } catch (_: Exception) {
-                    @SuppressLint("UseCompatLoadingForDrawables")
-                    val drawable = resources.getDrawable( R.drawable.placeholder_contact, theme)
-                    setImageDrawable(drawable)
                 }
             }
 
@@ -1478,16 +1483,18 @@ class CallActivity : SimpleActivity() {
 
             var drawable: Drawable? = null
             if (configBackgroundCallScreen == BLUR_AVATAR || configBackgroundCallScreen == AVATAR) {
+                val windowHeight = binding.callHolder.height //window.decorView.height
+                val windowWidth = binding.callHolder.width //window.decorView.width
                 val avatar =
-                    if (!isConference) callContactAvatarHelper.getCallContactAvatar(contact.photoUri, false) else null
+                    if (!isConference) {
+                        callContactAvatarHelper.getCallContactAvatar(contact.photoUri, false, windowWidth, windowHeight)
+                    } else null
                 if (avatar != null) {
                     val bg = when (configBackgroundCallScreen) {
                         BLUR_AVATAR -> BlurFactory.fileToBlurBitmap(avatar, this, 0.6f, 5f)
                         AVATAR -> avatar
                         else -> null
                     }
-                    val windowHeight = binding.callHolder.height //window.decorView.height
-                    val windowWidth = binding.callHolder.width //window.decorView.width
                     if (bg != null && windowWidth != 0) {
                         val aspectRatio = windowHeight / windowWidth
                         val aspectRatioNotZero = if (aspectRatio == 0) 1 else aspectRatio
@@ -1499,7 +1506,7 @@ class CallActivity : SimpleActivity() {
             runOnUiThread {
                 if (drawable != null) {
                     binding.callHolder.background = drawable
-                    binding.callHolder.background.alpha = 60
+                    binding.callHolder.background.alpha = if (configBackgroundCallScreen == AVATAR) 120 else 60
                     if (isQPlus()) {
                         binding.callHolder.background.colorFilter = BlendModeColorFilter(Color.DKGRAY, BlendMode.SOFT_LIGHT)
                     } else {

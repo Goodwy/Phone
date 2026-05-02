@@ -101,7 +101,6 @@ class MainActivity : SimpleActivity() {
     private var storedShowPhoneNumbers = false
     private var storedBackgroundColor = 0
     private var storedToneVolume = 0
-    private var currentOldScrollY = 0
     var cachedContacts = ArrayList<Contact>()
     private var cachedFavorites = ArrayList<Contact>()
     private var storedContactShortcuts = ArrayList<Contact>()
@@ -702,7 +701,6 @@ class MainActivity : SimpleActivity() {
         scrollingView = myRecyclerView
 
         val scrollingViewOffset = scrollingView?.computeVerticalScrollOffset() ?: 0
-        currentOldScrollY = scrollingViewOffset
 
         val useSurfaceColor = isDynamicTheme() && !isSystemInDarkMode()
         val backgroundColor = if (useSurfaceColor) getSurfaceColor() else getProperBackgroundColor()
@@ -1014,37 +1012,44 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun checkErrorDialog() {
-        if (baseConfig.lastError != "") {
-            ConfirmationDialog(
-                this,
-                "An error occurred while the application was running. Please send us this error so we can fix it.",
-                positive = R.string.send_email
-            ) {
-                val appName = getString(R.string.app_name_g)
-                val versionName = BuildConfig.VERSION_NAME
-                val body = "$appName($versionName) : LastError"
-                val address = getMyMailString()
-                val lastError = baseConfig.lastError
+        if (baseConfig.showErrorDialog) {
+            if (baseConfig.lastError != "") {
+                ConfirmationAdvancedDialog(
+                    this,
+                    "An error occurred while the application was running. Please send us this error so we can fix it.",
+                    positive = R.string.send_email,
+                    negative = R.string.do_not_show_again,
+                ) {
+                    if (it) {
+                        val appName = getString(R.string.app_name)
+                        val versionName = BuildConfig.VERSION_NAME
+                        val body = "$appName($versionName) : LastError"
+                        val address = getMyMailString()
+                        val lastError = baseConfig.lastError
 
-                val emailIntent = Intent(ACTION_SEND).apply {
-                    type = "text/plain"
-                    putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
-                    putExtra(Intent.EXTRA_SUBJECT, body)
-                    putExtra(Intent.EXTRA_TEXT, lastError)
+                        val emailIntent = Intent(ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
+                            putExtra(Intent.EXTRA_SUBJECT, body)
+                            putExtra(Intent.EXTRA_TEXT, lastError)
 
-                    // set the type for better compatibility
-                    type = "message/rfc822"
+                            // set the type for better compatibility
+                            type = "message/rfc822"
+                        }
+
+                        try {
+                            startActivity(Intent.createChooser(emailIntent, "Send email"))
+                        } catch (_: ActivityNotFoundException) {
+                            toast(R.string.no_app_found)
+                        } catch (e: Exception) {
+                            showErrorToast(e)
+                        }
+
+                        baseConfig.lastError = ""
+                    } else {
+                        baseConfig.showErrorDialog = false
+                    }
                 }
-
-                try {
-                    startActivity(Intent.createChooser(emailIntent, "Send email"))
-                } catch (_: ActivityNotFoundException) {
-                    toast(R.string.no_app_found)
-                } catch (e: Exception) {
-                    showErrorToast(e)
-                }
-
-                baseConfig.lastError = ""
             }
         }
     }
@@ -1512,10 +1517,11 @@ class MainActivity : SimpleActivity() {
         binding.dialpadWrapper.dialpadInput.setText("")
     }
 
-    private fun clearInputWithDelay() {
+    fun clearInputWithDelay() {
         lifecycleScope.launch {
             delay(1000)
             clearInput()
+            hideDialpad()
         }
     }
 

@@ -88,12 +88,6 @@ const val DIALPAD_TONE_LENGTH_MS = 150L // The length of DTMF tones in milliseco
 const val CALLER_NOTES_MAX_LENGTH = 100
 const val RECENT_CALL_CACHE_SIZE = 200
 
-const val WHATSAPP = "whatsapp"
-const val SIGNAL = "signal"
-const val VIBER = "viber"
-const val TELEGRAM = "telegram"
-const val THREEMA = "threema"
-
 // Background Call Screen
 const val THEME_BACKGROUND = 0
 const val BLUR_AVATAR = 1
@@ -195,5 +189,6 @@ fun whatsNewList(): ArrayList<Release> {
         add(Release(821, R.string.release_821))
         add(Release(822, R.string.release_822))
         add(Release(823, R.string.release_823))
+        add(Release(824, R.string.release_824))
     }
 }

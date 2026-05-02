@@ -1234,7 +1234,7 @@ class SettingsDialpadActivity : SimpleActivity() {
             .subscribe()
     }
 
-    private fun checkPro(collection: Boolean = false) =
+    private fun checkPro(collection: Boolean = resources.getBoolean(R.bool.show_collection)) =
         if (collection) isPro() || isCollection()
         else isPro()
 }

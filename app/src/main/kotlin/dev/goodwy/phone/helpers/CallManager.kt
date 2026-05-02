@@ -294,6 +294,15 @@ class CallManager {
                 listener.onMuteChanged(isMuted)
             }
         }
+
+        fun getCallConnectTime(): Long {
+            val primaryCall = getPrimaryCall()
+            return if (primaryCall != null && primaryCall.getStateCompat() == Call.STATE_ACTIVE) {
+                primaryCall.details.connectTimeMillis
+            } else {
+                0
+            }
+        }
     }
 }
 
