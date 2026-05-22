@@ -102,6 +102,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <data android:mimeType="vnd.android.cursor.dir/calls" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="com.goodwy.dialer.scheme" />
             </intent-filter>
 
             <intent-filter>
@@ -119,20 +120,16 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.DIAL" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="tel" />
             </intent-filter>
 
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_VIEW" />
                 <action android:name="android.intent.action.DIAL" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="tel" />
             </intent-filter>
         </activity>
@@ -255,7 +252,8 @@
             android:name=".activities.DialerActivity"
             android:exported="true"
             android:label="@string/dialer"
-            android:theme="@style/Theme.Transparent">
+            android:theme="@style/Theme.Transparent"
+            android:permission="android.permission.CALL_PHONE">
 
             <intent-filter>
                 <action android:name="android.intent.action.CALL" />
