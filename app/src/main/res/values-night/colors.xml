@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="green_call">#FF31D158</color>
+    <color name="notification_color">#17191F</color>
     <color name="notification_icon">@color/white</color>
 </resources>

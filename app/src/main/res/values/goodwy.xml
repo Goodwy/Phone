@@ -89,6 +89,9 @@
     <string name="answer_slider_outline">Outline slider</string>
     <string name="answer_slider_vertical">Vertical slider</string>
 
+    <!-- Ongoing call notification -->
+    <string name="hang_up">Hang up</string>
+
     <!-- Notifications -->
     <plurals name="missed_calls">
         <item quantity="one">Missed call</item>

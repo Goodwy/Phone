@@ -82,6 +82,7 @@ import dev.goodwy.phone.extensions.config
 import dev.goodwy.phone.extensions.getCountryByNumber
 import dev.goodwy.phone.extensions.getDayCode
 import dev.goodwy.phone.extensions.launchSendSMSIntentRecommendation
+import dev.goodwy.phone.extensions.launchSendWhatsAppIntent
 import dev.goodwy.phone.extensions.setWidth
 import dev.goodwy.phone.extensions.startAddContactIntent
 import dev.goodwy.phone.extensions.startCallWithConfirmationCheck
@@ -95,6 +96,7 @@ import dev.goodwy.phone.helpers.SWIPE_ACTION_BLOCK
 import dev.goodwy.phone.helpers.SWIPE_ACTION_DELETE
 import dev.goodwy.phone.helpers.SWIPE_ACTION_MESSAGE
 import dev.goodwy.phone.helpers.SWIPE_ACTION_NONE
+import dev.goodwy.phone.helpers.SWIPE_ACTION_WHATSAPP
 import dev.goodwy.phone.interfaces.RefreshItemsListener
 import dev.goodwy.phone.models.CallLogItem
 import dev.goodwy.phone.models.RecentCall
@@ -1220,6 +1222,7 @@ class RecentCallsAdapter(
         return when (swipeAction) {
             SWIPE_ACTION_DELETE -> com.goodwy.commons.R.drawable.ic_delete_outline
             SWIPE_ACTION_MESSAGE -> R.drawable.ic_messages
+            SWIPE_ACTION_WHATSAPP -> R.drawable.ic_whatsapp_mono_vector
             SWIPE_ACTION_BLOCK -> R.drawable.ic_block_vector
             else -> R.drawable.ic_phone_vector
         }
@@ -1234,6 +1237,7 @@ class RecentCallsAdapter(
         return when (swipeAction) {
             SWIPE_ACTION_DELETE -> resources.getColor(R.color.red_call, activity.theme)
             SWIPE_ACTION_MESSAGE -> resources.getColor(R.color.ic_messages, activity.theme)
+            SWIPE_ACTION_WHATSAPP -> resources.getColor(R.color.whatsapp_green, activity.theme)
             SWIPE_ACTION_BLOCK -> resources.getColor(R.color.swipe_purple, activity.theme)
             else -> simColor
         }
@@ -1243,6 +1247,7 @@ class RecentCallsAdapter(
         when (swipeAction) {
             SWIPE_ACTION_DELETE -> swipedDelete(call)
             SWIPE_ACTION_MESSAGE -> swipedSMS(call)
+            SWIPE_ACTION_WHATSAPP -> swipedWhatsApp(call)
             SWIPE_ACTION_BLOCK -> swipedBlock(call)
             else -> swipedCall(call)
         }
@@ -1259,6 +1264,10 @@ class RecentCallsAdapter(
 
     private fun swipedSMS(call: RecentCall) {
         activity.launchSendSMSIntentRecommendation(call.phoneNumber)
+    }
+
+    private fun swipedWhatsApp(call: RecentCall) {
+        activity.launchSendWhatsAppIntent(call.phoneNumber)
     }
 
     private fun swipedBlock(call: RecentCall) {

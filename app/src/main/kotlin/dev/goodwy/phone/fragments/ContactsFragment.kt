@@ -16,6 +16,7 @@ import dev.goodwy.phone.databinding.FragmentLettersLayoutBinding
 import dev.goodwy.phone.extensions.config
 import dev.goodwy.phone.extensions.launchCreateNewContactIntent
 import dev.goodwy.phone.extensions.launchSendSMSIntentRecommendation
+import dev.goodwy.phone.extensions.launchSendWhatsAppIntent
 import dev.goodwy.phone.extensions.setupWithContacts
 import dev.goodwy.phone.extensions.startCallWithConfirmationCheck
 import dev.goodwy.phone.extensions.startContactDetailsIntentRecommendation
@@ -24,6 +25,7 @@ import dev.goodwy.phone.helpers.SWIPE_ACTION_CALL
 import dev.goodwy.phone.helpers.SWIPE_ACTION_EDIT
 import dev.goodwy.phone.helpers.SWIPE_ACTION_MESSAGE
 import dev.goodwy.phone.helpers.SWIPE_ACTION_OPEN
+import dev.goodwy.phone.helpers.SWIPE_ACTION_WHATSAPP
 import dev.goodwy.phone.interfaces.RefreshItemsListener
 
 class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
@@ -243,6 +245,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     private fun itemClickAction(action: Int, contact: Contact) {
         when (action) {
             SWIPE_ACTION_MESSAGE -> actionSMS(contact)
+            SWIPE_ACTION_WHATSAPP -> actionWhatsApp(contact)
             SWIPE_ACTION_CALL -> actionCall(contact)
             SWIPE_ACTION_OPEN -> actionOpen(contact)
             SWIPE_ACTION_EDIT -> activity?.startContactEdit(contact)
@@ -256,6 +259,10 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
 
     private fun actionSMS(contact: Contact) {
         activity?.initiateCall(contact) { activity?.launchSendSMSIntentRecommendation(it) }
+    }
+
+    private fun actionWhatsApp(contact: Contact) {
+        activity?.initiateCall(contact) { activity?.launchSendWhatsAppIntent(it) }
     }
 
     private fun actionOpen(contact: Contact) {

@@ -1,10 +1,13 @@
 package dev.goodwy.phone.activities
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.app.WallpaperManager
+import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.*
 import android.graphics.drawable.Drawable
@@ -22,6 +25,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import com.goodwy.commons.dialogs.ConfirmationAdvancedDialog
@@ -49,6 +53,11 @@ import dev.goodwy.phone.helpers.CallManager.Companion.isSpeakerOn
 
 class CallActivity : SimpleActivity() {
     companion object {
+        // Audio-route ints (CallAudioState.ROUTE_*) max out below 16; offset Bluetooth
+        // per-device menu ids well above that so they can't collide.
+        private const val BLUETOOTH_DEVICE_MENU_ID_BASE = 1000
+        private const val BT_CONNECT_REQUEST_CODE = 1001
+
         fun getStartIntent(context: Context, needSelectSIM: Boolean = false): Intent {
             val openAppIntent = Intent(context, CallActivity::class.java)
             openAppIntent.putExtra(NEED_SELECT_SIM, needSelectSIM)
@@ -807,12 +816,42 @@ class CallActivity : SimpleActivity() {
 
     private fun createOrUpdateAudioRouteChooser(routes: Array<AudioRoute>, create: Boolean = true) {
         val callAudioRoute = CallManager.getCallAudioRoute()
-        val items = routes
-            .sortedByDescending { it.route }
-            .map {
-                SimpleListItem(id = it.route, textRes = it.stringRes, imageRes = it.iconRes, selected = it == callAudioRoute)
+        val btDevices = CallManager.getSupportedBluetoothDevices()
+        val activeBtDevice = CallManager.getActiveBluetoothDevice()
+
+        // Reading BluetoothDevice.name requires BLUETOOTH_CONNECT at runtime on Android 12+.
+        // Ask for it once when the picker is opened with multiple devices, so the next
+        // open shows real device names instead of generic fallback labels.
+        if (btDevices.size > 1) {
+            requestBluetoothConnectPermissionIfNeeded()
+        }
+
+        // When more than one Bluetooth device is paired and available, expand the single
+        // "Bluetooth" entry into one row per device so the user can pick a specific one.
+        val items = mutableListOf<SimpleListItem>()
+        routes.sortedByDescending { it.route }.forEach { route ->
+            if (route == AudioRoute.BLUETOOTH && btDevices.size > 1) {
+                btDevices.forEachIndexed { index, device ->
+                    items.add(
+                        SimpleListItem(
+                            id = BLUETOOTH_DEVICE_MENU_ID_BASE + index,
+                            text = getBluetoothDeviceLabel(device, index),
+                            imageRes = route.iconRes,
+                            selected = device == activeBtDevice
+                        )
+                    )
+                }
+            } else {
+                items.add(
+                    SimpleListItem(
+                        id = route.route,
+                        textRes = route.stringRes,
+                        imageRes = route.iconRes,
+                        selected = route == callAudioRoute
+                    )
+                )
             }
-            .toTypedArray()
+        }
 
         if (audioRoutePopupMenu != null) {
             audioRoutePopupMenu?.dismiss()
@@ -823,16 +862,22 @@ class CallActivity : SimpleActivity() {
             audioRoutePopupMenu = PopupMenu(wrapper, binding.ongoingCallHolder.callToggleSpeaker, Gravity.END)
 
             items.forEach { item ->
+                val title = item.text ?: getString(item.textRes ?: R.string.other)
                 audioRoutePopupMenu?.menu?.add(
                     1,
                     item.id,
                     item.id,
-                    item.textRes ?: R.string.other
+                    title
                 )?.setIcon(item.imageRes ?: R.drawable.ic_transparent)
             }
 
             audioRoutePopupMenu?.setOnMenuItemClickListener { item ->
-                CallManager.setAudioRoute(item.itemId)
+                val deviceIndex = item.itemId - BLUETOOTH_DEVICE_MENU_ID_BASE
+                if (deviceIndex in btDevices.indices) {
+                    CallManager.setBluetoothDevice(btDevices[deviceIndex])
+                } else {
+                    CallManager.setAudioRoute(item.itemId)
+                }
                 true
             }
 
@@ -871,6 +916,26 @@ class CallActivity : SimpleActivity() {
                     item.title = spannableString
                 }
             }
+        }
+    }
+
+    private fun getBluetoothDeviceLabel(device: BluetoothDevice, index: Int): String {
+        return try {
+            val alias = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) device.alias else null
+            alias?.takeIf { it.isNotBlank() }
+                ?: device.name?.takeIf { it.isNotBlank() }
+                ?: "${getString(R.string.audio_route_bluetooth)} ${index + 1}"
+        } catch (_: SecurityException) {
+            "${getString(R.string.audio_route_bluetooth)} ${index + 1}"
+        }
+    }
+
+    private fun requestBluetoothConnectPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+        val granted = ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) ==
+            PackageManager.PERMISSION_GRANTED
+        if (!granted) {
+            requestPermissions(arrayOf(Manifest.permission.BLUETOOTH_CONNECT), BT_CONNECT_REQUEST_CODE)
         }
     }
 

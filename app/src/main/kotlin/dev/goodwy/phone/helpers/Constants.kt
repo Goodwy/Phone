@@ -134,12 +134,17 @@ const val SHOW_CALLER_NICKNAME = 2
 const val SWIPE_RIGHT_ACTION = "swipe_right_action"
 const val SWIPE_LEFT_ACTION = "swipe_left_action"
 const val SWIPE_ACTION_NONE = 0
+const val SWIPE_ACTION_MARK_READ = 1
 const val SWIPE_ACTION_DELETE = 2
+const val SWIPE_ACTION_ARCHIVE = 3
 const val SWIPE_ACTION_BLOCK = 4
 const val SWIPE_ACTION_CALL = 5
 const val SWIPE_ACTION_MESSAGE = 6
 const val SWIPE_ACTION_EDIT = 7
+const val SWIPE_ACTION_SHARE = 8
 const val SWIPE_ACTION_OPEN = 9
+const val SWIPE_ACTION_RESTORE = 10
+const val SWIPE_ACTION_WHATSAPP = 11
 const val SWIPE_VIBRATION = "swipe_vibration"
 const val SWIPE_RIPPLE = "swipe_ripple"
 
@@ -195,5 +200,6 @@ fun whatsNewList(): ArrayList<Release> {
         add(Release(823, R.string.release_823))
         add(Release(824, R.string.release_824))
         add(Release(830, R.string.release_830))
+        add(Release(840, R.string.release_840))
     }
 }

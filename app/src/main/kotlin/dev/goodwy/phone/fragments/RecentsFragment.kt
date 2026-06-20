@@ -65,10 +65,12 @@ import dev.goodwy.phone.interfaces.RefreshItemsListener
 import dev.goodwy.phone.models.CallLogItem
 import dev.goodwy.phone.models.RecentCall
 import com.google.gson.Gson
+import dev.goodwy.phone.extensions.launchSendWhatsAppIntent
 import dev.goodwy.phone.helpers.DialpadT9
 import dev.goodwy.phone.helpers.FILTER_RECENT_CALLS_ALL
 import dev.goodwy.phone.helpers.FILTER_RECENT_CALLS_CONTACTS
 import dev.goodwy.phone.helpers.LANGUAGE_SYSTEM
+import dev.goodwy.phone.helpers.SWIPE_ACTION_WHATSAPP
 import java.util.Locale
 
 class RecentsFragment(
@@ -362,29 +364,35 @@ class RecentsFragment(
     private fun updateSearchDialpadResult() {
         ensureBackgroundThread {
             val fixedText = searchQuery!!.trim().replace("\\s+".toRegex(), " ")
+            val langPref = context.config.dialpadSecondaryLanguage ?: ""
+            val langLocale = Locale.getDefault().language
+            val isAutoLang = DialpadT9.getSupportedSecondaryLanguages().contains(langLocale) && langPref == LANGUAGE_SYSTEM
+            val lang = if (isAutoLang) langLocale else langPref
+
             val recentCalls = allRecentCalls
                 .filterIsInstance<RecentCall>()
                 .filter { recentCall ->
-                    val langPref = context.config.dialpadSecondaryLanguage ?: ""
-                    val langLocale = Locale.getDefault().language
-                    val isAutoLang = DialpadT9.getSupportedSecondaryLanguages().contains(langLocale) && langPref == LANGUAGE_SYSTEM
-                    val lang = if (isAutoLang) langLocale else langPref
 
                     val convertedName = DialpadT9.convertLettersToNumbers(
                         recentCall.name.normalizeString().uppercase(), lang)
-                    val convertedNameWithoutSpaces = convertedName.filterNot { it.isWhitespace() }
+                    val convertedNameDigitsOnly = convertedName.filter { it.isDigit() }
                     val convertedNickname = DialpadT9.convertLettersToNumbers(
                         recentCall.nickname.normalizeString().uppercase(), lang)
+                    val convertedNicknameDigitsOnly = convertedNickname.filter { it.isDigit() }
                     val convertedCompany = DialpadT9.convertLettersToNumbers(
                         recentCall.company.normalizeString().uppercase(), lang)
+                    val convertedCompanyDigitsOnly = convertedCompany.filter { it.isDigit() }
                     val convertedJobPosition = DialpadT9.convertLettersToNumbers(
                         recentCall.jobPosition.normalizeString().uppercase(), lang)
 
                     recentCall.doesContainPhoneNumber(fixedText)
                         || (convertedName.contains(fixedText, true))
-                        || (convertedNameWithoutSpaces.contains(fixedText, true))
+                        || (convertedNameDigitsOnly.contains(fixedText, true))
                         || (convertedNickname.contains(fixedText, true))
+                        || (convertedNicknameDigitsOnly.contains(fixedText, true))
                         || (convertedCompany.contains(fixedText, true))
+                        || (convertedCompanyDigitsOnly.contains(fixedText, true))
+                        || (convertedJobPosition.contains(fixedText, true))
                 }
                 .sortedWith(
                     compareByDescending<RecentCall> { it.dayCode }
@@ -645,6 +653,7 @@ class RecentsFragment(
     private fun itemClickAction(action: Int, call: RecentCall) {
         when (action) {
             SWIPE_ACTION_MESSAGE -> actionSMS(call)
+            SWIPE_ACTION_WHATSAPP -> actionWhatsApp(call)
             SWIPE_ACTION_CALL -> actionCall(call)
             SWIPE_ACTION_OPEN -> actionOpen(call)
             else -> {}
@@ -664,6 +673,10 @@ class RecentsFragment(
 
     private fun actionSMS(call: RecentCall) {
         activity?.launchSendSMSIntentRecommendation(call.phoneNumber)
+    }
+
+    private fun actionWhatsApp(call: RecentCall) {
+        activity?.launchSendWhatsAppIntent(call.phoneNumber)
     }
 
     private fun actionOpen(call: RecentCall) {

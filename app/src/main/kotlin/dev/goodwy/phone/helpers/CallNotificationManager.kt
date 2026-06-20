@@ -13,6 +13,7 @@ import android.graphics.drawable.Icon
 import android.telecom.Call
 import android.view.View.VISIBLE
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
 import com.goodwy.commons.extensions.*
 import com.goodwy.commons.helpers.SimpleContactsHelper
 import com.goodwy.commons.helpers.isSPlus
@@ -141,19 +142,21 @@ class CallNotificationManager(private val context: Context) {
                  // Speaker button settings
                 val speakerIcon =
                     if (isSpeakerOn) R.drawable.ic_volume_up_vector else R.drawable.ic_volume_down_vector
-                setImageViewResource(R.id.notification_speaker_button, speakerIcon)
+                setImageViewResource(R.id.notification_speaker_icon, speakerIcon)
                 val speakerLabel =
                     if (isSpeakerOn) context.getString(R.string.turn_speaker_off)
                     else context.getString(R.string.turn_speaker_on)
+                setTextViewText(R.id.notification_speaker_label, speakerLabel)
                 setContentDescription(R.id.notification_speaker_button, speakerLabel)
                 setOnClickPendingIntent(R.id.notification_speaker_button, speakerPendingIntent)
                  // Microphone button settings
                 val microphoneIcon =
                     if (isMicrophoneMute) R.drawable.ic_microphone_off_vector else R.drawable.ic_microphone_vector
-                setImageViewResource(R.id.notification_mute_button, microphoneIcon)
+                setImageViewResource(R.id.notification_mute_icon, microphoneIcon)
                 val microphoneLabel =
                     if (isMicrophoneMute) context.getString(R.string.unmute)
                     else context.getString(R.string.mute)
+                setTextViewText(R.id.notification_mute_label, microphoneLabel)
                 setContentDescription(R.id.notification_mute_button, microphoneLabel)
                 setOnClickPendingIntent(R.id.notification_mute_button, microphonePendingIntent)
 
@@ -294,6 +297,9 @@ class CallNotificationManager(private val context: Context) {
                     Notification.CallStyle.forOngoingCall(person, declinePendingIntent)
                 }
 
+                val backgroundColor = ContextCompat.getColor(context, R.color.notification_color)
+                val textColor = ContextCompat.getColor(context, R.color.notification_icon)
+
                 val builder = Notification.Builder(context, channelId)
                     .setFullScreenIntent(openAppPendingIntent, isHighPriority)
                     .setSmallIcon(R.drawable.ic_phone_vector)
@@ -304,8 +310,32 @@ class CallNotificationManager(private val context: Context) {
 //                    .setUsesChronometer(callState == Call.STATE_ACTIVE)
                     .setChannelId(channelId)
                     .setColorized(true)
+                    .setColor(backgroundColor)
                     .setStyle(style)
                     .addPerson(person)
+
+                // Surface accept/decline directly to Wear OS / Galaxy Watch so the watch
+                // shows the call even when its companion app's per-app allow-list
+                // doesn't auto-enroll a non-stock dialer. The CallStyle pending intents
+                // are still used for the phone side; this extender just duplicates them
+                // explicitly for the wearable surface.
+                if (callState == Call.STATE_RINGING) {
+                    val acceptAction = Notification.Action.Builder(
+                        Icon.createWithResource(context, R.drawable.ic_phone_vector),
+                        context.getString(R.string.accept),
+                        acceptPendingIntent
+                    ).build()
+                    val declineAction = Notification.Action.Builder(
+                        Icon.createWithResource(context, R.drawable.ic_phone_down_vector),
+                        context.getString(R.string.decline),
+                        declinePendingIntent
+                    ).build()
+                    @Suppress("DEPRECATION")
+                    Notification.WearableExtender()
+                        .addAction(acceptAction)
+                        .addAction(declineAction)
+                        .extend(builder)
+                }
 
                 if (callState == Call.STATE_ACTIVE) {
                     val connectTime = CallManager.getCallConnectTime()
@@ -348,8 +378,10 @@ class CallNotificationManager(private val context: Context) {
                         PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE
                     )
 
+                    val speakerIconWithColor = Icon.createWithResource(context, speakerIcon)
+                        .setTint(textColor)
                     val speakerCallAction = Notification.Action.Builder(
-                        Icon.createWithResource(context, speakerIcon),
+                        speakerIconWithColor,
                         speakerLabel,
                         speakerPendingIntent
                     ).build()
@@ -376,9 +408,10 @@ class CallNotificationManager(private val context: Context) {
                         microphoneCallIntent,
                         PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE
                     )
-
+                    val microphoneIconWithColor = Icon.createWithResource(context, microphoneMuteIcon)
+                        .setTint(textColor)
                     val microphoneCallAction = Notification.Action.Builder(
-                        Icon.createWithResource(context, microphoneMuteIcon),
+                        microphoneIconWithColor,
                         microphoneLabel,
                         microphonePendingIntent
                     ).build()
@@ -400,7 +433,6 @@ class CallNotificationManager(private val context: Context) {
             }
         } catch (e: Exception) {
             cancelNotification()
-            context.baseConfig.lastError = "CallNotificationManager().setupNotificationNew(): $e"
             setupNotificationOld(lowPriority)
         }
     }

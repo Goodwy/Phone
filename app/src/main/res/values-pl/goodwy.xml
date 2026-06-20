@@ -26,7 +26,7 @@
     </string>
 
     <string name="add_wait">Dodaj czekanie (;)</string>
-    <string name="rejected">Odrzucony</string>
+    <string name="rejected">Odrzucone</string>
     <string name="dialpad_buttons_color">Kolor przycisków klawiatury numerycznej</string>
     <string name="audio_route_earpiece_g">Słuchawka urządzenia</string>
     <string name="open_speed_dial_manage">Otworzyć zarządzanie szybkim wybieraniem?</string>
@@ -96,7 +96,7 @@
     <string name="on_contact_click">Po kliknięciu kontaktu</string>
     <string name="on_recent_click">Kiedy klikniesz na ostatnie połączenie</string>
     <string name="add_pause">Dodaj 2-sekundową pauzę (,)</string>
-    <string name="missed">Pominięty</string>
-    <string name="incoming">Przybywający</string>
-    <string name="outgoing">Towarzyski</string>
+    <string name="missed">Nieodebrane</string>
+    <string name="incoming">Przychodzące</string>
+    <string name="outgoing">Wychodzące</string>
 </resources>

@@ -14,6 +14,7 @@ import com.goodwy.commons.extensions.launchActivityIntent
 import com.goodwy.commons.extensions.launchSendSMSIntent
 import com.goodwy.commons.extensions.launchViewContactIntent
 import com.goodwy.commons.extensions.showSupportSnackbar
+import com.goodwy.commons.extensions.toast
 import com.goodwy.commons.helpers.CONTACT_ID
 import com.goodwy.commons.helpers.FIRST_CONTACT_ID
 import com.goodwy.commons.helpers.IS_PRIVATE
@@ -28,6 +29,7 @@ import com.goodwy.commons.models.contacts.Contact
 import dev.goodwy.phone.BuildConfig
 import dev.goodwy.phone.R
 import dev.goodwy.phone.activities.SimpleActivity
+import androidx.core.net.toUri
 
 fun SimpleActivity.launchCreateNewContactIntent() {
     Intent().apply {
@@ -195,6 +197,22 @@ fun Activity.launchSendSMSIntentRecommendation(recipient: String) {
         }
     } else {
         launchSendSMSIntent(recipient)
+    }
+}
+
+fun Activity.launchSendWhatsAppIntent(phoneNumber: String) {
+    val digits = phoneNumber.filter { it.isDigit() }
+    if (digits.isEmpty()) {
+        toast(R.string.no_app_found)
+        return
+    }
+    val pkg = listOf("com.whatsapp", "com.whatsapp.w4b").firstOrNull { isPackageInstalled(it) }
+    val intent = Intent(Intent.ACTION_VIEW, "https://wa.me/$digits".toUri())
+    if (pkg != null) intent.setPackage(pkg)
+    try {
+        startActivity(intent)
+    } catch (_: android.content.ActivityNotFoundException) {
+        toast(R.string.no_app_found)
     }
 }
 
